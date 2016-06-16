@@ -10,6 +10,6 @@ app.get('/', function (req, res) {
   res.sendFile(path.resolve(__dirname, 'public/index.html'));
 });
 
-app.listen(80, function () {
-  console.log('Example app listening on port 80!');
+app.listen(7542, function () {
+  console.log('Example app listening on port 7542!');
 });
