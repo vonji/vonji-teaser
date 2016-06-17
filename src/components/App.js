@@ -8,7 +8,7 @@ class App extends Component {
       <div className="column">
         <div id="main-logo">
           <img src={mainLogoUrl} alt="Vonji Main Logo"/>
-          <h1>On sait tous faire quelque chose.</h1>
+          <h1>On sait tous faire quelque chose</h1>
         </div>
       </div>
     );
