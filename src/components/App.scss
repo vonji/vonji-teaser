@@ -1,0 +1,82 @@
+$primaryOrange: #F1880C;
+$secondaryBlue: #B9D6E7;
+$secondaryYellow: #FFD618;
+$secondaryOrange: #EB5B1D;
+
+body {
+  background-color: $primaryOrange;
+  font-family: 'Open Sans', sans-serif;
+  color: white;
+}
+
+button.vj-btn {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 600;
+  background-color: darken(white, 5);
+  color: darken($primaryOrange, 5);
+  border-radius: 0;
+  border: none;
+  outline: 0;
+}
+
+$marginsHeight: 5vh;
+
+#header {
+  height: $marginsHeight;
+  display: flex;
+  justify-content: flex-end;
+  align-items: baseline;
+  a {
+    align-self: center;
+    font-size: large;
+    color: lighten($primaryOrange, 35);
+    &:visited {
+      color: lighten($primaryOrange, 25);
+    }
+    &:last-child {
+      margin-right: 15px;
+    }
+    &:hover {
+      color: white;
+      transition: color 1s ease-in-out;
+    }
+  }
+}
+
+#footer {
+  height: $marginsHeight;
+}
+
+#content {
+  display: flex;
+  flex-direction: column;
+  height: 100vh - ($marginsHeight * 2);
+
+  $middleHeight: 8%;
+  $bordersHeight: (100% - $middleHeight)/2;
+
+  @mixin row($align) {
+    display: flex;
+    justify-content: center;
+    align-items: $align;
+  }
+
+  .top {
+    height: $bordersHeight;
+    @include row(flex-end);
+  }
+
+  .middle {
+    height: $middleHeight;
+    @include row(center);
+    h1 {
+      margin: 10px;
+    }
+  }
+
+  .end {
+    padding-top: 10px;
+    height: $bordersHeight;
+    @include row(flex-start);
+  }
+}
