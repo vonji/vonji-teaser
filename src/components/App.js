@@ -1,37 +1,84 @@
 import React, { Component } from 'react';
 
-require('style!css!sass!./App.scss');
-const mainLogoUrl = require('url!../../public/img/vonji-logo-white.png');
+require('./App.scss');
 
-class App extends Component {
+const $ = require('jquery');
+require('fullpage.js');
 
+import LogoImg from './LogoImg';
+import VonjiBlogLink from './VonjiBlogLink';
+import IKnow from './IKnow';
+
+class Page1 extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      vanished: false,
+      my_name: '',
+      my_activity: '',
     };
-    this.animateVanish = this.animateVanish.bind(this);
   }
 
-  animateVanish() {
-    this.setState({
-      vanished: true,
+  render() {
+    setTimeout(() => {
+      this.setState({
+        my_name: 'loup',
+        my_activity: 'fuck it!',
+      });
+    }, 2000);
+    return (
+      <div className="section">
+        <div className="column fullsize space-around">
+          <div className="column" style={{width: '100%'}}>
+            <LogoImg />
+            <IKnow name={this.state.my_name} activity={this.state.my_activity} />
+            <a href="#">On sait tous faire quelque chose</a>
+            <form>
+              <input type="text"/>
+              <input type="text"/>
+            </form>
+          </div>
+        </div>
+      </div>
+    );
+  }
+}
+
+const Page2 = () => {
+  return (
+    <div className="section">
+      <div className="column fullsize v-center">
+        <LogoImg size="small" />
+        <h1 style={{ marginTop: '5px' }}>On sait tous faire quelque chose</h1>
+        <button
+          className="pure-button vj-btn"
+        >
+          Je suis curieux !
+        </button>
+      </div>
+    </div>
+  );
+}
+
+class App extends Component {
+  constructor(props) {
+    super(props);
+  }
+
+  componentDidMount() {
+    $('#fullpage').fullpage({
+      navigation: true,
+      controlArrows: true,
     });
   }
 
   render() {
     return (
       <div>
-        <div id="header">
-          <a href="http://blog.vonji.fr/">Vonji Blog</a>
-        </div>
-        <div id="content">
-          <div className="top"><img src={mainLogoUrl} alt="Vonji Main Logo"/></div>
-          <div className="middle"><h1>On sait tous faire quelque chose</h1></div>
-          <div className="end"><button className={`pure-button vj-btn ${this.state.vanished ? 'do-vanish' : ''}`} onClick={this.animateVanish}>Je suis curieux !</button></div>
-        </div>
-        <div id="footer">
+        <VonjiBlogLink />
 
+        <div id="fullpage">
+          <Page1 />
+          <Page2 />
         </div>
       </div>
     );

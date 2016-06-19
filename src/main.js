@@ -8,7 +8,7 @@ import thunk from 'redux-thunk';
 
 import App from './components/App';
 
-require('style!css!../node_modules/purecss/build/pure-min.css');
+//require('../node_modules/purecss/build/pure-min.css');
 
 const reducers = (state = {}, action) => {
   return state;

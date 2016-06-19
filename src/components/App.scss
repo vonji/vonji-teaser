@@ -3,10 +3,44 @@ $secondaryBlue: #B9D6E7;
 $secondaryYellow: #FFD618;
 $secondaryOrange: #EB5B1D;
 
+
+#iknow {
+
+  .name,.activity {
+
+    &.cache {
+      transform: translateY(8px);
+      opacity: 0;
+    }
+
+    &.hide.out {
+      transform: translateY(-8px);
+      opacity: 0;
+      transition: transform 1s, opacity 1s;
+    }
+
+    &.hide.in {
+      transform: translateY(0px);
+      opacity: 1;
+      transition: transform 1s, opacity 1s;
+    }
+  }
+}
+
 body {
   background-color: $primaryOrange;
   font-family: 'Open Sans', sans-serif;
+  font-weight: 300;
   color: white;
+}
+
+a {
+  color: white;
+  transition: color 0.1s linear;
+  &:hover {
+    color: lighten($secondaryYellow, 15);
+    transition: color 0.1s linear;
+  }
 }
 
 button.vj-btn {
@@ -19,64 +53,21 @@ button.vj-btn {
   outline: 0;
 }
 
-$marginsHeight: 5vh;
-
-#header {
-  height: $marginsHeight;
-  display: flex;
-  justify-content: flex-end;
-  align-items: baseline;
-  a {
-    align-self: center;
-    font-size: large;
-    color: lighten($primaryOrange, 35);
-    &:visited {
-      color: lighten($primaryOrange, 25);
-    }
-    &:last-child {
-      margin-right: 15px;
-    }
-    &:hover {
-      color: white;
-      transition: color 1s ease-in-out;
-    }
-  }
-}
-
-#footer {
-  height: $marginsHeight;
-}
-
-#content {
+.column {
   display: flex;
   flex-direction: column;
-  height: 100vh - ($marginsHeight * 2);
-
-  $middleHeight: 8%;
-  $bordersHeight: (100% - $middleHeight)/2;
-
-  @mixin row($align) {
-    display: flex;
-    justify-content: center;
-    align-items: $align;
+  align-items: center;
+  justify-content: center;
+  &.fullsize {
+    height: 100vh;
   }
-
-  .top {
-    height: $bordersHeight;
-    @include row(flex-end);
+  &.space-around {
+    justify-content: space-around;
   }
+}
 
-  .middle {
-    height: $middleHeight;
-    @include row(center);
-    h1 {
-      margin: 10px;
-    }
-  }
-
-  .end {
-    padding-top: 10px;
-    height: $bordersHeight;
-    @include row(flex-start);
-  }
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
