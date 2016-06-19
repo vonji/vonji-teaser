@@ -13,7 +13,12 @@ class IKnow extends Component {
   }
 
   componentDidMount() {
-    this.requestRandomPair();
+    const f = () => {
+      console.log('called f');
+      this.requestRandomPair()
+      .then(() => setTimeout(f, 2000));
+    };
+    f();
   }
 
   requestRandomPair() {
