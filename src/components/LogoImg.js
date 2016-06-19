@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 const mainLogoUrl = require('../../public/img/vonji-logo-white.png');
 

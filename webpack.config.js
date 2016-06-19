@@ -1,13 +1,23 @@
-var path = require("path");
+const webpack = require('webpack');
+const path = require('path');
+
 module.exports = {
   devtool: 'source-map',
+
   entry: {
-    app: ["./src/main.js"],
+    app: [
+      // For hot style updates
+      'webpack/hot/dev-server',
+      // The script refreshing the browser on none hot updates
+      'webpack-dev-server/client?http://localhost:8080',
+      './src/main.js',
+    ],
   },
+
   output: {
-    path: path.resolve(__dirname, "build"),
-    publicPath: "/assets/",
-    filename: "bundle.js",
+    path: path.resolve(__dirname, 'build'),
+    publicPath: '/build/',
+    filename: 'bundle.js',
   },
 
   module: {
@@ -34,4 +44,6 @@ module.exports = {
       },
     ],
   },
+
+  plugins: [new webpack.HotModuleReplacementPlugin()],
 };

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
 import { createStore, applyMiddleware } from 'redux';
 import { connect, Provider } from 'react-redux';
@@ -8,11 +8,9 @@ import thunk from 'redux-thunk';
 
 import App from './components/App';
 
-//require('../node_modules/purecss/build/pure-min.css');
+// require('../node_modules/purecss/build/pure-min.css');
 
-const reducers = (state = {}, action) => {
-  return state;
-}
+const reducers = (state = {}) => state;
 
 const logger = createLogger();
 
@@ -28,4 +26,4 @@ ReactDOM.render(
   <Provider store={store}>
     <CApp />
   </Provider>
-, document.getElementById("app"));
+, document.getElementById('app'));

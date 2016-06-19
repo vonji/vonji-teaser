@@ -1,14 +1,43 @@
 import React, { Component } from 'react';
+import $ from 'jquery';
 
 class IKnow extends Component {
-  componentWillReceiveProps(newProps) {
-    console.log(newProps);
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      name: 'On',
+      activity: 'tous faire quelque chose.',
+    };
+    this.requestRandomPair = this.requestRandomPair.bind(this);
+  }
+
+  componentDidMount() {
+    this.requestRandomPair();
+  }
+
+  requestRandomPair() {
+    return new Promise((resolved, rejected) => {
+      $.ajax({
+        type: 'GET',
+        url: '/api/iknow',
+        success: (data) => {
+          const { name, activity } = data;
+          this.setState({ name, activity });
+          resolved(data);
+        },
+        error: (xhr, type, exception) => {
+          console.error(xhr, type, exception);
+          rejected(xhr);
+        },
+      });
+    });
   }
 
   render() {
-    const { name, activity } = this.props;
+    const { name, activity } = this.state;
     return (
-      <div className="row" style={{width: '100%'}} id="iknow">
+      <div className="row" style={{ width: '100%' }} id="iknow">
         <h1
           className="name"
           style={{
@@ -43,6 +72,6 @@ class IKnow extends Component {
       </div>
     );
   }
-};
+}
 
 export default IKnow;
