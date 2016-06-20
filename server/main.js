@@ -1,11 +1,8 @@
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
-const httpProxy = require('http-proxy');
 const createDb = require('./database');
-const bundle = require('./bundle.js');
 
-const proxy = httpProxy.createProxyServer();
 const app = express();
 const db = createDb();
 
@@ -18,6 +15,9 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 if (!isProduction) {
+  const httpProxy = require('http-proxy');
+  const bundle = require('./bundle.js');
+  const proxy = httpProxy.createProxyServer();
   bundle();
   app.all('/build/*', (req, res) => {
     proxy.web(req, res, {
