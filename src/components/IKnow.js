@@ -9,7 +9,7 @@ class IKnow extends Component {
     super(props);
     this.state = {
       transition: 'none',
-      values: { name: 'On', activity: 'tous faire quelque chose!' },
+      values: { name: 'On', activity: 'tous faire quelque chose !' },
     };
     this.requestRandomPair = this.requestRandomPair.bind(this);
   }
@@ -50,7 +50,7 @@ class IKnow extends Component {
         <div className="row" style={{ width: '100%' }} id="iknow">
           <h1 className={`name ${transition}`}>{values.name}</h1>
           <h1 className={`knows ${transition}`}>sait</h1>
-          <h1 className={`activity ${transition}`}>{values.activity}!</h1>
+          <h1 className={`activity ${transition}`}>{values.activity} !</h1>
         </div>
         <div className="row">
           <a href="#" onClick={this.displayForm}>On sait tous faire quelque chose</a>
