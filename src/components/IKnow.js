@@ -48,9 +48,15 @@ class IKnow extends Component {
     return (
       <div style={{ width: '100%' }}>
         <div className="row" style={{ width: '100%' }} id="iknow">
-          <h1 className={`name ${transition}`}>{values.name}</h1>
-          <h1 className={`knows ${transition}`}>sait</h1>
-          <h1 className={`activity ${transition}`}>{values.activity} !</h1>
+          <h1 className={`name ${transition}`}>
+            <span>{values.name}</span>
+          </h1>
+          <h1 className={`knows ${transition}`}>
+            <span>sait</span>
+          </h1>
+          <h1 className={`activity ${transition}`}>
+            <span>{values.activity}</span>
+          </h1>
         </div>
       </div>
     );
