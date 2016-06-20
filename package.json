@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "node ./server/main.js",
-    "bundle": "NODE_ENV=production webpack -p"
+    "build": "webpack -p",
+    "start": "node ./server/main.js",
   },
   "author": "",
   "license": "ISC",
