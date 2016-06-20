@@ -2,10 +2,13 @@ const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
 const createDb = require('./database');
+const httpProxy = require('http-proxy');
+const bundle = require('./bundle.js');
 
 const app = express();
 const db = createDb();
 
+const proxy = httpProxy.createProxyServer();
 const isProduction = process.env.NODE_ENV === 'production';
 const port = isProduction ? process.env.PORT : 3000;
 const publicPath = path.resolve(__dirname, 'public');
@@ -14,10 +17,9 @@ app.use(express.static(publicPath));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+console.log('Webserver starts for production : ' + isProduction);
+
 if (!isProduction) {
-  const httpProxy = require('http-proxy');
-  const bundle = require('./bundle.js');
-  const proxy = httpProxy.createProxyServer();
   bundle();
   app.all('/build/*', (req, res) => {
     proxy.web(req, res, {

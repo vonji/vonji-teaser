@@ -1,8 +1,8 @@
 const webpack = require('webpack');
 const path = require('path');
-const isProduction = process.env.NODE_ENV === 'production';
 
-console.log(isProduction);
+const isProduction = process.env.NODE_ENV === 'production';
+console.log('Webpack bundles for production : ' + isProduction);
 
 let app = [];
 let plugins = [];
