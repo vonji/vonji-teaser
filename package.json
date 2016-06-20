@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "NODE_ENV=production && webpack -p",
-    "start": "NODE_ENV=production && PORT=7542 && node ./server/main.js",
+    "build": "NODE_ENV=production webpack --progress --color",
+    "prod": "NODE_ENV=production PORT=7542 node ./server/main.js"
   },
   "author": "",
   "license": "ISC",
@@ -28,6 +28,7 @@
     "express": "^4.14.0",
     "file-loader": "^0.8.5",
     "fullpage.js": "^2.8.1",
+    "http-proxy": "^1.14.0",
     "node-sass": "^3.7.0",
     "normalize.css": "^4.1.1",
     "purecss": "^0.6.0",

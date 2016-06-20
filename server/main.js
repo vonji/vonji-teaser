@@ -4,11 +4,11 @@ const bodyParser = require('body-parser');
 const createDb = require('./database');
 const httpProxy = require('http-proxy');
 const bundle = require('./bundle.js');
-
+const proxy = httpProxy.createProxyServer();
+ 
 const app = express();
 const db = createDb();
 
-const proxy = httpProxy.createProxyServer();
 const isProduction = process.env.NODE_ENV === 'production';
 const port = isProduction ? process.env.PORT : 3000;
 const publicPath = path.resolve(__dirname, 'public');
