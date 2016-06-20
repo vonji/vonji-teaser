@@ -1,18 +1,37 @@
 const webpack = require('webpack');
 const path = require('path');
+const isProduction = process.env.NODE_ENV === 'production';
+
+console.log(isProduction);
+
+let app = [];
+let plugins = [];
+let devtool = [];
+
+if (!isProduction) {
+  app = app.concat([
+    'webpack/hot/dev-server',
+    'webpack-dev-server/client?http://localhost:8080',
+  ]);
+  plugins = plugins.concat([
+    new webpack.HotModuleReplacementPlugin(),
+  ]);
+  devtool = ['source-map'];
+} else {
+  plugins = plugins.concat([
+    new webpack.optimize.DedupePlugin(),
+    new webpack.optimize.UglifyJsPlugin(),
+  ]);
+}
+
+console.log(app, plugins);
+
+app.push('./src/main.js');
 
 module.exports = {
-  devtool: 'source-map',
+  devtool,
 
-  entry: {
-    app: [
-      // For hot style updates
-      'webpack/hot/dev-server',
-      // The script refreshing the browser on none hot updates
-      'webpack-dev-server/client?http://localhost:8080',
-      './src/main.js',
-    ],
-  },
+  entry: { app },
 
   output: {
     path: path.resolve(__dirname, 'build'),
@@ -45,5 +64,5 @@ module.exports = {
     ],
   },
 
-  plugins: [new webpack.HotModuleReplacementPlugin()],
+  plugins,
 };

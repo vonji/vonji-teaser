@@ -1,13 +1,10 @@
 import React, { Component } from 'react';
 
-require('./App.scss');
-
 const $ = require('jquery');
 require('fullpage.js');
 
 import VonjiBlogLink from './VonjiBlogLink';
-import Page1 from './Page1';
-import Page2 from './Page2';
+import IntroPage from './IntroPage';
 
 class App extends Component {
   componentDidMount() {
@@ -22,8 +19,7 @@ class App extends Component {
       <div>
         <VonjiBlogLink />
         <div id="fullpage">
-          <Page1 />
-          <Page2 />
+          <IntroPage />
         </div>
       </div>
     );

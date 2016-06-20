@@ -15,5 +15,7 @@ module.exports = {
       "react/prop-types": 0,
       "prefer-template": 0,
       "no-console": 0,
+      "react/prefer-stateless-function": 0,
+      "no-useless-constructor": 0,
     }
 };
