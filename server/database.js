@@ -1,7 +1,9 @@
 const fs = require('fs');
 const sql = require('sqlite3').verbose();
-const dbExists = fs.existsSync('./db.sqlite');
-const db = new sql.Database('./db.sqlite');
+const path = require('path');
+const dbPath = path.resolve(__dirname, '../db.sqlite');
+const dbExists = fs.existsSync(dbPath);
+const db = new sql.Database(dbPath);
 
 module.exports = () => {
   db.serialize(() => {

@@ -1,10 +1,10 @@
 const webpack = require('webpack');
+const config = require('./../webpack.config.js');
 const WebpackDevServer = require('webpack-dev-server');
-const webpackConfig = require('./../webpack.config.js');
 
-module.exports = () => {
+module.exports = (PORT, PROXY_PORT) => {
   let bundleStart = null;
-  const compiler = webpack(webpackConfig);
+  const compiler = webpack(config);
 
   compiler.plugin('compile', () => {
     console.log('Bundling...');
@@ -13,9 +13,14 @@ module.exports = () => {
 
   compiler.plugin('done', () => {
     console.log('Bundled in ' + (Date.now() - bundleStart) + 'ms!');
+    console.log('DEV server listening at ' + PORT);
+    console.log('DEV server forwarding * at ' + PROXY_PORT);
   });
 
   const bundler = new WebpackDevServer(compiler, {
+    proxy: {
+      '*': `http://localhost:${PROXY_PORT}`,
+    },
     publicPath: '/build/',
     hot: true,
     quiet: false,
@@ -25,7 +30,7 @@ module.exports = () => {
     },
   });
 
-  bundler.listen(8080, 'localhost', () => {
+  bundler.listen(PORT, 'localhost', () => {
     console.log('Bundling project, please wait...');
   });
 };
