@@ -7,6 +7,5 @@ const PROD = process.env.NODE_ENV === 'production';
 if (PROD) {
   backend(PORT);
 } else {
-  devServer(PORT, PORT - 1);
-  backend(PORT - 1);
+  devServer(PORT, backend);
 }

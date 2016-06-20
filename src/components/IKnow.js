@@ -9,7 +9,7 @@ class IKnow extends Component {
     super(props);
     this.state = {
       transition: 'none',
-      values: { name: 'On', activity: 'tous faire quelque chose !' },
+      values: { name: 'On', activity: 'tous faire quelque chose' },
     };
     this.requestRandomPair = this.requestRandomPair.bind(this);
   }

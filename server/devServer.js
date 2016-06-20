@@ -2,7 +2,10 @@ const webpack = require('webpack');
 const config = require('./../webpack.config.js');
 const WebpackDevServer = require('webpack-dev-server');
 
-module.exports = (PORT, PROXY_PORT) => {
+module.exports = (PORT, backend) => {
+  const PROXY_PORT = PORT - 1;
+  backend(PROXY_PORT);
+
   let bundleStart = null;
   const compiler = webpack(config);
 
