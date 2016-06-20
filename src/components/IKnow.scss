@@ -10,6 +10,12 @@
     }
   }
 
+  h1 {
+    font-size: 3em;
+    margin-top: 0px;
+    margin-bottom: 0px;
+  }
+
   @mixin in() {
     &.in {
       transform: translateX(0px);

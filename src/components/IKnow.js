@@ -52,9 +52,6 @@ class IKnow extends Component {
           <h1 className={`knows ${transition}`}>sait</h1>
           <h1 className={`activity ${transition}`}>{values.activity} !</h1>
         </div>
-        <div className="row">
-          <a href="#" onClick={this.displayForm}>On sait tous faire quelque chose</a>
-        </div>
       </div>
     );
   }

@@ -18,6 +18,12 @@ class IntroPage extends Component {
           <div className="column" style={{ width: '100%' }}>
             <LogoImg />
             <IKnow />
+            <h2>On sait tous faire quelque chose.</h2>
+            <p className="explain">
+              <strong>Vonji</strong> c'est la première plateforme de <strong>skillfunding</strong> autogérée.<br />
+              Pour l'instant c'est un peu vide mais hey...<br />
+              Repassez plus tard... il y aura du nouveau !
+            </p>
           </div>
         </div>
       </div>

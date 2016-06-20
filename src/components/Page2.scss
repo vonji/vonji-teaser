@@ -1,0 +1,10 @@
+@import "../shared/config.scss";
+
+#page2.section {
+  background-color: $color-complement-2;
+  color: $color-secondary-1-1;
+  h1 {
+    font-size: 5em;
+    margin-top: 0px;
+  }
+}

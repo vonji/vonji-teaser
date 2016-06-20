@@ -23,3 +23,26 @@ $color-complement-1: #87B8D2;
 $color-complement-2: #3C80A5;
 $color-complement-3: #05476B;
 $color-complement-4: #01273B;
+
+body {
+  font-family: 'Open Sans', sans-serif;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  &.fullsize {
+    height: 100vh;
+  }
+  &.space-around {
+    justify-content: space-around;
+  }
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

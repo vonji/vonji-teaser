@@ -18,5 +18,6 @@ module.exports = {
       "react/prefer-stateless-function": 0,
       "no-useless-constructor": 0,
       "global-require": 0,
+      "max-len": 0,
     }
 };

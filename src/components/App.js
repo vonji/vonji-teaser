@@ -5,6 +5,7 @@ require('fullpage.js');
 
 import VonjiBlogLink from './VonjiBlogLink';
 import IntroPage from './IntroPage';
+import Page2 from './Page2';
 
 class App extends Component {
   componentDidMount() {
@@ -20,6 +21,7 @@ class App extends Component {
         <VonjiBlogLink />
         <div id="fullpage">
           <IntroPage />
+          <Page2 />
         </div>
       </div>
     );

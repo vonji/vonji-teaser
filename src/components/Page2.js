@@ -1,17 +1,11 @@
 import React from 'react';
 
-import LogoImg from './LogoImg';
+require('./Page2.scss');
 
 const Page2 = () => (
-  <div className="section">
+  <div className="section" id="page2">
     <div className="column fullsize v-center">
-      <LogoImg size="small" />
-      <h1 style={{ marginTop: '5px' }}>On sait tous faire quelque chose</h1>
-      <button
-        className="pure-button vj-btn"
-      >
-        Je suis curieux !
-      </button>
+      <h1>Le reste arrive bientôt !</h1>
     </div>
   </div>
 );
