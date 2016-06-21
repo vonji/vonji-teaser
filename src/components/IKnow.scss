@@ -26,7 +26,7 @@
     display: flex;
     justify-content: flex-end;
     width: 50%;
-    color: white;
+    color: lighten($color-primary-1, 5);
   }
   .activity {
     @include out();
@@ -34,7 +34,7 @@
     display: flex;
     justify-content: flex-start;
     width: 50%;
-    color: white;
+    color: lighten($color-secondary-1-1, 5);
   }
   .knows {
     display: flex;

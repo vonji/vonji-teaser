@@ -1,5 +1,7 @@
 // As hex codes */
 
+@import "../../node_modules/normalize.css/normalize.css";
+
 $color-primary-0: #F1880C;	// Main Primary color */
 $color-primary-1: #FFD39F;
 $color-primary-2: #FFB154;
@@ -23,6 +25,21 @@ $color-complement-1: #87B8D2;
 $color-complement-2: #3C80A5;
 $color-complement-3: #05476B;
 $color-complement-4: #01273B;
+
+@mixin placeholderColor($color) {
+  &::-webkit-input-placeholder {
+     color: $color;
+  }
+  &:-moz-placeholder { /* Firefox 18- */
+     color: $color;
+  }
+  &::-moz-placeholder {  /* Firefox 19+ */
+     color: $color;
+  }
+  &:-ms-input-placeholder {
+     color: $color;
+  }
+}
 
 body {
   font-family: 'Open Sans', sans-serif;

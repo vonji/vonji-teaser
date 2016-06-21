@@ -38,11 +38,13 @@
 
   a {
     color: white;
-    transition: color 0.1s linear;
     font-size: 1.2em;
+    transform: scale(1);
+    transition: color 0.1s linear, transform 0.1s ease-in;
     &:hover {
-      color: lighten($color-secondary-1-1, 0);
-      transition: color 0.1s linear;
+      color: lighten($color-complement-0, 60);
+      transition: color 0.1s linear, transform 0.1s ease-in;
+      transform: scale(1.04);
     }
   }
 }

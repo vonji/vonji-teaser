@@ -8,8 +8,6 @@ import thunk from 'redux-thunk';
 
 import App from './components/App';
 
-// require('../node_modules/purecss/build/pure-min.css');
-
 const reducers = (state = {}) => state;
 
 const logger = createLogger();

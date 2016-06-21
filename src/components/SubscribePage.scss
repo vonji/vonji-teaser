@@ -1,0 +1,107 @@
+@import "../shared/config.scss";
+
+$labelWidth: 12em;
+$inputWidth: $labelWidth + 6em;
+
+.checkBox {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  input[type="checkbox"] {
+    display: none;
+  }
+  i {
+    color: $color-complement-3;
+  }
+}
+
+#subscribe-page.section {
+  background-color: $color-secondary-1-1;
+  color: $color-complement-3;
+
+  h1 {
+    font-size: 4em;
+    margin-bottom: 0px;
+  }
+
+  h2 {
+    margin-top: 5px;
+    font-size: 2em;
+  }
+
+  .form {
+    background-color: lighten($color-secondary-1-1, 5);
+    margin: 1em;
+    padding: 1em;
+    font-size: 1.1em;
+
+    input {
+      @include placeholderColor($color-complement-3);
+      font-family: 'Open Sans', sans-serif;
+      font-size: 1em;
+      border: none;
+      border-bottom: 1px solid $color-complement-3;
+      outline: none;
+      background-color: transparent;
+    }
+
+
+    button {
+      padding: 0.2em;
+      font-size: 1.2em;
+      display: inline-block;
+      width: 100%;
+      background-color: $color-complement-3;
+      color: $color-primary-1;
+      cursor: pointer;
+      transform: translateX(0);
+      transition: transform 0.5s;
+      outline: none;
+      box-sizing: border-box;
+      border: 2px solid $color-complement-3;
+      &:disabled {
+        border: 2px solid $color-complement-1;
+        background-color: $color-complement-1;
+        cursor: not-allowed;
+        color: white;
+      }
+      &:not(:disabled){
+        &:hover {
+          background-color: lighten($color-complement-4, 5);
+        }
+        &:active {
+          border: 2px solid $color-complement-1;
+          background-color: transparent;
+          color: lighten($color-complement-4, 5);
+          box-sizing: border-box;
+        }
+      }
+    }
+
+    .control-input-group {
+      margin-bottom: 0.5em;
+      display: flex;
+      align-items: baseline;
+      label {
+        padding: 0.1em;
+        text-align: right;
+        margin-right: 0.5em;
+        width: $labelWidth;
+      }
+      input {
+        width: $inputWidth;
+      }
+    }
+    .controls-group {
+      margin-bottom: 0.2em;
+      display: block;
+      margin-left: $labelWidth + 0.5em;
+      padding-left: 0.1em;
+      button {
+        margin-top: 0.2em;
+      }
+    }
+  }
+}
