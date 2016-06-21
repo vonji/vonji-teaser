@@ -18,7 +18,9 @@ class IntroPage extends Component {
             <a
               href="#"
               onClick={() => $.fn.fullpage.moveSectionDown()}
-            ><h2>On sait tous faire quelque chose</h2></a>
+            >
+              On sait tous faire quelque chose
+            </a>
             <p className="explain">
               <strong>Vonji</strong> est la première plateforme de <strong>skillfunding</strong> autogérée.<br />
               Pour l'instant c'est un peu vide mais hey...<br />

@@ -6,14 +6,13 @@ class CheckBox extends Component {
     this.state = {
       checked: false,
     };
-    this.handleClick = this.handleClick.bind(this);
   }
 
-  handleClick(event) {
+  handleClick() {
     this.setState({
       checked: !this.state.checked,
     });
-    this.props.onClick(event, this.state.checked);
+    this.props.onClick(!this.state.checked);
   }
 
   render() {
@@ -21,7 +20,7 @@ class CheckBox extends Component {
     return (
       <div
         className="checkBox"
-        onClick={this.handleClick}
+        onClick={() => this.handleClick()}
       >
         <i className={classValue} ariaHidden="true"></i>
         <input id={this.props.id} type="checkbox"></input>
