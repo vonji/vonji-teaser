@@ -5,6 +5,47 @@ import _ from 'lodash';
 
 require('./SubscribePage.scss');
 
+class InputGroup extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      error: '',
+    };
+  }
+  render() {
+    const {
+      id, placeholder, label, text,
+      onChanged, validate, errorMessage,
+    } = this.props;
+    let errorDiv = null;
+    if (this.state.error) {
+      errorDiv = <span>error! {this.state.error}</span>;
+    }
+    return (
+      <div className="control-input-group">
+        <label htmlFor={id}>{label}</label>
+        <input
+          value={text}
+          onChange={ev => {
+            onChanged(ev.target.value);
+            if (!validate()) {
+              this.setState({
+                error: errorMessage,
+              });
+            } else {
+              this.setState({
+                error: '',
+              });
+            }
+          }}
+          type="text" id={id} placeholder={placeholder}
+        />
+        {errorDiv}
+      </div>
+    );
+  }
+}
+
 class SubscribePage extends Component {
   constructor(props) {
     super(props);
@@ -78,23 +119,25 @@ class SubscribePage extends Component {
               />
             </div>
 
-            <div className="control-input-group">
-              <label htmlFor="postcode" >Je vis dans le</label>
-              <input
-                value={postcode}
-                onChange={ev => this.changePostcode(ev.target.value)}
-                type="text" id="postcode" placeholder="63100"
-              />
-            </div>
+            <InputGroup
+              label="Je vis dans le"
+              text={postcode}
+              placeholder="63100"
+              id="postcode"
+              onChanged={text => this.changePostcode(text)}
+              validate={() => true}
+              errorMessage="Postcode invalid."
+            />
 
-            <div className="control-input-group">
-              <label htmlFor="email">Tenez-moi au courant sur</label>
-              <input
-                value={email}
-                onChange={ev => this.changeEmail(ev.target.value)}
-                type="email" id="email" placeholder="jean@gmail.com"
-              />
-            </div>
+            <InputGroup
+              label="Tenez-moi au courant sur"
+              text={email}
+              placeholder="jean@gmail.com"
+              id="email"
+              onChanged={text => this.changeEmail(text)}
+              validate={() => false}
+              errorMessage="Email invalid."
+            />
 
             <div className="controls-group">
               <CheckBox id="accept" onClick={checked => this.toggleMentions(checked)}>
