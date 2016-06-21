@@ -17,18 +17,21 @@ class InputGroup extends Component {
       id, placeholder, label, text,
       onChanged, validate, errorMessage,
     } = this.props;
-    let errorDiv = null;
+    let errStyle = null;
     if (this.state.error) {
-      errorDiv = <span>error! {this.state.error}</span>;
+      errStyle = {
+        borderColor: 'red',
+      };
     }
     return (
       <div className="control-input-group">
         <label htmlFor={id}>{label}</label>
         <input
           value={text}
+          style={errStyle}
           onChange={ev => {
             onChanged(ev.target.value);
-            if (!validate()) {
+            if (!validate(ev.target.value)) {
               this.setState({
                 error: errorMessage,
               });
@@ -40,7 +43,6 @@ class InputGroup extends Component {
           }}
           type="text" id={id} placeholder={placeholder}
         />
-        {errorDiv}
       </div>
     );
   }
@@ -135,7 +137,7 @@ class SubscribePage extends Component {
               placeholder="jean@gmail.com"
               id="email"
               onChanged={text => this.changeEmail(text)}
-              validate={() => false}
+              validate={text => text !== ''}
               errorMessage="Email invalid."
             />
 
