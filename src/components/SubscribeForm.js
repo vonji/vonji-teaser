@@ -88,9 +88,16 @@ class SubscribeForm extends React.Component {
         postcode,
         email,
       });
+      this.setState({
+        name: { error: '', value: '' },
+        skill: { error: '', value: '' },
+        postcode: { error: '', value: '' },
+        email: { error: '', value: '' },
+        mentionAccepted: { error: '', value: false },
+      });
+    } else {
+      this.setState(stateCopy);
     }
-
-    this.setState(stateCopy);
   }
 
   toggleMentions() {

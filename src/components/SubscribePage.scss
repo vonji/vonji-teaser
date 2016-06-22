@@ -7,6 +7,14 @@ $inputWidth: $labelWidth + 6em;
   background-color: $color-secondary-1-1;
   color: $color-complement-3;
 
+  .big-message {
+    background-color: lighten($color-secondary-1-1, 5);
+    border-left: 0.5em solid $color-complement-3;
+    color: $color-complement-3;
+    padding: 1em;
+    width: 50%;
+  }
+
   h1 {
     font-size: 4em;
     margin-bottom: 0px;
