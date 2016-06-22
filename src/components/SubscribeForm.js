@@ -81,9 +81,7 @@ class SubscribeForm extends React.Component {
       this.removeError(stateCopy, 'mentionAccepted');
     }
 
-    if (this.anyErrors(stateCopy)) {
-      console.log('errors');
-    } else {
+    if (!this.anyErrors(stateCopy)) {
       this.props.onSubmit({
         name,
         skill,

@@ -1,7 +1,8 @@
 const webpack = require('webpack');
 const path = require('path');
 
-const PROD = process.env.NODE_ENV;
+// process.env.NODE_ENV = 'production';
+const PROD = process.env.NODE_ENV === 'production';
 
 let app = [];
 let plugins = [];
@@ -9,8 +10,19 @@ let devtool = [];
 
 if (PROD) {
   plugins = plugins.concat([
+    new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor.js'),
     new webpack.optimize.DedupePlugin(),
-    new webpack.optimize.UglifyJsPlugin(),
+    new webpack.optimize.OccurenceOrderPlugin(),
+    new webpack.optimize.UglifyJsPlugin({
+      compress: { warnings: false },
+      comments: false,
+      sourceMap: false,
+      mangle: true,
+      minimize: true,
+    }),
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': '"production"',
+    }),
   ]);
 } else {
   app = app.concat([
