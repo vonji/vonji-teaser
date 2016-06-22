@@ -41,6 +41,39 @@ $color-complement-4: #01273B;
   }
 }
 
+@mixin buttonStyle($text, $background) {
+  $deactivatedColor: desaturate(lighten($text, 50), 50);
+  $activeBackgroundColor: darken($text, 10);
+  font-size: 1.2em;
+  padding: 0.25em 0.8em 0.25em 0.8em;
+  background-color: transparent;
+  border-radius: 1.2em;
+  color: $text;
+  cursor: pointer;
+  outline: none;
+  box-sizing: border-box;
+  border: 0.1em solid $text;
+  &:disabled {
+    color: $background;
+    border-color: $deactivatedColor;
+    background-color: $deactivatedColor;
+    cursor: not-allowed;
+  }
+  &:not(:disabled){
+    &:hover {
+      color: $background;
+      background-color: $text;
+      transition: background-color 0.1s, color 0.1s;
+    }
+    &:active {
+      color: $background;
+      background-color: $activeBackgroundColor;
+      box-sizing: border-box;
+      transition: background-color 0.1s, color 0.1s;
+    }
+  }
+}
+
 body {
   font-family: 'Open Sans', sans-serif;
 }

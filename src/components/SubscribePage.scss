@@ -3,20 +3,6 @@
 $labelWidth: 12em;
 $inputWidth: $labelWidth + 6em;
 
-.checkBox {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  margin-top: 0.5em;
-  margin-bottom: 0.5em;
-  input[type="checkbox"] {
-    display: none;
-  }
-  i {
-    color: $color-complement-3;
-  }
-}
-
 #subscribe-page.section {
   background-color: $color-secondary-1-1;
   color: $color-complement-3;
@@ -32,7 +18,8 @@ $inputWidth: $labelWidth + 6em;
   }
 
   .form {
-    background-color: lighten($color-secondary-1-1, 5);
+    $backgroundFormColor: lighten($color-secondary-1-1, 5);
+    background-color: $backgroundFormColor;
     margin: 1em;
     padding: 1em;
     font-size: 1.1em;
@@ -48,38 +35,29 @@ $inputWidth: $labelWidth + 6em;
     }
 
     button {
-      padding: 0.2em;
-      font-size: 1.2em;
-      display: inline-block;
-      width: 100%;
-      background-color: $color-complement-3;
-      color: $color-primary-1;
-      cursor: pointer;
-      transform: translateX(0);
-      transition: transform 0.5s;
-      outline: none;
-      box-sizing: border-box;
-      border: 2px solid $color-complement-3;
-      &:disabled {
-        border: 2px solid $color-complement-1;
-        background-color: $color-complement-1;
-        cursor: not-allowed;
-        color: white;
-      }
-      &:not(:disabled){
-        &:hover {
-          background-color: lighten($color-complement-4, 5);
-        }
-        &:active {
-          border: 2px solid $color-complement-1;
-          background-color: transparent;
-          color: lighten($color-complement-4, 5);
-          box-sizing: border-box;
+      @include buttonStyle($color-complement-3, $backgroundFormColor);
+    }
+
+    @mixin errorLabel() {
+      .error-label {
+        font-size: 0.8em;
+        overflow: 'hidden';
+        height: 0em;
+        &.has-error {
+          transition: height 0.2s linear;
+          color: desaturate(red, 35);
+          height: 1.5em;
         }
       }
     }
 
     .control-input-group {
+      input {
+        transition: background-color 0.2s, color 0.2s;
+        background-color: transparent;
+      }
+      @include errorLabel();
+
       margin-bottom: 0.5em;
       display: flex;
       align-items: baseline;
@@ -94,12 +72,30 @@ $inputWidth: $labelWidth + 6em;
       }
     }
     .controls-group {
+      @include errorLabel();
+      .check-box {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin-top: 0.5em;
+        input[type="checkbox"] {
+          display: none;
+        }
+        i {
+          color: $color-complement-3;
+        }
+      }
+      .error-label {
+        margin-left: 1.5em;
+        margin-top: 0em;
+      }
       margin-bottom: 0.2em;
       display: block;
       margin-left: $labelWidth + 0.5em;
       padding-left: 0.1em;
       button {
-        margin-top: 0.2em;
+        margin-top: 0.5em;
+        width: 100%;
       }
     }
   }

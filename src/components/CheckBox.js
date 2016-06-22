@@ -17,14 +17,18 @@ class CheckBox extends Component {
 
   render() {
     const classValue = `fa fa${this.state.checked ? '-check' : ''}-square`;
+    const { error, id, children } = this.props;
     return (
-      <div
-        className="checkBox"
-        onClick={() => this.handleClick()}
-      >
-        <i className={classValue} ariaHidden="true"></i>
-        <input id={this.props.id} type="checkbox"></input>
-        <label style={{ marginLeft: '0.4em' }} htmlFor={this.props.id}>{this.props.children}</label>
+      <div>
+        <div
+          className="check-box"
+          onClick={() => this.handleClick()}
+        >
+          <i className={classValue} ariaHidden="true"></i>
+          <input id={id} type="checkbox"></input>
+          <label style={{ marginLeft: '0.4em' }} htmlFor={id}>{children}</label>
+        </div>
+        <div className={`error-label ${error ? 'has-error' : ''}`}>{error}</div>
       </div>
     );
   }

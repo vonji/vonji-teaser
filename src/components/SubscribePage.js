@@ -1,159 +1,16 @@
 import React, { Component } from 'react';
-
-import CheckBox from './CheckBox';
-import _ from 'lodash';
+import SubscribeForm from './SubscribeForm';
 
 require('./SubscribePage.scss');
 
-class InputGroup extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      error: '',
-    };
-  }
-  render() {
-    const {
-      id, placeholder, label, text,
-      onChanged, validate, errorMessage,
-    } = this.props;
-    let errStyle = null;
-    if (this.state.error) {
-      errStyle = {
-        borderColor: 'red',
-      };
-    }
-    return (
-      <div className="control-input-group">
-        <label htmlFor={id}>{label}</label>
-        <input
-          value={text}
-          style={errStyle}
-          onChange={ev => {
-            onChanged(ev.target.value);
-            if (!validate(ev.target.value)) {
-              this.setState({
-                error: errorMessage,
-              });
-            } else {
-              this.setState({
-                error: '',
-              });
-            }
-          }}
-          type="text" id={id} placeholder={placeholder}
-        />
-      </div>
-    );
-  }
-}
-
 class SubscribePage extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      mentionAccepted: false,
-      name: '',
-      skill: '',
-      postcode: '',
-      email: '',
-    };
-  }
-
-  validateEmail(email) {
-    const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    return re.test(email);
-  }
-
-  toggleMentions(status) { this.setState({ mentionAccepted: status }); }
-  changeName(newName) { this.setState({ name: newName }); }
-  changeEmail(newEmail) { this.setState({ email: newEmail }); }
-  changePostcode(newPostcode) { this.setState({ postcode: newPostcode }); }
-  changeSkill(newSkill) { this.setState({ skill: newSkill }); }
-
-  isFormValid() {
-    return _([
-      {
-        result: this.state.name !== '' && this.state.skill !== '' && this.state.postcode !== '' && this.state.email !== '' && this.state.mentionAccepted,
-        message: 'Something is missing',
-      },
-      {
-        result: this.validateEmail(this.state.email),
-        message: 'Email is invalid.',
-      },
-    ])
-    .filter(o => !o.result)
-    .map(o => o.message)
-    .value();
-  }
-
   render() {
-    const {
-      name,
-      skill,
-      postcode,
-      email,
-    } = this.state;
-    const errors = this.isFormValid();
-    console.log(errors);
-    const isFormValid = errors.length === 0;
     return (
       <div className="section" id="subscribe-page">
         <div className="column fullsize">
           <h1>Et toi tu sais faire quoi ?</h1>
           <h2>Fais nous rêver :)</h2>
-          <div className="form">
-            <div className="control-input-group">
-              <label htmlFor="name" >Je m'appelle</label>
-              <input
-                value={name}
-                onChange={(event) => this.changeName(event.target.value)}
-                id="name" type="text" placeholder="Jean"
-              />
-            </div>
-
-            <div className="control-input-group">
-              <label htmlFor="activity">Je sais</label>
-              <input
-                value={skill}
-                onChange={ev => this.changeSkill(ev.target.value)}
-                id="activity" type="text" placeholder="faire des crêpes"
-              />
-            </div>
-
-            <InputGroup
-              label="Je vis dans le"
-              text={postcode}
-              placeholder="63100"
-              id="postcode"
-              onChanged={text => this.changePostcode(text)}
-              validate={() => true}
-              errorMessage="Postcode invalid."
-            />
-
-            <InputGroup
-              label="Tenez-moi au courant sur"
-              text={email}
-              placeholder="jean@gmail.com"
-              id="email"
-              onChanged={text => this.changeEmail(text)}
-              validate={text => text !== ''}
-              errorMessage="Email invalid."
-            />
-
-            <div className="controls-group">
-              <CheckBox id="accept" onClick={checked => this.toggleMentions(checked)}>
-                J'accepte les mentions légales !
-              </CheckBox>
-              <div>
-                <button
-                  disabled={!isFormValid}
-                >
-                  {!isFormValid ? 'Il manque un truc...' : 'Et voilà !'}
-                </button>
-              </div>
-            </div>
-          </div>
+          <SubscribeForm />
         </div>
       </div>
     );
