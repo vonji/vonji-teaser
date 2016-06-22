@@ -130,7 +130,7 @@ class SubscribeForm extends React.Component {
     } = this.state;
 
     return (
-      <div className="form">
+      <form className="form">
         <InputGroup
           label="Je m'appelle" text={name.value} placeholder="Jean" id="name"
           onChange={text => this.changeName(text)}
@@ -170,7 +170,8 @@ class SubscribeForm extends React.Component {
             </button>
           </div>
         </div>
-      </div>
+        <div className="g-recaptcha" data-sitekey="6LdORSMTAAAAAFVbERHbxDoIdq59EFVMTO92KHlx"></div>
+      </form>
     );
   }
 }
