@@ -1,7 +1,7 @@
 const webpack = require('webpack');
 const path = require('path');
 
- process.env.NODE_ENV = 'production';
+// process.env.NODE_ENV = 'production';
 const PROD = process.env.NODE_ENV === 'production';
 
 let app = [];
