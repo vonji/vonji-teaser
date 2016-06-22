@@ -28,7 +28,7 @@
     width: 50%;
     color: lighten($color-primary-1, 5);
   }
-  .activity {
+  .skill {
     @include out();
     @include in();
     display: flex;

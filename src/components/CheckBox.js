@@ -1,30 +1,15 @@
 import React, { Component } from 'react';
 
 class CheckBox extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      checked: false,
-    };
-  }
-
-  handleClick() {
-    this.setState({
-      checked: !this.state.checked,
-    });
-    this.props.onClick(!this.state.checked);
-  }
-
   render() {
-    const classValue = `fa fa${this.state.checked ? '-check' : ''}-square`;
-    const { error, id, children } = this.props;
+    const { isChecked, error, id, children, onClick } = this.props;
     return (
       <div>
         <div
           className="check-box"
-          onClick={() => this.handleClick()}
+          onClick={() => onClick()}
         >
-          <i className={classValue} ariaHidden="true"></i>
+          <i className={`fa fa${isChecked ? '-check' : ''}-square`} ariaHidden="true"></i>
           <input id={id} type="checkbox"></input>
           <label style={{ marginLeft: '0.4em' }} htmlFor={id}>{children}</label>
         </div>

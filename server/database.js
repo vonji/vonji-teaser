@@ -10,7 +10,7 @@ module.exports = () => {
     if (!dbExists) {
       db.run(`CREATE TABLE iknow (
         name TEXT NOT NULL,
-        activity TEXT NOT NULL,
+        skill TEXT NOT NULL,
         confirmed INTEGER (1),
         email TEXT PRIMARY KEY
       )`);

@@ -20,6 +20,7 @@ $inputWidth: $labelWidth + 6em;
   .form {
     $backgroundFormColor: lighten($color-secondary-1-1, 5);
     background-color: $backgroundFormColor;
+    border: 0.2em dashed $color-complement-3;
     margin: 1em;
     padding: 1em;
     font-size: 1.1em;
@@ -43,6 +44,7 @@ $inputWidth: $labelWidth + 6em;
         font-size: 0.8em;
         overflow: 'hidden';
         height: 0em;
+        transition: height 0.2s linear;
         &.has-error {
           transition: height 0.2s linear;
           color: desaturate(red, 35);

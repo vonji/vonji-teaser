@@ -15,7 +15,7 @@ module.exports = (PORT) => {
 
   app.get('/api/iknow/random', (req, res) => {
     db.get(
-      `SELECT name, activity
+      `SELECT name, skill
        FROM iknow
        WHERE confirmed=1
        ORDER BY RANDOM() LIMIT 1`,
@@ -30,7 +30,7 @@ module.exports = (PORT) => {
 
   app.get('/api/iknow', (req, res) => {
     db.all(
-      `SELECT name, activity
+      `SELECT name, skill
       FROM iknow
       WHERE confirmed=1`,
     (err, row) => {
@@ -46,7 +46,7 @@ module.exports = (PORT) => {
   app.post('/api/iknow', (req, res) => {
     console.log(req.body);
     db.run('INSERT INTO iknow VALUES (?, ?, 0, ?)',
-      [req.body.name, req.body.activity, req.body.email],
+      [req.body.name, req.body.skill, req.body.email],
       err => {
         if (err === null) {
           console.log('inserted at ' + this.lastID);

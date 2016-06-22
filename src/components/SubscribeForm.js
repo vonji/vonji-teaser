@@ -15,6 +15,22 @@ class SubscribeForm extends React.Component {
     };
   }
 
+  setError(origin, key, error) {
+    _.assign(origin, {
+      [key]: _.assign({}, origin[key], { error }),
+    });
+  }
+
+  anyErrors(source) {
+    return _(source).some(v => v.error && v.error !== '');
+  }
+
+  removeError(origin, key) {
+    _.assign(origin, {
+      [key]: _.assign({}, origin[key], { error: '' }),
+    });
+  }
+
   validateEmail(email) {
     const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(email);
@@ -22,28 +38,65 @@ class SubscribeForm extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    if (!this.validateEmail(this.state.email.value)) {
-      this.setState({
-        email: _.assign({}, this.state.email, { error: "Dis donc, c'est pas un vrai email ça ;)" }),
-      });
+
+    const stateCopy = _.assign({}, this.state);
+
+    const {
+      name,
+      skill,
+      postcode,
+      email,
+      mentionAccepted,
+    } = _.mapValues(this.state, value => value.value);
+
+    if (!name || name === '') {
+      this.setError(stateCopy, 'name', "Un p'tit nom peut-être ?");
     } else {
-      this.setState({
-        email: _.assign({}, this.state.email, { error: '' }),
+      this.removeError(stateCopy, 'name');
+    }
+
+    if (!skill || skill === '') {
+      this.setError(stateCopy, 'skill', 'Nous on sait que tu sais faire quelque chose.');
+    } else {
+      this.removeError(stateCopy, 'skill');
+    }
+
+    if (!postcode || postcode === '') {
+      this.setError(stateCopy, 'postcode', 'Tu vis bien quelque part quand même :)');
+    } else {
+      this.removeError(stateCopy, 'postcode');
+    }
+
+    if (!email || email === '') {
+      this.setError(stateCopy, 'email', "Un email pour t'envoyer des infos (ou pas).");
+    } else if (!this.validateEmail(email)) {
+      this.setError(stateCopy, 'email', "Dis donc, c'est pas un vrai email ça ;)");
+    } else {
+      this.removeError(stateCopy, 'email');
+    }
+
+    if (!mentionAccepted) {
+      this.setError(stateCopy, 'mentionAccepted', 'T-t-t... Et les mentions légales ?');
+    } else {
+      this.removeError(stateCopy, 'mentionAccepted');
+    }
+
+    if (this.anyErrors(stateCopy)) {
+      console.log('errors');
+    } else {
+      this.props.onSubmit({
+        name,
+        skill,
+        postcode,
+        email,
       });
     }
-    if (!this.state.mentionAccepted.value) {
-      this.setState({
-        mentionAccepted: _.assign({}, this.state.mentionAccepted, { error: 'Et les mentions légales ?' }),
-      });
-    } else {
-      this.setState({
-        mentionAccepted: _.assign({}, this.state.mentionAccepted, { error: '' }),
-      });
-    }
+
+    this.setState(stateCopy);
   }
 
-  toggleMentions(newStatus) {
-    this.setState({ mentionAccepted: _.assign({}, this.state.mentionAccepted, { value: newStatus }) });
+  toggleMentions() {
+    this.setState({ mentionAccepted: _.assign({}, this.state.mentionAccepted, { value: !this.state.mentionAccepted.value }) });
   }
 
   changeName(newName) {
@@ -98,7 +151,12 @@ class SubscribeForm extends React.Component {
         />
 
         <div className="controls-group">
-          <CheckBox id="accept" onClick={checked => this.toggleMentions(checked)} error={mentionAccepted.error}>
+          <CheckBox
+            id="accept"
+            onClick={() => this.toggleMentions()}
+            error={mentionAccepted.error}
+            isChecked={mentionAccepted.value}
+          >
             J'accepte les mentions légales !
           </CheckBox>
           <div>
