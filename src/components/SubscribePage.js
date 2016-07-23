@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import SubscribeForm from './SubscribeForm';
 import $ from 'jquery';
 
+import { db } from '../../firebase.js';
+
 require('./SubscribePage.scss');
 
 class SubscribePage extends Component {
@@ -16,6 +18,21 @@ class SubscribePage extends Component {
   }
 
   render() {
+    const error = (xhr) => {
+      this.setState({
+        isPosting: false,
+        postFailure: true,
+      });
+      console.error(xhr);
+    };
+    const success = (resp) => {
+      this.setState({
+        isPosting: false,
+        hasPosted: true,
+      });
+      console.log(resp);
+    };
+
     return (
       <div className="section" id="subscribe-page">
         <div className="column fullsize">
@@ -47,26 +64,8 @@ class SubscribePage extends Component {
                 hasPosted: false,
                 postFailure: false,
               });
-              $.ajax({
-                url: '/api/iknow',
-                method: 'POST',
-                contentType: 'application/json',
-                data: JSON.stringify(data),
-                error: (xhr) => {
-                  this.setState({
-                    isPosting: false,
-                    postFailure: true,
-                  });
-                  console.error(xhr);
-                },
-                success: (resp) => {
-                  this.setState({
-                    isPosting: false,
-                    hasPosted: true,
-                  });
-                  console.log(resp);
-                },
-              });
+              const key = database.ref('/entries').push().key;
+              console.log(key);
             }}
           />
 

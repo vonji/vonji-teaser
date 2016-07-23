@@ -6,14 +6,17 @@ import _ from 'lodash';
 class SubscribeForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      mentionAccepted: { error: '', value: false },
-      name: { error: '', value: '' },
-      skill: { error: '', value: '' },
-      postcode: { error: '', value: '' },
-      email: { error: '', value: '' },
-    };
+    this.state = SubscribeForm.defaultState();
   }
+
+  static defaultState = () => ({
+    name: { error: '', value: '' },
+    skill: { error: '', value: '' },
+    postcode: { error: '', value: '' },
+    email: { error: '', value: '' },
+    wantsNewsLetter: { error: '', value: false },
+    mentionAccepted: { error: '', value: false },
+  });
 
   setError(origin, key, error) {
     _.assign(origin, {
@@ -42,11 +45,8 @@ class SubscribeForm extends React.Component {
     const stateCopy = _.assign({}, this.state);
 
     const {
-      name,
-      skill,
-      postcode,
-      email,
-      mentionAccepted,
+      name, skill, postcode, email,
+      mentionAccepted, wantsNewsLetter,
     } = _.mapValues(this.state, value => value.value);
 
     if (!name || name === '') {
@@ -83,18 +83,10 @@ class SubscribeForm extends React.Component {
 
     if (!this.anyErrors(stateCopy)) {
       this.props.onSubmit({
-        name,
-        skill,
-        postcode,
-        email,
+        name, skill, postcode, email,
+        wantsNewsLetter,
       });
-      this.setState({
-        name: { error: '', value: '' },
-        skill: { error: '', value: '' },
-        postcode: { error: '', value: '' },
-        email: { error: '', value: '' },
-        mentionAccepted: { error: '', value: false },
-      });
+      this.setState(SubscribeForm.defaultState());
     } else {
       this.setState(stateCopy);
     }
@@ -102,6 +94,10 @@ class SubscribeForm extends React.Component {
 
   toggleMentions() {
     this.setState({ mentionAccepted: _.assign({}, this.state.mentionAccepted, { value: !this.state.mentionAccepted.value }) });
+  }
+
+  toggleWantsNewsletter() {
+    this.setState({ wantsNewsLetter: _.assign({}, this.state.wantsNewsLetter, { value: !this.state.wantsNewsLetter.value }) });
   }
 
   changeName(newName) {
@@ -122,11 +118,8 @@ class SubscribeForm extends React.Component {
 
   render() {
     const {
-      name,
-      skill,
-      postcode,
-      email,
-      mentionAccepted,
+      name, skill, postcode, email,
+      mentionAccepted, wantsNewsLetter,
     } = this.state;
 
     return (
@@ -163,6 +156,13 @@ class SubscribeForm extends React.Component {
             isChecked={mentionAccepted.value}
           >
             J'accepte les mentions légales !
+          </CheckBox>
+          <CheckBox
+            id="accept"
+            onClick={() => this.toggleWantsNewsletter()}
+            isChecked={wantsNewsLetter.value}
+          >
+            Je veux m'inscrire à la news letter !
           </CheckBox>
           <div>
             <button onClick={(event) => this.handleSubmit(event)}>

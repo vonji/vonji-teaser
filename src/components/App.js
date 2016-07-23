@@ -20,8 +20,6 @@ class App extends Component {
       <div>
         <div id="fullpage">
           <IntroPage />
-          <SubscribePage />
-          <Page2 />
         </div>
       </div>
     );
