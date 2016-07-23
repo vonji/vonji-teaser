@@ -1,6 +1,6 @@
 import React from 'react';
 
-const mainLogoUrl = require('../../assets/img/vonji-logo-white.png');
+const mainLogoUrl = require('../assets/img/vonji-logo-white.png');
 
 const LogoImg = (props) => {
   const { size } = props;

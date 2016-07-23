@@ -1,0 +1,36 @@
+{
+  "entries": [
+    {
+      "name": "Loup",
+      "validated": true,
+      "email": "loup.peluso@vonji.fr",
+      "skill": "coder",
+      "wantsNewsLetter": true,
+      "creationDate": ""
+    },
+    {
+      "name": "David",
+      "validated": true,
+      "email": "david.lancar@vonji.fr",
+      "skill": "faire le thé",
+      "wantsNewsLetter": true,
+      "creationDate": ""
+    },
+    {
+      "name": "Harris",
+      "validated": true,
+      "email": "harris.ratsimba@vonji.fr",
+      "skill": "gérer",
+      "wantsNewsLetter": true,
+      "creationDate": ""
+    },
+    {
+      "name": "Samuel",
+      "validated": true,
+      "email": "samuel.lequette@vonji.fr",
+      "skill": "faire du petit bricolage",
+      "wantsNewsLetter": true,
+      "creationDate": ""
+    }
+  ]
+}

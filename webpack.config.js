@@ -6,7 +6,7 @@ const PROD = process.env.NODE_ENV === 'production';
 
 let app = [];
 let plugins = [];
-let devtool = [];
+let devtool = '';
 
 if (PROD) {
   plugins = plugins.concat([
@@ -32,7 +32,7 @@ if (PROD) {
   plugins = plugins.concat([
     new webpack.HotModuleReplacementPlugin(),
   ]);
-  devtool = ['source-map'];
+  devtool = 'eval-source-map';
 }
 
 app.push('./src/main.js');
@@ -43,7 +43,7 @@ module.exports = {
   entry: { app },
 
   output: {
-    path: path.resolve(__dirname, 'build/'),
+    path: path.resolve(__dirname, 'public/build/'),
     publicPath: '/build/',
     filename: 'bundle.js',
   },

@@ -4,16 +4,6 @@ import $ from 'jquery';
 
 require('./SubscribePage.scss');
 
-/*
-$r.setState({
-  email: { error: '', value: 'loup.peluso@gmail.com' },
-  name: { error: '', value: 'Loup Peluso' },
-  mentionAccepted: { error: '', value: true },
-  postcode: { error: '', value: '75015' },
-  skill: { error: '', value: 'Coder' },
-});
-*/
-
 class SubscribePage extends Component {
 
   constructor(props) {
@@ -34,7 +24,7 @@ class SubscribePage extends Component {
           {this.state.postFailure &&
             <div className="big-message">
               Erf... quelque chose <strong>de pas très grave</strong> est arrivé.<br />
-              Peut-être que vos infos ne sont pas bonnes, peut-être qu'on a merdé quelque part...
+              Soit vos infos sont pas bonnes, soit on a loupé un truc...
               Bref, en tout cas <strong>ça n'a pas fonctionné</strong>, peut-être plus tard ?
             </div>
           }

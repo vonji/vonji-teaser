@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { createStore, applyMiddleware } from 'redux';
-import { connect, Provider } from 'react-redux';
+import { Provider } from 'react-redux';
 import createLogger from 'redux-logger';
 import promise from 'redux-promise';
 import thunk from 'redux-thunk';
@@ -9,7 +9,6 @@ import thunk from 'redux-thunk';
 import App from './components/App';
 
 const reducers = (state = {}) => state;
-
 const logger = createLogger();
 
 const store = createStore(
@@ -18,10 +17,8 @@ const store = createStore(
   window.devToolsExtension ? window.devToolsExtension() : f => f
 );
 
-const CApp = connect()(App);
-
 ReactDOM.render(
   <Provider store={store}>
-    <CApp />
+    <App />
   </Provider>
 , document.getElementById('app'));

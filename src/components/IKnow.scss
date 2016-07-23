@@ -9,7 +9,7 @@
     }
   }
   h1 {
-    font-size: 3em;
+    font-size: 2.2em;
     margin-top: 0px;
     margin-bottom: 0px;
   }
@@ -26,7 +26,6 @@
     display: flex;
     justify-content: flex-end;
     width: 50%;
-    color: lighten($color-primary-1, 5);
   }
   .skill {
     @include out();
@@ -34,7 +33,6 @@
     display: flex;
     justify-content: flex-start;
     width: 50%;
-    color: lighten($color-secondary-1-1, 5);
   }
   .knows {
     display: flex;
@@ -42,6 +40,5 @@
     padding-left: 0.2em;
     padding-right: 0.2em;
     font-weight: bold;
-    color: $color-secondary-1-0;
   }
 }
