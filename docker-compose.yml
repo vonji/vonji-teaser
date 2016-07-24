@@ -3,9 +3,3 @@ services:
   teaser:
     build: .
     image: "vonji/teaser:latest"
-    container_name: "vonji-teaser"
-    command: "npm start"
-    environment:
-      - VIRTUAL_HOST=vonji.fr,teaser.vonji.fr
-    ports:
-      - "48624:8080"
