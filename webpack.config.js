@@ -10,7 +10,6 @@ let devtool = '';
 
 if (PROD) {
   plugins = plugins.concat([
-    new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor.js'),
     new webpack.optimize.DedupePlugin(),
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.optimize.UglifyJsPlugin({

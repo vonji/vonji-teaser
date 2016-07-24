@@ -1,0 +1,3 @@
+FROM node:6.3
+
+EXPOSE 8080

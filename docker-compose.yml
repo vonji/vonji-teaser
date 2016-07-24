@@ -1,0 +1,32 @@
+version: '2'
+services:
+#  proxy:
+#    image: jwilder/nginx-proxy
+#    container_name: vonji-proxy
+#    ports:
+#      - "80:80"
+#    volumes:
+#      - /var/run/docker.sock:/tmp/docker.sock:ro
+#  blog:
+#    image: ghost
+#    container_name: vonji-blog
+#    volumes:
+#      - /home/loup/shared-volumes/ghost:/var/lib/ghost
+#    ports:
+#      - "2368"
+#    environment:
+#      - VIRTUAL_HOST=blog.vonji.fr
+  web:
+    image: nginx
+    container_name: vonji-teaser
+    ports:
+      - "80:80"
+      - "443:443"
+    environment:
+      - VIRTUAL_HOST=teaser.vonji.fr,vonji.fr
+    volumes:
+      - ./public:/var/www/http
+      - ./log:/var/log/nginx
+      - ./nginx/certs:/etc/nginx/certs
+      - ./nginx/conf.d:/etc/nginx/conf.d
+      - ./nginx/sites-enabled:/etc/nginx/sites-enabled
