@@ -19,15 +19,16 @@ const store = createStore(
   window.devToolsExtension ? window.devToolsExtension() : f => f
 );
 
-function logPageView() {
+if (document.location.hostname.search("vonji.fr") !== -1) {
+  ReactGA.initialize('UA-81241241-1', {
+    debug: true,
+  });
   ReactGA.set({ page: window.location.pathname });
   ReactGA.pageview(window.location.pathname);
 }
 
-ReactGA.initialize('UA-81241241-1');
-
 ReactDOM.render(
-  <Provider store={store} onUpdate={logPageView}>
+  <Provider store={store}>
     <App />
   </Provider>
 , document.getElementById('app'));
