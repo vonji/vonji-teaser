@@ -69,7 +69,7 @@ class IKnow extends Component {
             <span>{current.name}</span>
           </h1>
           <h1 className={`knows ${transition}`}>
-            <span>sait</span>
+            <span>&nbsp;sait&nbsp;</span>
           </h1>
           <h1 className={`skill ${transition}`}>
             <span>{current.skill}</span>
