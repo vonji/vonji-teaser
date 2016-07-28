@@ -1,0 +1,40 @@
+@import "../assets/styles/colors.scss";
+
+#tag-line {
+  display: flex;
+  @mixin out($dir: 1) {
+    &.out {
+      transform: translateX($dir * 50%);
+      opacity: 0;
+      transition: transform 0.5s, opacity 0.5s;
+    }
+  }
+  h1 {
+    font-size: 1.9em;
+    margin-top: 0px;
+    margin-bottom: 0px;
+  }
+  @mixin in() {
+    &.in {
+      transform: translateX(0px);
+      opacity: 1;
+      transition: transform 0.5s, opacity 0.5s;
+    }
+  }
+  .before {
+    font-weight: 400;
+    @include out(-1);
+    @include in();
+    width: 45%;
+    text-align: right;
+  }
+  .after {
+    font-weight: 400;
+    @include out();
+    @include in();
+    width: 45%;
+  }
+  .verb {
+    font-weight: 400;
+  }
+}

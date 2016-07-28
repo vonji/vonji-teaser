@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import { db } from '../../firebase';
 import _ from 'lodash';
 
-require('./IKnow.scss');
+require('./TagLine.scss');
 
-class IKnow extends Component {
+class TagLine extends Component {
 
   constructor(props) {
     super(props);
@@ -63,21 +63,19 @@ class IKnow extends Component {
     const { transition, current } = this.state;
 
     return (
-      <div style={{ width: '100%' }}>
-        <div className="row" style={{ width: '100%' }} id="iknow">
-          <h1 className={`name ${transition}`}>
-            <span>{current.name}</span>
-          </h1>
-          <h1 className={`knows ${transition}`}>
-            <span>&nbsp;sait&nbsp;</span>
-          </h1>
-          <h1 className={`skill ${transition}`}>
-            <span>{current.skill}</span>
-          </h1>
-        </div>
+      <div id="tag-line">
+        <h1 className={`before ${transition}`}>
+          <span>{current.name}</span>
+        </h1>
+        <h1 className={`verb ${transition}`}>
+          <span>&nbsp;sait&nbsp;</span>
+        </h1>
+        <h1 className={`after ${transition}`}>
+          <span>{current.skill}</span>
+        </h1>
       </div>
     );
   }
 }
 
-export default IKnow;
+export default TagLine;

@@ -6,7 +6,8 @@ import createLogger from 'redux-logger';
 import promise from 'redux-promise';
 import thunk from 'redux-thunk';
 import ReactGA from 'react-ga';
-import App from './components/App';
+
+import IndexView from './views/IndexView';
 
 require('font-awesome/css/font-awesome.css');
 
@@ -29,6 +30,6 @@ if (document.location.hostname.search("vonji.fr") !== -1) {
 
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <IndexView />
   </Provider>
 , document.getElementById('app'));
