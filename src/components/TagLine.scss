@@ -1,41 +1,61 @@
 @import "../assets/styles/colors.scss";
 
-#tag-line {
-  display: flex;
-  overflow: hidden;
-  @mixin out($dir: 1) {
-    &.out {
-      transform: translateX($dir * 50%);
-      opacity: 0;
-      transition: transform 0.5s, opacity 0.5s;
-    }
+@mixin out($dir: 1) {
+  &.out {
+    transform: translateX($dir * 50%);
+    opacity: 0;
+    transition: transform 0.5s, opacity 0.5s;
   }
+}
+@mixin in() {
+  &.in {
+    transform: translateX(0px);
+    opacity: 1;
+    transition: transform 0.5s, opacity 0.5s;
+  }
+}
+
+#tag-line {
+  overflow: hidden;
   h1 {
     font-size: 1.3em;
     margin-top: 0px;
     margin-bottom: 0px;
   }
-  @mixin in() {
-    &.in {
-      transform: translateX(0px);
-      opacity: 1;
-      transition: transform 0.5s, opacity 0.5s;
-    }
-  }
   .before {
+    color: transparentize($clr-white, 0.1);
     font-weight: 400;
     @include out(-1);
     @include in();
-    width: 45%;
-    text-align: right;
   }
   .after {
+    color: transparentize($clr-white, 0.1);
     font-weight: 400;
     @include out();
     @include in();
-    width: 45%;
   }
   .verb {
-    font-weight: 400;
+    font-weight: bold;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  #tag-line {
+    text-align: center;
+  }
+}
+
+@media screen and (min-width: 600px) {
+  #tag-line {
+    display: flex;
+    overflow: hidden;
+    .before {
+      text-align: right;
+      width: 45%;
+    }
+    .after {
+      text-align: left;
+      width: 45%;
+    }
   }
 }

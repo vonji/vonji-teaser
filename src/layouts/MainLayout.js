@@ -23,10 +23,10 @@ class MainLayout extends Component {
             <strong>Vonji</strong> est la première plateforme de <strong>skillfunding</strong> autogérée.
           </div>
           <div>
-            Pour l'instant c'est un peu vide mais il y aura bientôt du neuf !
+            Pour l'instant c'est un peu vide mais il y aura bientôt du neuf&#8239;!
           </div>
           <div>
-            Ah ! J'oubliais, vous pouvez nous contacter à contact@vonji.fr.
+            Ah&#8239;! J'oubliais, vous pouvez nous contacter à contact@vonji.fr.
           </div>
         </footer>
       </div>

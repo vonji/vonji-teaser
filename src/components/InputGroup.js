@@ -7,7 +7,7 @@ class InputGroup extends Component {
       text, onChange, error,
     } = this.props;
     return (
-      <div className="control-input-group">
+      <div className={`control-input-group ${error ? 'has-error' : ''}`}>
         <div className="input-wrapper">
           <label htmlFor={id}>{label}</label>
           <input
@@ -16,7 +16,7 @@ class InputGroup extends Component {
             type="text" id={id} placeholder={placeholder}
           />
         </div>
-        <div className={`error-label ${error ? 'has-error' : ''}`}>{error}</div>
+        <div className="error-label">{error}</div>
       </div>
     );
   }

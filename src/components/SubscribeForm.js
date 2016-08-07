@@ -123,7 +123,9 @@ class SubscribeForm extends React.Component {
     } = this.state;
 
     return (
-      <form className="form">
+
+
+      <form className={["form", this.props.className].join(' ')}>
         <div className="questions">
           <InputGroup
             label="Je m'appelle&nbsp;" text={name.value} placeholder="Jean" id="name"
@@ -152,24 +154,26 @@ class SubscribeForm extends React.Component {
 
         <div className="controls-group">
           <CheckBox
+            className="small"
             id="accept"
             onClick={() => this.toggleMentions()}
             error={mentionAccepted.error}
             isChecked={mentionAccepted.value}
           >
-            J'accepte les <a href="https://gist.github.com/Ephasme/990b56c806ace432db64c218bea15d07">mentions légales</a> !
+            J'accepte les <a href="https://gist.github.com/Ephasme/990b56c806ace432db64c218bea15d07">mentions légales</a>&#8239;!
           </CheckBox>
           <CheckBox
+            className="small"
             id="accept"
             onClick={() => this.toggleWantsNewsletter()}
             isChecked={wantsNewsLetter.value}
           >
-            Je veux m'inscrire à la news letter !
+            Je veux m'inscrire à la news letter&#8239;!
           </CheckBox>
         </div>
         <div className="controls-group">
           <button onClick={(event) => this.handleSubmit(event)}>
-            Et voilà !
+            Gros bouton pour envoyer&#8239;!
           </button>
         </div>
         <div className="g-recaptcha" data-sitekey="6LdORSMTAAAAAFVbERHbxDoIdq59EFVMTO92KHlx"></div>
