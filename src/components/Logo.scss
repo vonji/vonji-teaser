@@ -7,3 +7,10 @@ img.logo {
   width: (300 / 350) * 350px;
   height: (300 / 350) * 180px;
 }
+
+
+@media (max-device-width: 425px) {
+  body {
+    background-color: black;
+  }
+}

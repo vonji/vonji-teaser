@@ -124,29 +124,31 @@ class SubscribeForm extends React.Component {
 
     return (
       <form className="form">
-        <InputGroup
-          label="Je m'appelle" text={name.value} placeholder="Jean" id="name"
-          onChange={text => this.changeName(text)}
-          error={name.error}
-        />
+        <div className="questions">
+          <InputGroup
+            label="Je m'appelle&nbsp;" text={name.value} placeholder="Jean" id="name"
+            onChange={text => this.changeName(text)}
+            error={name.error}
+          />
 
-        <InputGroup
-          label="Je sais" text={skill.value} placeholder="faire des crêpes" id="skill"
-          onChange={text => this.changeSkill(text)}
-          error={skill.error}
-        />
+          <InputGroup
+            label="Je sais&nbsp;" text={skill.value} placeholder="faire des crêpes" id="skill"
+            onChange={text => this.changeSkill(text)}
+            error={skill.error}
+          />
 
-        <InputGroup
-          label="Je vis dans le" text={postcode.value} placeholder="63100" id="postcode"
-          onChange={text => this.changePostcode(text)}
-          error={postcode.error}
-        />
+          <InputGroup
+            label="Je vis dans le&nbsp;" text={postcode.value} placeholder="63100" id="postcode"
+            onChange={text => this.changePostcode(text)}
+            error={postcode.error}
+          />
 
-        <InputGroup
-          label="Tenez-moi au courant sur" text={email.value} placeholder="jean@gmail.com" id="email"
-          onChange={text => this.changeEmail(text)}
-          error={email.error}
-        />
+          <InputGroup
+            label="Écrivez-moi sur&nbsp;" text={email.value} placeholder="jean@gmail.com" id="email"
+            onChange={text => this.changeEmail(text)}
+            error={email.error}
+          />
+        </div>
 
         <div className="controls-group">
           <CheckBox
@@ -155,7 +157,7 @@ class SubscribeForm extends React.Component {
             error={mentionAccepted.error}
             isChecked={mentionAccepted.value}
           >
-            J'accepte les mentions légales !
+            J'accepte les <a href="https://gist.github.com/Ephasme/990b56c806ace432db64c218bea15d07">mentions légales</a> !
           </CheckBox>
           <CheckBox
             id="accept"
@@ -164,11 +166,11 @@ class SubscribeForm extends React.Component {
           >
             Je veux m'inscrire à la news letter !
           </CheckBox>
-          <div>
-            <button onClick={(event) => this.handleSubmit(event)}>
-              Et voilà !
-            </button>
-          </div>
+        </div>
+        <div className="controls-group">
+          <button onClick={(event) => this.handleSubmit(event)}>
+            Et voilà !
+          </button>
         </div>
         <div className="g-recaptcha" data-sitekey="6LdORSMTAAAAAFVbERHbxDoIdq59EFVMTO92KHlx"></div>
       </form>

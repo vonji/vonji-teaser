@@ -19,12 +19,23 @@ class TagLine extends Component {
   }
 
   componentDidMount() {
-    const selectEntries = entry => ({
-      email: entry.email,
-      name: entry.name,
-      skill: entry.skill,
-    });
-    db.ref('/entries').on('value', snap => this.setState({ entries: snap.val().map(selectEntries) }));
+    const entriesReducer = (entries, newEntry) => {
+      if (newEntry) {
+        return [...entries, {
+          email: newEntry.email,
+          name: newEntry.name,
+          skill: newEntry.skill,
+        }];
+      }
+      return entries;
+    };
+
+    db.ref('/entries')
+      .orderByChild('validated')
+      .equalTo(true)
+      .on('value', snap => {
+        this.setState({entries: _.reduce(snap.val(), entriesReducer, []) });
+      });
     this.startLooper();
   }
 

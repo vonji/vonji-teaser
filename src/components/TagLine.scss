@@ -2,6 +2,7 @@
 
 #tag-line {
   display: flex;
+  overflow: hidden;
   @mixin out($dir: 1) {
     &.out {
       transform: translateX($dir * 50%);
@@ -10,7 +11,7 @@
     }
   }
   h1 {
-    font-size: 1.9em;
+    font-size: 1.3em;
     margin-top: 0px;
     margin-bottom: 0px;
   }

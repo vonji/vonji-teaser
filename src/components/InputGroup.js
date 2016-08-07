@@ -8,15 +8,15 @@ class InputGroup extends Component {
     } = this.props;
     return (
       <div className="control-input-group">
-        <label htmlFor={id}>{label}</label>
-        <div>
+        <div className="input-wrapper">
+          <label htmlFor={id}>{label}</label>
           <input
             value={text}
             onChange={ev => onChange(ev.target.value)}
             type="text" id={id} placeholder={placeholder}
           />
-          <div className={`error-label ${error ? 'has-error' : ''}`}>{error}</div>
         </div>
+        <div className={`error-label ${error ? 'has-error' : ''}`}>{error}</div>
       </div>
     );
   }
