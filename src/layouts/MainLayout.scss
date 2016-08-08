@@ -1,0 +1,57 @@
+@import "~normalize.css/normalize.css";
+
+@import "../assets/styles/colors.scss";
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600");
+
+body {
+  background-color: $clr-prim;
+  color: $clr-white;
+  font-weight: normal;
+  font-family: 'Open Sans', sans-serif;
+  overflow-x: hidden;
+}
+
+a {
+  color: $clr-white;
+  text-decoration: underline;
+  transition: color 0.1s;
+  &:hover {
+    color: $clr-tern;
+    transition: color 0.1s;
+  }
+}
+
+@mixin globalWidth() {
+  max-width: 600px;
+  min-width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
+
+header {
+  padding: 0.2em;
+  margin-bottom: 1em;
+}
+
+footer {
+  text-align: center;
+  font-size: 0.8em;
+  padding-bottom: 1em;
+  margin-top: 1em;
+  @include globalWidth();
+  @media screen and (max-width: 375px) {
+    font-size: 0.6em;
+  }
+}
+
+#vj-content {
+  display: flex;
+  justify-content: center;
+  @include globalWidth();
+}
+
+#vj-wrapper {
+  display: flex;
+  flex-direction: column;
+}

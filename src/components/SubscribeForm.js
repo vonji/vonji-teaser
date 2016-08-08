@@ -1,6 +1,6 @@
 import React from 'react';
 import CheckBox from './CheckBox';
-import InputGroup from './InputGroup';
+import InputGroup from './InputText';
 import _ from 'lodash';
 
 class SubscribeForm extends React.Component {
@@ -39,6 +39,11 @@ class SubscribeForm extends React.Component {
     return re.test(email);
   }
 
+  validatePostcode(postcode) {
+    const re = /^\d{2} ?(?:\d{3})?$/;
+    return re.test(postcode);
+  }
+
   handleSubmit(event) {
     event.preventDefault();
 
@@ -56,13 +61,15 @@ class SubscribeForm extends React.Component {
     }
 
     if (!skill || skill === '') {
-      this.setError(stateCopy, 'skill', 'Nous on sait que tu sais faire quelque chose.');
+      this.setError(stateCopy, 'skill', 'Allez, ne soit pas timide, nous on persuadés que tu sais faire quelque chose.');
     } else {
       this.removeError(stateCopy, 'skill');
     }
 
     if (!postcode || postcode === '') {
       this.setError(stateCopy, 'postcode', 'Tu vis bien quelque part quand même :)');
+    } else if (!this.validatePostcode(postcode)) {
+      this.setError(stateCopy, 'postcode', 'Je connais pas cet endroit moi...');
     } else {
       this.removeError(stateCopy, 'postcode');
     }
@@ -123,52 +130,58 @@ class SubscribeForm extends React.Component {
     } = this.state;
 
     return (
-      <form className="form">
-        <InputGroup
-          label="Je m'appelle" text={name.value} placeholder="Jean" id="name"
-          onChange={text => this.changeName(text)}
-          error={name.error}
-        />
 
-        <InputGroup
-          label="Je sais" text={skill.value} placeholder="faire des crêpes" id="skill"
-          onChange={text => this.changeSkill(text)}
-          error={skill.error}
-        />
 
-        <InputGroup
-          label="Je vis dans le" text={postcode.value} placeholder="63100" id="postcode"
-          onChange={text => this.changePostcode(text)}
-          error={postcode.error}
-        />
+      <form className={["form", this.props.className].join(' ')}>
+        <div className="questions">
+          <InputGroup
+            label="Je m'appelle&nbsp;" text={name.value} placeholder="Jean" id="name"
+            onChange={text => this.changeName(text)}
+            error={name.error}
+          />
 
-        <InputGroup
-          label="Tenez-moi au courant sur" text={email.value} placeholder="jean@gmail.com" id="email"
-          onChange={text => this.changeEmail(text)}
-          error={email.error}
-        />
+          <InputGroup
+            label="Je sais&nbsp;" text={skill.value} placeholder="faire des crêpes" id="skill"
+            onChange={text => this.changeSkill(text)}
+            error={skill.error}
+          />
+
+          <InputGroup
+            label="Je vis dans le&nbsp;" text={postcode.value} placeholder="63100" id="postcode"
+            onChange={text => this.changePostcode(text)}
+            error={postcode.error}
+          />
+
+          <InputGroup
+            label="Écrivez-moi sur&nbsp;" text={email.value} placeholder="jean@gmail.com" id="email"
+            onChange={text => this.changeEmail(text)}
+            error={email.error}
+          />
+        </div>
 
         <div className="controls-group">
           <CheckBox
+            className="small"
             id="accept"
             onClick={() => this.toggleMentions()}
             error={mentionAccepted.error}
             isChecked={mentionAccepted.value}
           >
-            J'accepte les mentions légales !
+            J'accepte les <a href="https://gist.github.com/Ephasme/990b56c806ace432db64c218bea15d07">mentions légales</a>&#8239;!
           </CheckBox>
           <CheckBox
+            className="small"
             id="accept"
             onClick={() => this.toggleWantsNewsletter()}
             isChecked={wantsNewsLetter.value}
           >
-            Je veux m'inscrire à la news letter !
+            Je veux m'inscrire à la news letter&#8239;!
           </CheckBox>
-          <div>
-            <button onClick={(event) => this.handleSubmit(event)}>
-              Et voilà !
-            </button>
-          </div>
+        </div>
+        <div className="controls-group">
+          <button onClick={(event) => this.handleSubmit(event)}>
+            Gros bouton pour envoyer&#8239;!
+          </button>
         </div>
         <div className="g-recaptcha" data-sitekey="6LdORSMTAAAAAFVbERHbxDoIdq59EFVMTO92KHlx"></div>
       </form>
