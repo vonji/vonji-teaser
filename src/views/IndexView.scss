@@ -110,6 +110,7 @@
     }
 
     .control-group {
+      width: 100%;
       display: flex;
       flex-direction: column;
       &.has-error {
@@ -120,6 +121,7 @@
       }
       .error-label {
         font-size: 0.8em;
+        width: 100%;
         text-align: center;
         overflow: hidden;
         background-color: lighten(red, 20);
@@ -135,10 +137,14 @@
         margin-bottom: 18px;
       }
       &.small {
-        font-size: 0.8em;
+        .control-wrapper {
+          font-size: 0.8em;
+        }
       }
       &.centered {
-        justify-content: center;
+        display: flex;
+        align-items: center;
+        text-align: center;
         input {
           width: 50%;
         }
@@ -148,6 +154,7 @@
         }
       }
       .control-wrapper {
+        width: 100%;
         input[type="checkbox"] {
           display: none;
         }
