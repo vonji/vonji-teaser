@@ -6,5 +6,5 @@ export const newAlert = (message, type) => dispatch => {
   setTimeout(() => dispatch({
     type: 'CLEAR_ALERT',
     alertId,
-  }), 8000);
+  }), 28000);
 };

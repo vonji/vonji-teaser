@@ -14,6 +14,15 @@ class IndexView extends Component {
   constructor(props) {
     super(props);
     this.onSubmitData = ::this.onSubmitData;
+    this.onCaptchaError = ::this.onCaptchaError;
+  }
+
+  onCaptchaError() {
+    this.props.alertError(`
+      Nous savons que c'est pénible mais il faut remplir le captcha pour
+      qu'on soit sûr que vous disposez de l'incroyable intelligence d'un
+      être humain.
+    `, 'error');
   }
 
   onSubmitData(data) {
@@ -59,6 +68,7 @@ class IndexView extends Component {
 
           <SubscribeForm
             onSubmit={this.onSubmitData}
+            onCaptchaError={this.onCaptchaError}
           />
         </div>
       </MainLayout>
@@ -75,7 +85,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     alertError: message => dispatch(newAlert(message, 'error')),
-    alertSuccess: message => dispatch({ type: 'NEW_ALERT', alert: { message } }),
+    alertSuccess: message => dispatch(newAlert(message, 'success')),
     alertRemove: id => dispatch({ type: 'CLEAR_ALERT', alertId: id }),
   };
 }

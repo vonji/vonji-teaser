@@ -6,15 +6,18 @@ class InputText extends Component {
     const {
       id, placeholder, label,
       text, onChange, error,
+      className,
     } = this.props;
     return (
-      <ControlGroup error={error}>
-        <label htmlFor={id}>{label}</label>
-        <input
-          value={text}
-          onChange={ev => onChange(ev.target.value)}
-          type="text" id={id} placeholder={placeholder}
-        />
+      <ControlGroup error={error} className={className}>
+        <div className="input-wrapper">
+          <label htmlFor={id}>{label}</label>
+          <input
+            value={text}
+            onChange={ev => onChange(ev.target.value)}
+            type="text" id={id} placeholder={placeholder}
+          />
+        </div>
       </ControlGroup>
     );
   }

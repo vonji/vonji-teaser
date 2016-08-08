@@ -76,11 +76,6 @@
   }
 }
 
-.questions {
-  margin-top: 15px;
-  margin-bottom: 1em;
-}
-
 .form {
     background-color: $clr-scnd;
     border-top: 0.3em solid $clr-scnd-darker;
@@ -108,7 +103,7 @@
     @mixin errorCapable() {
       &.has-error {
         border: 1px solid lighten(red, 20);
-        .input-wrapper {
+        .control-wrapper {
           padding: 5px;
         }
       }
@@ -122,37 +117,45 @@
     }
 
     .control-group {
-      .input-wrapper {
-        display: flex;
-        align-items: baseline;
+      @include errorCapable();
+      display: flex;
+      &+.control-group {
+        margin-top: 12px;
+      }
+      &:first-of-type {
+        margin-top: 18px;
+      }
+      &:last-of-type {
+        margin-bottom: 18px;
+      }
+      &.small {
+        font-size: 0.8em;
+      }
+      &.centered {
+        justify-content: center;
         input {
           width: 50%;
-          color: $clr-white;
-          transition: background-color 0.2s, color 0.2s;
-          background-color: transparent;
-          height: 1.13em;
         }
         label {
-          text-align: right;
           width: 50%;
+          text-align: right;
         }
       }
-      @include errorCapable();
-      margin-bottom: 0.5em;
-    }
-    .controls-group {
-      margin-bottom: 15px;
-      display: flex;
-      flex-direction: column;
-      .check-box {
-        &.small {
-          font-size: 0.8em;
-        }
+      .control-wrapper {
         input[type="checkbox"] {
           display: none;
         }
         i {
           color: $clr-white;
+        }
+        .input-wrapper {
+          display: flex;
+          align-items: baseline;
+          input {
+            color: $clr-white;
+            transition: background-color 0.2s, color 0.2s;
+            background-color: transparent;
+          }
         }
       }
     }

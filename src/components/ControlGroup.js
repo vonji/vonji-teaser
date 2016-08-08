@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 
 class ControlGroup extends Component {
   render() {
-    const { error, children } = this.props;
+    const { error, children, className } = this.props;
     return (
-      <div className={`control-group ${error ? 'has-error' : ''}`}>
-        <div className="input-wrapper">
+      <div className={`control-group ${className} ${error ? 'has-error' : ''}`}>
+        <div className="control-wrapper">
           {children}
         </div>
         <div className="error-label">{error}</div>

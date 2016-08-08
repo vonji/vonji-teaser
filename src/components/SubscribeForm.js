@@ -1,7 +1,8 @@
 import React from 'react';
 import CheckBox from './CheckBox';
-import InputGroup from './InputText';
+  import InputText from './InputText';
 import _ from 'lodash';
+import $ from 'jquery';
 
 class SubscribeForm extends React.Component {
   constructor(props) {
@@ -47,12 +48,20 @@ class SubscribeForm extends React.Component {
   handleSubmit(event) {
     event.preventDefault();
 
+
+
     const stateCopy = _.assign({}, this.state);
 
     const {
       name, skill, postcode, email,
       mentionAccepted, wantsNewsLetter,
     } = _.mapValues(this.state, value => value.value);
+
+    // Treat captcha response.
+    const captchaToken = grecaptcha.getResponse();
+    if (!captchaToken) {
+      this.props.onCaptchaError();
+    }
 
     if (!name || name === '') {
       this.setError(stateCopy, 'name', "Un p'tit nom peut-être ?");
@@ -61,7 +70,7 @@ class SubscribeForm extends React.Component {
     }
 
     if (!skill || skill === '') {
-      this.setError(stateCopy, 'skill', 'Allez, ne soit pas timide, nous on persuadés que tu sais faire quelque chose.');
+      this.setError(stateCopy, 'skill', 'Allez, ne soit pas timide, nous on est persuadés que tu sais faire quelque chose.');
     } else {
       this.removeError(stateCopy, 'skill');
     }
@@ -91,7 +100,7 @@ class SubscribeForm extends React.Component {
     if (!this.anyErrors(stateCopy)) {
       this.props.onSubmit({
         name, skill, postcode, email,
-        wantsNewsLetter,
+        wantsNewsLetter, captchaToken,
       });
       this.setState(SubscribeForm.defaultState());
     } else {
@@ -133,57 +142,61 @@ class SubscribeForm extends React.Component {
 
 
       <form className={["form", this.props.className].join(' ')}>
-        <div className="questions">
-          <InputGroup
-            label="Je m'appelle&nbsp;" text={name.value} placeholder="Jean" id="name"
-            onChange={text => this.changeName(text)}
-            error={name.error}
-          />
+        <InputText
+          className="centered"
+          label="Je m'appelle&nbsp;" text={name.value} placeholder="Jean" id="name"
+          onChange={text => this.changeName(text)}
+          error={name.error}
+        />
 
-          <InputGroup
-            label="Je sais&nbsp;" text={skill.value} placeholder="faire des crêpes" id="skill"
-            onChange={text => this.changeSkill(text)}
-            error={skill.error}
-          />
+        <InputText
+          className="centered"
+          label="Je sais&nbsp;" text={skill.value} placeholder="faire des crêpes" id="skill"
+          onChange={text => this.changeSkill(text)}
+          error={skill.error}
+        />
 
-          <InputGroup
-            label="Je vis dans le&nbsp;" text={postcode.value} placeholder="63100" id="postcode"
-            onChange={text => this.changePostcode(text)}
-            error={postcode.error}
-          />
+        <InputText
+          className="centered"
+          label="Je vis dans le&nbsp;" text={postcode.value} placeholder="63100" id="postcode"
+          onChange={text => this.changePostcode(text)}
+          error={postcode.error}
+        />
 
-          <InputGroup
-            label="Écrivez-moi sur&nbsp;" text={email.value} placeholder="jean@gmail.com" id="email"
-            onChange={text => this.changeEmail(text)}
-            error={email.error}
-          />
+        <InputText
+          className="centered"
+          label="Écrivez-moi sur&nbsp;" text={email.value} placeholder="jean@gmail.com" id="email"
+          onChange={text => this.changeEmail(text)}
+          error={email.error}
+        />
+
+        <CheckBox
+          className="small centered"
+          id="accept"
+          onClick={() => this.toggleMentions()}
+          error={mentionAccepted.error}
+          isChecked={mentionAccepted.value}
+        >
+          J'accepte les <a href="https://gist.github.com/Ephasme/990b56c806ace432db64c218bea15d07">mentions légales</a>&#8239;!
+        </CheckBox>
+
+        <CheckBox
+          className="small centered"
+          id="accept"
+          onClick={() => this.toggleWantsNewsletter()}
+          isChecked={wantsNewsLetter.value}
+        >
+          Je veux m'inscrire à la news letter&#8239;!
+        </CheckBox>
+
+        <div className="control-group centered">
+          <div className="g-recaptcha" data-sitekey="6LdORSMTAAAAAFVbERHbxDoIdq59EFVMTO92KHlx"></div>
         </div>
-
-        <div className="controls-group">
-          <CheckBox
-            className="small"
-            id="accept"
-            onClick={() => this.toggleMentions()}
-            error={mentionAccepted.error}
-            isChecked={mentionAccepted.value}
-          >
-            J'accepte les <a href="https://gist.github.com/Ephasme/990b56c806ace432db64c218bea15d07">mentions légales</a>&#8239;!
-          </CheckBox>
-          <CheckBox
-            className="small"
-            id="accept"
-            onClick={() => this.toggleWantsNewsletter()}
-            isChecked={wantsNewsLetter.value}
-          >
-            Je veux m'inscrire à la news letter&#8239;!
-          </CheckBox>
-        </div>
-        <div className="controls-group">
+        <div className="control-group centered">
           <button onClick={(event) => this.handleSubmit(event)}>
             Gros bouton pour envoyer&#8239;!
           </button>
         </div>
-        <div className="g-recaptcha" data-sitekey="6LdORSMTAAAAAFVbERHbxDoIdq59EFVMTO92KHlx"></div>
       </form>
     );
   }
