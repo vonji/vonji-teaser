@@ -6,6 +6,7 @@ import createLogger from 'redux-logger';
 import promise from 'redux-promise';
 import thunk from 'redux-thunk';
 import ReactGA from 'react-ga';
+import _ from 'lodash';
 
 import IndexView from './views/IndexView';
 
@@ -16,8 +17,8 @@ const alertsReducer = (alerts= [], action) => {
     case 'NEW_ALERT': {
       return [...alerts, action.alert];
     }
-    case 'CLEAR_ALERTS': {
-      return [];
+    case 'CLEAR_ALERT': {
+      return _.filter(alerts, alert => alert.alertId !== action.alertId);
     }
   }
   return alerts;

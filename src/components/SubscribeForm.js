@@ -1,6 +1,6 @@
 import React from 'react';
 import CheckBox from './CheckBox';
-import InputGroup from './InputGroup';
+import InputGroup from './InputText';
 import _ from 'lodash';
 
 class SubscribeForm extends React.Component {
@@ -39,6 +39,11 @@ class SubscribeForm extends React.Component {
     return re.test(email);
   }
 
+  validatePostcode(postcode) {
+    const re = /^\d{2} ?(?:\d{3})?$/;
+    return re.test(postcode);
+  }
+
   handleSubmit(event) {
     event.preventDefault();
 
@@ -56,13 +61,15 @@ class SubscribeForm extends React.Component {
     }
 
     if (!skill || skill === '') {
-      this.setError(stateCopy, 'skill', 'Nous on sait que tu sais faire quelque chose.');
+      this.setError(stateCopy, 'skill', 'Allez, ne soit pas timide, nous on persuadés que tu sais faire quelque chose.');
     } else {
       this.removeError(stateCopy, 'skill');
     }
 
     if (!postcode || postcode === '') {
       this.setError(stateCopy, 'postcode', 'Tu vis bien quelque part quand même :)');
+    } else if (!this.validatePostcode(postcode)) {
+      this.setError(stateCopy, 'postcode', 'Je connais pas cet endroit moi...');
     } else {
       this.removeError(stateCopy, 'postcode');
     }
