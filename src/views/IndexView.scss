@@ -106,6 +106,12 @@
     }
 
     @mixin errorCapable() {
+
+    }
+
+    .control-group {
+      display: flex;
+      flex-direction: column;
       &.has-error {
         border: 1px solid lighten(red, 20);
         .control-wrapper {
@@ -119,11 +125,6 @@
         background-color: lighten(red, 20);
         color: $clr-white;
       }
-    }
-
-    .control-group {
-      @include errorCapable();
-      display: flex;
       &+.control-group {
         margin-top: 12px;
       }
