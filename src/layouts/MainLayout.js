@@ -26,7 +26,7 @@ class MainLayout extends Component {
             Pour l'instant c'est un peu vide mais il y aura bientôt du neuf&#8239;!
           </div>
           <div>
-            Ah&#8239;! J'oubliais, vous pouvez nous contacter à contact@vonji.fr.
+            Ah&#8239;! J'oubliais, tu peux nous contacter sur contact@vonji.fr.
           </div>
         </footer>
       </div>
