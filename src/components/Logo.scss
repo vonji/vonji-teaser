@@ -8,3 +8,9 @@ img.logo {
   width: (300 / 350) * 350px;
   height: (300 / 350) * 180px;
 }
+@media screen and (max-width: 760px) {
+  img.logo {
+    width: (300 * 0.6 / 350) * 350px;
+    height: (300 * 0.6 / 350) * 180px;
+  }
+}

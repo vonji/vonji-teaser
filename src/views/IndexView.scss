@@ -54,6 +54,11 @@
     margin: 0;
     text-align: center;
   }
+  @media screen and (max-width: 370px) {
+    h1 {
+      font-size: 1.55em;
+    }
+  }
 }
 
 .vj-alert {
