@@ -48,8 +48,6 @@ class SubscribeForm extends React.Component {
   handleSubmit(event) {
     event.preventDefault();
 
-
-
     const stateCopy = _.assign({}, this.state);
 
     const {
@@ -61,6 +59,8 @@ class SubscribeForm extends React.Component {
     const captchaToken = grecaptcha.getResponse();
     if (!captchaToken) {
       this.props.onCaptchaError();
+      // Captcha failed => we don't reach the serveur anyway.
+      return;
     }
 
     if (!name || name === '') {
@@ -70,7 +70,7 @@ class SubscribeForm extends React.Component {
     }
 
     if (!skill || skill === '') {
-      this.setError(stateCopy, 'skill', 'Allez, ne soit pas timide, nous on est persuadés que tu sais faire quelque chose.');
+      this.setError(stateCopy, 'skill', 'Allez, ne sois pas timide, nous on est persuadés que tu sais faire quelque chose.');
     } else {
       this.removeError(stateCopy, 'skill');
     }
@@ -86,7 +86,7 @@ class SubscribeForm extends React.Component {
     if (!email || email === '') {
       this.setError(stateCopy, 'email', "Un email pour t'envoyer des infos (ou pas).");
     } else if (!this.validateEmail(email)) {
-      this.setError(stateCopy, 'email', "Dis donc, c'est pas un vrai email ça ;)");
+      this.setError(stateCopy, 'email', "Dis-donc, c'est pas un vrai email ça ;)");
     } else {
       this.removeError(stateCopy, 'email');
     }

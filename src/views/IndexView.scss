@@ -105,10 +105,6 @@
       @include buttonStyle($clr-white, $clr-scnd);
     }
 
-    @mixin errorCapable() {
-
-    }
-
     .control-group {
       width: 100%;
       display: flex;
