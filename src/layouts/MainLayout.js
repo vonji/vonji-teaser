@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import Logo from '../components/Logo';
 import TagLine from '../components/TagLine';
+import { Link } from 'react-router';
 
 require('./MainLayout.scss');
 
@@ -10,7 +11,9 @@ class MainLayout extends Component {
     return (
       <div id="vj-wrapper">
         <header>
-          <Logo />
+          <Link to="/">
+            <Logo />
+          </Link>
           <TagLine />
         </header>
 

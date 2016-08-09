@@ -1,43 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { createStore, applyMiddleware, compose } from 'redux';
 import { Provider } from 'react-redux';
-import createLogger from 'redux-logger';
-import promise from 'redux-promise';
-import thunk from 'redux-thunk';
 import ReactGA from 'react-ga';
 import _ from 'lodash';
-
-import IndexView from './views/IndexView';
+import { store } from './store';
+import { syncHistoryWithStore } from 'react-router-redux';
+import { browserHistory } from 'react-router';
+import Routes from './routes';
 
 require('font-awesome/css/font-awesome.css');
-
-const alertsReducer = (alerts= [], action) => {
-  switch(action.type) {
-    case 'NEW_ALERT': {
-      return [...alerts, action.alert];
-    }
-    case 'CLEAR_ALERT': {
-      return _.filter(alerts, alert => alert.alertId !== action.alertId);
-    }
-  }
-  return alerts;
-};
-
-const reducers = (state = {}, action) => {
-  return {
-    alerts: alertsReducer(state.alerts, action),
-  };
-};
-const logger = createLogger();
-
-const store = createStore(
-  reducers,
-  compose(
-    applyMiddleware(thunk, promise, logger),
-    window.devToolsExtension ? window.devToolsExtension() : f => f
-  )
-);
 
 if (document.location.hostname.search("vonji.fr") !== -1) {
   ReactGA.initialize('UA-81241241-1', {
@@ -47,8 +18,10 @@ if (document.location.hostname.search("vonji.fr") !== -1) {
   ReactGA.pageview(window.location.pathname);
 }
 
+const history = syncHistoryWithStore(browserHistory, store);
+
 ReactDOM.render(
   <Provider store={store}>
-    <IndexView />
+    <Routes history={history} />
   </Provider>
 , document.getElementById('app'));

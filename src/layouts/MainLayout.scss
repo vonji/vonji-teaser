@@ -22,7 +22,6 @@ a {
 }
 
 @mixin globalWidth() {
-  max-width: 430px;
   min-width: 300px;
   margin-left: auto;
   margin-right: auto;

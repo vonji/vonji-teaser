@@ -1,6 +1,7 @@
 import React from 'react';
 import CheckBox from './CheckBox';
-  import InputText from './InputText';
+import InputText from './InputText';
+import Recaptcha from 'react-recaptcha';
 import _ from 'lodash';
 import $ from 'jquery';
 
@@ -45,8 +46,19 @@ class SubscribeForm extends React.Component {
     return re.test(postcode);
   }
 
+  saveCaptchaToken(token) {
+    this.setState({
+      token
+    });
+  }
+
   handleSubmit(event) {
     event.preventDefault();
+
+    if (!this.state.token) {
+      this.props.onCaptchaError();
+      return;
+    }
 
     const stateCopy = _.assign({}, this.state);
 
@@ -54,14 +66,6 @@ class SubscribeForm extends React.Component {
       name, skill, postcode, email,
       mentionAccepted, wantsNewsLetter,
     } = _.mapValues(this.state, value => value.value);
-
-    // Treat captcha response.
-    const captchaToken = grecaptcha.getResponse();
-    if (!captchaToken) {
-      this.props.onCaptchaError();
-      // Captcha failed => we don't reach the serveur anyway.
-      return;
-    }
 
     if (!name || name === '') {
       this.setError(stateCopy, 'name', "Un p'tit nom peut-être ?");
@@ -141,7 +145,7 @@ class SubscribeForm extends React.Component {
     return (
 
 
-      <form className={["form", this.props.className].join(' ')}>
+      <form id="subscribe-form" className={["form", this.props.className].join(' ')}>
         <InputText
           className="centered"
           label="Je m'appelle&nbsp;" text={name.value} placeholder="Jean" id="name"
@@ -190,7 +194,12 @@ class SubscribeForm extends React.Component {
         </CheckBox>
 
         <div className="control-group centered">
-          <div className="g-recaptcha" data-sitekey="6LdORSMTAAAAAFVbERHbxDoIdq59EFVMTO92KHlx"></div>
+          <Recaptcha
+            render="explicit"
+            onloadCallback={() => console.log("ok")}
+            verifyCallback={token => this.saveCaptchaToken(token)}
+            sitekey="6LdORSMTAAAAAFVbERHbxDoIdq59EFVMTO92KHlx"
+          />
         </div>
         <div className="control-group centered">
           <button onClick={(event) => this.handleSubmit(event)}>

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router';
 import { connect } from 'react-redux';
-import { newAlert } from '../actions';
+import { newAlert, clearAlert } from '../actions';
 
 import MainLayout from '../layouts/MainLayout';
 import SubscribeForm from '../components/SubscribeForm';
@@ -22,7 +23,7 @@ class IndexView extends Component {
       Nous savons que c'est pénible mais il faut remplir le captcha pour
       qu'on soit sûr que tu disposes de l'incroyable intelligence d'un
       être humain.
-    `, 'error');
+    `, 'errorCaptcha');
   }
 
   onSubmitData(data) {
@@ -36,42 +37,44 @@ class IndexView extends Component {
         Merci ! Après analyse (approfondie) de ta candidature tu auras
         peut-être l'honneur d'apparaître dans la superbe liste déroulante de l'accueil !<br />
         On te tiens au jus !
-      `);
+      `, 'successForm');
     })
     .catch(() => {
       alertError(`
         Erf... quelque chose de <strong>pas très grave</strong> est arrivé.
         Nous avons dépêché notre équipe de choc sur le problème.
         Sois rassuré, tu pourras bientôt retenter ta chance!
-      `);
+      `, 'errorServer');
     });
   }
 
   render() {
     return (
-      <MainLayout>
-        <div className="vj-inner-content">
-          <h1>
-            Et toi, tu sais faire quoi&#8239;?<br />
-            <small>Fais-nous rêver :)</small>
-          </h1>
+      <div id="vj-index-content">
+        <h1>
+          Et toi, tu sais faire quoi&#8239;?<br />
+          <small>Fais-nous rêver :)</small>
+        </h1>
 
-          {this.props.alerts.map(alert => {
-            return (
-              <div key={alert.alertId}  className={`vj-alert ${alert.type ? 'vj-alert-'+alert.type : ''}`}>
-                <div className="vj-alert-content" dangerouslySetInnerHTML={{ __html: alert.message }}>
-                </div>
-                <i className="fa fa-times" onClick={() => this.props.alertRemove(alert.alertId)}></i>
+        {this.props.alerts.map(alert => {
+          return (
+            <div key={alert.id}  className={`vj-alert ${alert.type ? 'vj-alert-'+alert.type : ''}`}>
+              <div className="vj-alert-content" dangerouslySetInnerHTML={{ __html: alert.message }}>
               </div>
-            );
-          })}
+              <i className="fa fa-times" onClick={() => this.props.alertRemove(alert.id)}></i>
+            </div>
+          );
+        })}
 
-          <SubscribeForm
-            onSubmit={this.onSubmitData}
-            onCaptchaError={this.onCaptchaError}
-          />
+        <div className="vj-menu centered">
+          <Link to="/test">je veux en savoir plus</Link>
         </div>
-      </MainLayout>
+
+        <SubscribeForm
+          onSubmit={this.onSubmitData}
+          onCaptchaError={this.onCaptchaError}
+        />
+      </div>
     );
   }
 }
@@ -84,9 +87,9 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    alertError: message => dispatch(newAlert(message, 'error')),
-    alertSuccess: message => dispatch(newAlert(message, 'success')),
-    alertRemove: id => dispatch({ type: 'CLEAR_ALERT', alertId: id }),
+    alertError: (message, id) => dispatch(newAlert(message, 'error', id)),
+    alertSuccess: (message, id) => dispatch(newAlert(message, 'success', id)),
+    alertRemove: id => dispatch(clearAlert(id)),
   };
 }
 

@@ -48,7 +48,9 @@
   }
 }
 
-.vj-inner-content {
+#vj-index-content {
+  margin: auto;
+  max-width: 400px;
   width: 100%;
   h1 {
     margin: 0;
@@ -74,11 +76,18 @@
     color: $clr-white;
   }
   .vj-alert-content {
+    flex-grow: 1;
     padding: 10px;
   }
   i {
     padding: 10px;
   }
+}
+
+.vj-menu {
+  display: flex;
+  justify-content: space-around;
+  margin: 15px 0 15px 0;
 }
 
 .form {
