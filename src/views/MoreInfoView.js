@@ -14,7 +14,6 @@ const InfoBlock = (props) => {
       <div className="vj-block-content">
         {props.children}
       </div>
-      <Link className="vj-block-btn" to={props.buttonPath}>{props.buttonTitle}</Link>
     </div>
   );
 }
@@ -32,7 +31,7 @@ class MoreInfoView extends Component {
     if (!this.timerId) {
       this.timerId = setInterval(() => {
         this.updateTimer();
-      }, 500);
+      }, 100);
     }
   }
 
@@ -52,69 +51,66 @@ class MoreInfoView extends Component {
 
   render() {
     return (
-      <div id="vj-more-info" className="grid-3_md-1-equalHeight">
-        <div className="col">
-          <InfoBlock
-            title="Pourquoi ?"
-            buttonTitle="Moi aussi !"
-            buttonPath="/prez/why">
-            <p>Notre ambition est de <strong>sauver le monde</strong>&#8230;</p>
-            <p>Mais si on a pas le temps on s'occupera d'abord du <em>skill-funding</em>.</p>
-          </InfoBlock>
+      <div id="vj-more-info">
+        <div className="vj-header">
+          <h1>Voici la page explicative&#8239;!</h1>
+          <p>Cliquez sur les gros blocs bleus si vous voulez.</p>
         </div>
-        <div className="col">
-          <InfoBlock
-            title="Quoi ?"
-            buttonTitle="Vas-y raconte !"
-            buttonPath="/prez/what">
-            <div>
-              <p><i className="fa fa-check" /> Pensée positive.</p>
-              <p><i className="fa fa-check" /> Système vertueux.</p>
-              <p><i className="fa fa-check" /> Plateforme agréable.</p>
-            </div>
-          </InfoBlock>
-        </div>
-        <div className="col">
-          <InfoBlock
-            title="Qui ?"
-            buttonTitle="D'accord"
-            buttonPath="/prez/who">
-            Ils sont un peu secrets mais pas introuvables&#8230;
-          </InfoBlock>
-        </div>
-        <div className="col">
-          <InfoBlock
-            title="Combien ?"
-            buttonTitle="Vraiment ?"
-            buttonPath="/prez/howmuch">
-            <p className="vj-huge vj-center">0€</p>
-            <p>C'est-à-dire &#171;&#8239;pas un rond&#8239;&#187;, pour parler très scientifiquement.</p>
-          </InfoBlock>
-        </div>
-        <div className="col">
-          <InfoBlock
-            title="Pour qui ?"
-            buttonTitle="LOL"
-            buttonPath="/prez/forwhom">
-            <div>
-              <p>Les <span className="vj-big-2">hispters</span> et les <span className="vj-big-1">baleines</span>.</p>
-              <p>En gros n'importe qui tant qu'il <strong>paye</strong>&#8239;!</p>
-              <p className="vj-small">&#8212; Mais t'as pas dit que c'était gratuit&#8239;?</p>
-              <p>&#8230;</p>
-            </div>
-          </InfoBlock>
-        </div>
-        <div className="col">
-          <InfoBlock
-            title="Quand ?"
-            buttonTitle="Réponse B"
-            buttonPath="/prez/what">
-            <p>Dans environ&#8239;:</p>
-            <p className="vj-timing vj-center">{this.state.timing ? `${this.state.timing}s`: ''}</p>
-            <p>Mais on aura probablement&#8239;:</p>
-            <p className="vj-timing vj-center">2.628e+6s</p>
-            <p>de retard.</p>
-          </InfoBlock>
+        <div className="grid-3_md-1-equalHeight">
+          <div className="col">
+            <InfoBlock
+              title="Pourquoi ?"
+              to="/prez/why">
+              <p>Notre ambition est de <strong>sauver le monde</strong>&#8230;</p>
+              <p>Mais si on a pas le temps on s'occupera d'abord du <em>skill-funding</em>.</p>
+            </InfoBlock>
+          </div>
+          <div className="col">
+            <InfoBlock
+              title="Quoi ?"
+              to="/prez/what">
+              <div>
+                <p><i className="fa fa-check" /> Pensée positive.</p>
+                <p><i className="fa fa-check" /> Système vertueux.</p>
+                <p><i className="fa fa-check" /> Plateforme agréable.</p>
+              </div>
+            </InfoBlock>
+          </div>
+          <div className="col">
+            <InfoBlock
+              title="Qui ?"
+              to="/prez/who">
+              Ils sont un peu secrets mais pas introuvables&#8230;
+            </InfoBlock>
+          </div>
+          <div className="col">
+            <InfoBlock
+              title="Combien ?"
+              to="/prez/howmuch">
+              <p className="vj-huge vj-center">0€</p>
+              <p>C'est-à-dire &#171;&#8239;pas un rond&#8239;&#187;, pour être précis.</p>
+            </InfoBlock>
+          </div>
+          <div className="col">
+            <InfoBlock
+              title="Pour qui ?"
+              to="/prez/forwhom">
+              <div>
+                <p>Vonji c'est fait par des <a href="https://en.wikipedia.org/wiki/Nerd">Nerds</a> mais c'est ouvert à tous&#8239;!</p>
+                <p>Donc n'ayez pas peur, venez profiter de Vonji&#8239;!</p>
+              </div>
+            </InfoBlock>
+          </div>
+          <div className="col">
+            <InfoBlock
+              title="Quand ?"
+              to="/prez/what">
+              <div className="vj-center">
+                <p> Dans environ&#8239;:</p>
+                <p className="vj-timing">{this.state.timing ? `${this.state.timing}s`: ''}</p>
+              </div>
+            </InfoBlock>
+          </div>
         </div>
       </div>
     )

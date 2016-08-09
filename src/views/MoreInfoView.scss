@@ -4,6 +4,20 @@ $gap: 10px;
 
 #vj-more-info {
   max-width: 900px;
+  .vj-header {
+    margin-bottom: 25px;
+    text-align: center;
+    h1 {
+      font-size: 3em;
+      margin: 0;
+      padding: 0;
+    }
+    p {
+      margin: 0;
+      padding: 0;
+      font-size: 1.5em;
+    }
+  }
 }
 
 .vj-timing {
@@ -29,10 +43,6 @@ $gap: 10px;
 .vj-small {
   font-size: 0.75em;
 }
-strong {
-  color: lighten($clr-prim, 25);
-}
-
 .vj-info-block {
   width: 100%;
   display: flex;
@@ -40,8 +50,10 @@ strong {
   padding: 1.85*$gap;
   color: $clr-white;
   background-color: $clr-scnd;
-  //border: 2px solid $clr-white;
   a {
+    color: $clr-tern;
+  }
+  a.btn {
     display: block;
     padding: 5px;
     font-size: 1.6em;
