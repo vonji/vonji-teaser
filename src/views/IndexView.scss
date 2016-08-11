@@ -1,180 +1,96 @@
 @import "../assets/styles/colors.scss";
 
-@mixin placeholderColor($color) {
-  &::-webkit-input-placeholder {
-     color: $color;
-  }
-  &:-moz-placeholder { /* Firefox 18- */
-     color: $color;
-  }
-  &::-moz-placeholder {  /* Firefox 19+ */
-     color: $color;
-  }
-  &:-ms-input-placeholder {
-     color: $color;
-  }
-}
-
-@mixin buttonStyle($text, $background) {
-  $deactivatedColor: desaturate(lighten($text, 50), 50);
-  $activeBackgroundColor: darken($text, 10);
-  font-size: 1.2em;
-  padding: 0.25em 0.8em 0.25em 0.8em;
-  background-color: transparent;
-  border-radius: 1.2em;
-  color: $text;
-  cursor: pointer;
-  outline: none;
-  box-sizing: border-box;
-  border: 2px solid $text;
-  &:disabled {
-    color: $background;
-    border-color: $deactivatedColor;
-    background-color: $deactivatedColor;
-    cursor: not-allowed;
-  }
-  &:not(:disabled){
-    &:hover {
-      color: $background;
-      background-color: $text;
-      transition: background-color 0.1s, color 0.1s;
-    }
-    &:active {
-      color: $background;
-      background-color: $activeBackgroundColor;
-      box-sizing: border-box;
-      transition: background-color 0.1s, color 0.1s;
-    }
-  }
-}
-
-#vj-index-content {
-  margin: auto;
-  max-width: 400px;
-  width: 100%;
-  h1 {
-    margin: 0;
-    text-align: center;
-  }
-  @media screen and (max-width: 370px) {
-    h1 {
-      font-size: 1.55em;
-    }
-  }
-}
-
-.vj-alert {
-  background-color: rgba(0, 200, 0, 0.8);
-  color: $clr-white;
-  display: flex;
-  align-items: flex-start;
-  margin-bottom: 15px;
-  margin-top: 15px;
-  width: 100%;
-  &.vj-alert-error {
-    background-color: transparentize(red, 0.45);
-    color: $clr-white;
-  }
-  .vj-alert-content {
-    flex-grow: 1;
-    padding: 10px;
-  }
-  i {
-    padding: 10px;
+a {
+  color: $clr-scnd;
+  &:hover {
+    color: $clr-scnd-darker;
   }
 }
 
 .vj-menu {
-  display: flex;
-  justify-content: space-around;
-  margin: 15px 0 15px 0;
+  margin-bottom: 8px;
+  &.centered {
+    text-align: center;
+  }
 }
 
-.form {
-    background-color: $clr-scnd;
-    border-top: 0.3em solid $clr-scnd-darker;
-    border-bottom: 0.3em solid $clr-scnd-darker;
-    font-size: 1.1em;
-    margin-top: 0.5em;
-    margin-bottom: 0.5em;
-    padding: 5px 15px 5px 15px;
+button {
+  outline: none;
+  border: none;
+  background-color: $clr-scnd;
+  color: $clr-white;
+  padding: 8px;
+}
+
+input {
+  border: none;
+  outline: none;
+  background-color: transparent;
+  color: $clr-black;
+  border-bottom: 0.1em solid $clr-scnd;
+}
+
+input[type="checkbox"] {
+  display: none;
+}
+
+form, .form {
+  text-align: center;
+  margin: auto;
+  padding: 15px;
+
+  .input-wrapper {
     display: flex;
-    flex-direction: column;
+    align-items: baseline;
+    font-size: 1em;
+  }
 
-    input {
-      @include placeholderColor($clr-white);
-      font-family: 'Open Sans', sans-serif;
-      font-size: 1em;
-      border: none;
-      outline: none;
-      background-color: transparent;
+  .control-group {
+    & + .control-group {
+      margin-top: 8px;
     }
-
-    button {
-      @include buttonStyle($clr-white, $clr-scnd);
+    .error-label {
+      font-size: 0.6em;
+      color: $clr-error-back;
+      text-align: right;
     }
+  }
 
-    .control-group {
+  &.big {
+    font-size: 1.12em;
+  }
+
+  &.inline {
+    .control-wrapper {
       width: 100%;
-      display: flex;
-      flex-direction: column;
-      &.has-error {
-        border: 1px solid lighten(red, 20);
-        .control-wrapper {
-          padding: 5px;
-        }
-      }
-      .error-label {
-        font-size: 0.8em;
+      .input-wrapper {
         width: 100%;
-        text-align: center;
-        overflow: hidden;
-        background-color: lighten(red, 20);
-        color: $clr-white;
-      }
-      &+.control-group {
-        margin-top: 12px;
-      }
-      &:first-of-type {
-        margin-top: 18px;
-      }
-      &:last-of-type {
-        margin-bottom: 18px;
-      }
-      &.small {
-        .control-wrapper {
-          font-size: 0.8em;
-        }
-      }
-      &.centered {
-        display: flex;
-        align-items: center;
-        text-align: center;
         input {
-          width: 50%;
+          flex-grow: 1;
         }
         label {
           width: 50%;
           text-align: right;
         }
       }
-      .control-wrapper {
-        width: 100%;
-        input[type="checkbox"] {
-          display: none;
-        }
-        i {
-          color: $clr-white;
-        }
-        .input-wrapper {
-          display: flex;
-          align-items: baseline;
-          input {
-            color: $clr-white;
-            transition: background-color 0.2s, color 0.2s;
-            background-color: transparent;
-          }
-        }
-      }
     }
   }
+}
+
+#vj-index-content {
+  h1 {
+    font-size: 2.5em;
+    margin: 0;
+    padding: 0;
+    margin-bottom: 0.5em;
+    text-align: center;
+  }
+  form, .form {
+    max-width: 400px;
+    background-color: lighten($clr-tern-lightest, 10);
+    border: 2px solid $clr-tern-darker;
+  }
+  input {
+    border-bottom: 0.1em solid $clr-tern-darker;
+  }
+}

@@ -71,6 +71,7 @@ class IndexView extends Component {
         </div>
 
         <SubscribeForm
+          className="big inline"
           onSubmit={this.onSubmitData}
           onCaptchaError={this.onCaptchaError}
         />

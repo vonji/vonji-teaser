@@ -9,7 +9,7 @@ require('./MainLayout.scss');
 class MainLayout extends Component {
   render() {
     return (
-      <div id="vj-wrapper">
+      <div id="vj-site">
         <header>
           <Link to="/">
             <Logo />

@@ -4,53 +4,44 @@
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600");
 
 body {
-  background-color: $clr-prim;
-  color: $clr-white;
   font-weight: normal;
   font-family: 'Open Sans', sans-serif;
-  overflow-x: hidden;
+//   overflow-x: hidden;
+  color: $clr-font-main;
+  background-color: white;
 }
 
-a {
-  color: $clr-white;
-  text-decoration: underline;
-  transition: color 0.1s;
-  &:hover {
-    color: $clr-tern;
-    transition: color 0.1s;
-  }
-}
-
-@mixin globalWidth() {
-  min-width: 300px;
-  margin-left: auto;
-  margin-right: auto;
-  width: 100%;
-}
+// a {
+//   text-decoration: underline;
+//   transition: color 0.1s;
+//   &:hover {
+//     transition: color 0.1s;
+//   }
+// }
+//
 
 header {
+  flex: none;
   padding: 0.2em;
   margin-bottom: 1em;
+  color: $clr-font-alt;
+  background-color: $clr-back-alt;
 }
 
 footer {
   text-align: center;
-  font-size: 0.8em;
-  padding-bottom: 1em;
-  margin-top: 1em;
-  @include globalWidth();
-  @media screen and (max-width: 375px) {
-    font-size: 0.6em;
-  }
+  padding-bottom: 2em;
+  padding-top: 0.5em;
+  font-size: 0.74em;
+  background-color: $clr-gray-light;
 }
 
 #vj-content {
-  display: flex;
-  justify-content: center;
-  @include globalWidth();
+  flex: 1 0 auto;
 }
 
-#vj-wrapper {
+#vj-site {
   display: flex;
+  height: 100vh;
   flex-direction: column;
 }

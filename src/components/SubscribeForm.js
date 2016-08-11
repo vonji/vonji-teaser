@@ -55,11 +55,12 @@ class SubscribeForm extends React.Component {
   handleSubmit(event) {
     event.preventDefault();
 
+/*
     if (!this.state.token) {
       this.props.onCaptchaError();
       return;
     }
-
+*/
     const stateCopy = _.assign({}, this.state);
 
     const {
@@ -148,6 +149,7 @@ class SubscribeForm extends React.Component {
       <form id="subscribe-form" className={["form", this.props.className].join(' ')}>
         <InputText
           className="centered"
+          expand
           label="Je m'appelle&nbsp;" text={name.value} placeholder="Jean" id="name"
           onChange={text => this.changeName(text)}
           error={name.error}

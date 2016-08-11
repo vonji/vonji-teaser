@@ -17,22 +17,18 @@
 
 #tag-line {
   overflow: hidden;
+  color: white;
+  font-size: 0.7em;
   h1 {
-    font-size: 1.3em;
     margin-top: 0px;
     margin-bottom: 0px;
-    @media screen and (max-width: 370px) {
-      font-size: 1.15em;
-    }
   }
   .before {
-    color: transparentize($clr-white, 0.1);
     font-weight: 400;
     @include out(-1);
     @include in();
   }
   .after {
-    color: transparentize($clr-white, 0.1);
     font-weight: 400;
     @include out();
     @include in();
@@ -42,7 +38,7 @@
   }
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: var(--large)) {
   #tag-line {
     text-align: center;
   }
