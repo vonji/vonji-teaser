@@ -2,7 +2,7 @@ import React from 'react';
 
 const logoOrange = require('../assets/img/logo-orange.png');
 const logoWhite = require('../assets/img/logo-white.png');
-require('./Logo.scss');
+//require('./Logo.scss');
 
 const Logo = (props) => {
   const { color } = props;

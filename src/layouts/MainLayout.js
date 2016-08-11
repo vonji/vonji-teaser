@@ -12,7 +12,7 @@ class MainLayout extends Component {
       <div id="vj-site">
         <header>
           <Link to="/">
-            <Logo />
+            <Logo color="white" />
           </Link>
           <TagLine />
         </header>

@@ -20,6 +20,10 @@ button {
   background-color: $clr-scnd;
   color: $clr-white;
   padding: 8px;
+
+  &.expand {
+    width: 100%;
+  }
 }
 
 input {
@@ -35,7 +39,6 @@ input[type="checkbox"] {
 }
 
 form, .form {
-  text-align: center;
   margin: auto;
   padding: 15px;
 
@@ -48,6 +51,9 @@ form, .form {
   .control-group {
     & + .control-group {
       margin-top: 8px;
+    }
+    &.centered {
+      text-align: center;
     }
     .error-label {
       font-size: 0.6em;
@@ -69,7 +75,6 @@ form, .form {
           flex-grow: 1;
         }
         label {
-          width: 50%;
           text-align: right;
         }
       }
@@ -79,7 +84,7 @@ form, .form {
 
 #vj-index-content {
   h1 {
-    font-size: 2.5em;
+    font-size: 1.8em;
     margin: 0;
     padding: 0;
     margin-bottom: 0.5em;
@@ -87,10 +92,10 @@ form, .form {
   }
   form, .form {
     max-width: 400px;
-    background-color: lighten($clr-tern-lightest, 10);
-    border: 2px solid $clr-tern-darker;
+    //background-color: lighten($clr-tern-lightest, 10);
+    //border: 2px solid $clr-tern-darker;
   }
   input {
-    border-bottom: 0.1em solid $clr-tern-darker;
+    border-bottom: 0.1em solid $clr-black;
   }
 }

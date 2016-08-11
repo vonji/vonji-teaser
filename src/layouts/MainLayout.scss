@@ -3,12 +3,27 @@
 @import "../assets/styles/colors.scss";
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600");
 
+$backmain: lighten(yellow, 47);
+
+$logoScale: 0.45;
+
+.logo-wrapper {
+  margin: 8px;//
+  margin: 8px;//
+  margin-left: 50px;
+}
+
+img.logo {
+  width: (300 * $logoScale / 350) * 350px;
+  height: (300 * $logoScale / 350) * 180px;
+}
+
 body {
   font-weight: normal;
   font-family: 'Open Sans', sans-serif;
 //   overflow-x: hidden;
   color: $clr-font-main;
-  background-color: white;
+  background-color: $backmain;
 }
 
 // a {
@@ -21,11 +36,15 @@ body {
 //
 
 header {
-  flex: none;
+  display: flex;
+  align-items: center;
   padding: 0.2em;
   margin-bottom: 1em;
+  color: $clr-font-main;
   color: $clr-font-alt;
+  //background-color: $backmain;
   background-color: $clr-back-alt;
+  //border-bottom: 2px solid $clr-prim;
 }
 
 footer {
@@ -33,7 +52,12 @@ footer {
   padding-bottom: 2em;
   padding-top: 0.5em;
   font-size: 0.74em;
-  background-color: $clr-gray-light;
+  border-top: 2px solid $clr-prim-darker;
+  color: $backmain;
+  //color: $clr-prim-darker;
+  background-color: $clr-prim;
+  //background-color: $backmain;
+  //background-color: $clr-gray-light;
 }
 
 #vj-content {

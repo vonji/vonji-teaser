@@ -177,7 +177,7 @@ class SubscribeForm extends React.Component {
         />
 
         <CheckBox
-          className="small centered"
+          className="small"
           id="accept"
           onClick={() => this.toggleMentions()}
           error={mentionAccepted.error}
@@ -187,7 +187,7 @@ class SubscribeForm extends React.Component {
         </CheckBox>
 
         <CheckBox
-          className="small centered"
+          className="small"
           id="accept"
           onClick={() => this.toggleWantsNewsletter()}
           isChecked={wantsNewsLetter.value}
@@ -203,8 +203,8 @@ class SubscribeForm extends React.Component {
             sitekey="6LdORSMTAAAAAFVbERHbxDoIdq59EFVMTO92KHlx"
           />
         </div>
-        <div className="control-group centered">
-          <button onClick={(event) => this.handleSubmit(event)}>
+        <div className="control-group">
+          <button className="expand" onClick={(event) => this.handleSubmit(event)}>
             Gros bouton pour envoyer&#8239;!
           </button>
         </div>
