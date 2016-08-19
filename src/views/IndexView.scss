@@ -19,7 +19,11 @@ button {
   border: none;
   background-color: $clr-scnd;
   color: $clr-white;
-  padding: 8px;
+  &:hover {
+    
+  }
+
+  padding: 10px;
 
   &.expand {
     width: 100%;
@@ -50,7 +54,7 @@ form, .form {
 
   .control-group {
     & + .control-group {
-      margin-top: 8px;
+      margin-top: 10px;
     }
     &.centered {
       text-align: center;
@@ -58,7 +62,7 @@ form, .form {
     .error-label {
       font-size: 0.6em;
       color: $clr-error-back;
-      text-align: right;
+      text-align: left;
     }
   }
 
