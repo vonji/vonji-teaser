@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
 
-require('gridlex/dist/gridlex.min.css');
+require('gridlex/src/gridlex.scss');
 require('./MoreInfoView.scss');
 
 const InfoBlock = (props) => {
