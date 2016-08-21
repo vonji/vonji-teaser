@@ -4,12 +4,20 @@ import promise from 'redux-promise';
 import thunk from 'redux-thunk';
 import { reducers } from './reducers';
 
-const logger = createLogger();
-
-export const store = createStore(
-  reducers,
-  compose(
-    applyMiddleware(thunk, promise, logger),
-    window.devToolsExtension ? window.devToolsExtension() : f => f
-  )
-);
+export const storeProvider = (isProd) => {
+  if (!isProd) {
+    const logger = createLogger();
+    return createStore(
+      reducers,
+      compose(
+        applyMiddleware(thunk, promise, logger),
+        window.devToolsExtension ? window.devToolsExtension() : f => f
+      )
+    )
+  } else {
+    return createStore(
+      reducers,
+      applyMiddleware(thunk, promise)
+    );
+  }
+}

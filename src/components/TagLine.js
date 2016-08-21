@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import { db } from '../../firebase';
 import _ from 'lodash';
 
-require('./TagLine.scss');
-
 class TagLine extends Component {
 
   constructor(props) {

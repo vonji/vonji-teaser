@@ -1,8 +1,0 @@
-version: '2'
-services:
-  teaser:
-    build: .
-    image: "vonji/teaser:latest"
-  teaser-staging:
-    build: .
-    image: "vonji/teaser:staging"

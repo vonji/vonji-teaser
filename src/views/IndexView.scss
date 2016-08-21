@@ -19,9 +19,6 @@ button {
   border: none;
   background-color: $clr-scnd;
   color: $clr-white;
-  &:hover {
-    
-  }
 
   padding: 10px;
 
@@ -66,10 +63,6 @@ form, .form {
     }
   }
 
-  &.big {
-    font-size: 1.12em;
-  }
-
   &.inline {
     .control-wrapper {
       width: 100%;
@@ -88,11 +81,14 @@ form, .form {
 
 #vj-index-content {
   h1 {
-    font-size: 1.8em;
+    font-size: 1.7em;
     margin: 0;
     padding: 0;
     margin-bottom: 0.5em;
     text-align: center;
+    @media screen and (min-width: 20em) {
+      font-size: 1.5em;
+    }
   }
   form, .form {
     max-width: 400px;
@@ -101,5 +97,11 @@ form, .form {
   }
   input {
     border-bottom: 0.1em solid $clr-black;
+  }
+}
+
+@media screen and (min-width: 20em) {
+  .input-wrapper {
+    font-size: 0.8em;
   }
 }
