@@ -51,10 +51,10 @@ class IndexView extends Component {
   render() {
     return (
       <div id="vj-index-content">
-        <h1>
-          Et toi, tu sais faire quoi&#8239;?<br />
-          <small>Fais-nous rêver :)</small>
-        </h1>
+        <div className="vj-page-title">
+          <h1>Et toi, tu sais faire quoi&#8239;?</h1>
+          <p>Fais-nous rêver :)</p>
+        </div>
 
         {this.props.alerts.map(alert => {
           return (

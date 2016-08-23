@@ -24,15 +24,70 @@ body {
   background-color: $backmain;
 }
 
+a {
+  color: $clr-scnd;
+  &:hover {
+    color: $clr-scnd-darker;
+  }
+}
+
+input {
+  border: none;
+  outline: none;
+  background-color: transparent;
+  color: $clr-black;
+  border-bottom: 0.1em solid $clr-scnd;
+}
+
+input[type="checkbox"] {
+  display: none;
+}
+
 header {
   background-color: $clr-prim;
   display: flex;
   flex: 0 0 auto;
   align-items: center;
-  margin-bottom: 1em;
   #tag-line {
     h1 {
       color: $clr-font-alt;
+    }
+  }
+}
+
+button {
+  outline: none;
+  border: none;
+  background-color: $clr-scnd;
+  color: $clr-white;
+  padding: 10px;
+  &.expand {
+    width: 100%;
+  }
+}
+
+.vj-page-title {
+  background-color: $clr-scnd;
+  color: $clr-white;
+  padding: 32px 4px 32px 4px;
+  margin: 0;
+  text-align: center;
+  h1 {
+    font-size: 2.4em;
+    margin: 0;
+    padding: 0px 4px 8px 4px;
+  }
+  p {
+    font-size: 1.2em;
+    margin: 0;
+    padding: 0px 4px 0px 4px;
+  }
+  @media screen and (max-width: 35.5em) {
+    h1 {
+      font-size: 1.8em;
+    }
+    p {
+      font-size: 1.1em;
     }
   }
 }

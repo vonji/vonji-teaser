@@ -8,20 +8,6 @@ $gap: 10px;
     max-width: 900px;
     margin-left: auto;
     margin-right: auto;
-    .vj-header {
-      margin-bottom: 25px;
-      text-align: center;
-      h1 {
-        font-size: 3em;
-        margin: 0;
-        padding: 0px 5px 10px 5px;
-      }
-      p {
-        font-size: 1.5em;
-        margin: 0;
-        padding: 0px 5px 0px 5px;
-      }
-    }
   }
 }
 .vj-timing {
@@ -42,15 +28,23 @@ $gap: 10px;
 .vj-center {
   text-align: center;
 }
+.vj-align-right {
+  text-align: right;
+}
 .vj-small {
-  font-size: 0.75em;
+  font-size: 0.78em;
+}
+.vj-more {
+  padding-top: 12px;
 }
 .vj-info-block {
-  &:hover {
-    color: $clr-white;
-    background-color: $clr-prim;
-    a {
-      color: saturate(lighten($clr-scnd, 40), 40);
+  @media screen and (min-width: 64em) {
+    &:hover {
+      color: $clr-white;
+      background-color: $clr-prim;
+      a {
+        color: saturate(lighten($clr-scnd, 40), 40);
+      }
     }
   }
   width: 100%;
@@ -65,19 +59,27 @@ $gap: 10px;
   p+p {
     margin-top: 10px;
   }
-  .vj-block-content {
+  .vj-block-body {
     line-height: 1.2em;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     font-size: 1.3em;
-    flex-grow: 1;
-    margin-bottom: $gap;
+    flex: 1 0 auto;
   }
   .vj-block-heading {
+    h1 {
+      font-size: 2em;
+      text-align: center;
+    }
+    flex: 0 0 auto;
     margin-bottom: $gap;
-    font-size: 2em;
-    text-align: center;
+  }
+  .vj-block-footer {
+    flex: 0 0 auto;
+    @extend .vj-small;
+    @extend .vj-center;
+    margin-top: 10px;
   }
 }
 
@@ -87,29 +89,22 @@ $gap: 10px;
       max-width: none;
       padding: 0;
       margin: 0;
-      .vj-header {
-        h1 {
-          font-size: 2.2em;
-        }
-        p {
-          font-size: 1.1em;
-        }
+    }
+    div[class*="grid"] {
+      padding: 0;
+      margin: 0;
+    }
+    .col {
+      padding: 0;
+      margin: 0;
+      .vj-info-block {
+        border-left: 0;
+        border-right: 0;
       }
     }
-  }
-  div[class*="grid"] {
-    padding: 0;
-    margin: 0;
-  }
-  .col {
-    padding: 0;
-    margin: 0;
-    .vj-info-block {
-      border-bottom: 0;
-      border-left: 0;
-      border-right: 0;
-      &:last-child {
-
+    .col:not(:last-child) {
+      .vj-info-block {
+        border-bottom: 0;
       }
     }
   }

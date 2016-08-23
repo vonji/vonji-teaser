@@ -1,42 +1,11 @@
 @import "../assets/styles/colors.scss";
 
-a {
-  color: $clr-scnd;
-  &:hover {
-    color: $clr-scnd-darker;
-  }
-}
-
 .vj-menu {
+  margin-top: 15px;
   margin-bottom: 8px;
   &.centered {
     text-align: center;
   }
-}
-
-button {
-  outline: none;
-  border: none;
-  background-color: $clr-scnd;
-  color: $clr-white;
-
-  padding: 10px;
-
-  &.expand {
-    width: 100%;
-  }
-}
-
-input {
-  border: none;
-  outline: none;
-  background-color: transparent;
-  color: $clr-black;
-  border-bottom: 0.1em solid $clr-scnd;
-}
-
-input[type="checkbox"] {
-  display: none;
 }
 
 form, .form {
@@ -80,28 +49,28 @@ form, .form {
 }
 
 #vj-index-content {
-  h1 {
-    font-size: 1.7em;
-    margin: 0;
-    padding: 0;
-    margin-bottom: 0.5em;
-    text-align: center;
-    // @media screen and (min-width: 20em) {
-    //   font-size: 1.5em;
-    // }
-  }
   form, .form {
-    max-width: 400px;
-    //background-color: lighten($clr-tern-lightest, 10);
-    //border: 2px solid $clr-tern-darker;
+    max-width: 600px;
+    font-size: 1.5em;
   }
   input {
     border-bottom: 0.1em solid $clr-black;
   }
 }
 
-// @media screen and (min-width: 20em) {
-//   .input-wrapper {
-//     font-size: 0.8em;
-//   }
-// }
+@media screen and (max-width: 35.5em) {
+  #vj-index-content {
+    form, .form {
+      font-size: 1em;
+    }
+  }
+}
+
+@media screen and (max-width: 20em) {
+  #vj-index-content {
+    form, .form {
+      font-size: 0.95em;
+      padding: 5px;
+    }
+  }
+}

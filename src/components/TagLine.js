@@ -28,13 +28,13 @@ class TagLine extends Component {
       return entries;
     };
 
-    // db.ref('/entries')
-    //   .orderByChild('validated')
-    //   .equalTo(true)
-    //   .on('value', snap => {
-    //     this.setState({entries: _.reduce(snap.val(), entriesReducer, []) });
-    //   });
-    //this.startLooper();
+    db.ref('/entries')
+      .orderByChild('validated')
+      .equalTo(true)
+      .on('value', snap => {
+        this.setState({entries: _.reduce(snap.val(), entriesReducer, []) });
+      });
+    this.startLooper();
   }
 
   startLooper() {
