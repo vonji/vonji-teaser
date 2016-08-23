@@ -3,6 +3,8 @@ import React from 'react';
 import { Router, Route, IndexRoute } from 'react-router'
 
 import IndexView from './views/IndexView';
+import WhyView from './views/WhyView';
+import HowMuchView from './views/HowMuchView';
 import MoreInfoView from './views/MoreInfoView';
 import MainLayout from './layouts/MainLayout';
 
@@ -11,7 +13,9 @@ const Routes = (props) => {
     <Router history={props.history}>
       <Route path="/" component={MainLayout}>
         <IndexRoute component={IndexView} />
-        <Route path="/test" component={MoreInfoView} />
+        <Route path="/more" component={MoreInfoView} />
+        <Route path="/more/howmuch" component={HowMuchView} />
+        <Route path="/more/why" component={WhyView} />
       </Route>
     </Router>
   );

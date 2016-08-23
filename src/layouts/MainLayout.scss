@@ -12,6 +12,20 @@ $logoScale: 0.45;
   margin: 8px;
 }
 
+.vj-inner-page {
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media screen and (max-width: 716px) {
+  .vj-inner-page {
+    max-width: none;
+    margin-left: 8px;
+    margin-right: 8px;
+  }
+}
+
 img.logo {
   width: (300 * $logoScale / 350) * 350px;
   height: (300 * $logoScale / 350) * 180px;
@@ -52,6 +66,18 @@ header {
     h1 {
       color: $clr-font-alt;
     }
+  }
+}
+
+ul.vj-list {
+  list-style: disc;
+  li {
+    margin-bottom: 14px;
+    padding-bottom: 14px;
+  }
+  li:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
   }
 }
 

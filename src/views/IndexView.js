@@ -3,7 +3,6 @@ import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import { newAlert, clearAlert } from '../actions';
 
-import MainLayout from '../layouts/MainLayout';
 import SubscribeForm from '../components/SubscribeForm';
 
 import { db } from '../../firebase';
@@ -67,7 +66,7 @@ class IndexView extends Component {
         })}
 
         <div className="vj-menu centered">
-          <Link to="/test">je veux en savoir plus</Link>
+          <Link to="/more">je veux en savoir plus</Link>
         </div>
 
         <SubscribeForm

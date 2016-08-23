@@ -51,7 +51,7 @@ class MoreInfoView extends Component {
           <h1>Voici la page explicative&#8239;!</h1>
           <p>Aussi appelée le PQQCPQ*.</p>
         </div>
-        <div className="vj-more-info-inner">
+        <div className="vj-inner-page vj-more-info">
           <div className="grid-3_md-1-equalHeight">
             <div className="col">
               <InfoBlock>
@@ -136,7 +136,7 @@ class MoreInfoView extends Component {
             </div>
           </div>
           <div className="vj-small vj-align-right">
-            *Pourquoi ? Quoi ? Qui ? Combien ? Pour quoi ? Quand ?
+            *Pourquoi ? Quoi ? Qui ? Combien ? Pour qui ? Quand ?
           </div>
         </div>
       </div>
