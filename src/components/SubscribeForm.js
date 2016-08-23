@@ -55,12 +55,10 @@ class SubscribeForm extends React.Component {
   handleSubmit(event) {
     event.preventDefault();
 
-/*
     if (!this.state.token) {
       this.props.onCaptchaError();
       return;
     }
-*/
     const stateCopy = _.assign({}, this.state);
 
     const {

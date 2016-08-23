@@ -86,9 +86,9 @@ form, .form {
     padding: 0;
     margin-bottom: 0.5em;
     text-align: center;
-    @media screen and (min-width: 20em) {
-      font-size: 1.5em;
-    }
+    // @media screen and (min-width: 20em) {
+    //   font-size: 1.5em;
+    // }
   }
   form, .form {
     max-width: 400px;
@@ -100,8 +100,8 @@ form, .form {
   }
 }
 
-@media screen and (min-width: 20em) {
-  .input-wrapper {
-    font-size: 0.8em;
-  }
-}
+// @media screen and (min-width: 20em) {
+//   .input-wrapper {
+//     font-size: 0.8em;
+//   }
+// }
