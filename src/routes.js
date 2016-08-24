@@ -5,6 +5,7 @@ import { Router, Route, IndexRoute } from 'react-router'
 import IndexView from './views/IndexView';
 import WhyView from './views/WhyView';
 import HowMuchView from './views/HowMuchView';
+import WhenView from './views/WhenView';
 import MoreInfoView from './views/MoreInfoView';
 import MainLayout from './layouts/MainLayout';
 
@@ -15,6 +16,7 @@ const Routes = (props) => {
         <IndexRoute component={IndexView} />
         <Route path="/more" component={MoreInfoView} />
         <Route path="/more/howmuch" component={HowMuchView} />
+        <Route path="/more/when" component={WhenView} />
         <Route path="/more/why" component={WhyView} />
       </Route>
     </Router>
