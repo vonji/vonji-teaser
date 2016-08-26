@@ -59,8 +59,8 @@ class MoreInfoView extends Component {
                   <h1>Pourquoi ?</h1>
                 </div>
                 <div className="vj-block-body">
-                  <p>Notre ambition est de <strong>sauver le monde</strong>&#8230;</p>
-                  <p>Mais si on a pas le temps on s'occupera d'abord du <em>skill-funding</em>.</p>
+                  <p>Une ambition, celle de sauver le monde...</p>
+                  <p>Mais si on a pas le temps on s'occupera d'abord du skillfunding.</p>
                 </div>
                 <div className="vj-block-footer">
                   <a href="/more/why">En savoir plus !</a>
