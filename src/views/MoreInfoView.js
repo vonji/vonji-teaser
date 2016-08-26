@@ -73,9 +73,9 @@ class MoreInfoView extends Component {
                   <h1>Quoi ?</h1>
                 </div>
                 <div className="vj-block-body">
-                  <p><i className="fa fa-check" /> Pensée positive.</p>
-                  <p><i className="fa fa-check" /> Système vertueux.</p>
-                  <p><i className="fa fa-check" /> Plateforme agréable.</p>
+                  <p><i className="fa fa-check"/>&nbsp;Une plateforme ludique</p>
+                  <p><i className="fa fa-check"/>&nbsp;Un écosystème vertueux et durable</p>
+                  <p><i className="fa fa-check"/>&nbsp;Une état d'esprit positif</p>
                 </div>
                 <div className="vj-block-footer">
                   <a href="/more/what">En savoir plus !</a>
@@ -87,7 +87,9 @@ class MoreInfoView extends Component {
                 <div className="vj-block-heading">
                   <h1>Qui ?</h1>
                 </div>
-                <div className="vj-block-body">Ils sont un peu secrets mais pas introuvables&#8230;</div>
+                <div className="vj-block-body">
+                  Ils sont un peu secrets mais pas introuvables&#8230;
+                </div>
                 <div className="vj-block-footer">
                   <a href="/more/who">En savoir plus !</a>
                 </div>
