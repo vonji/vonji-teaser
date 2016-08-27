@@ -88,7 +88,7 @@ class MoreInfoView extends Component {
                   <h1>Qui ?</h1>
                 </div>
                 <div className="vj-block-body">
-                  Ils sont un peu secrets mais pas introuvables&#8230;
+                  Une équipe un peu secrète mais pas introuvable&#8230;
                 </div>
                 <div className="vj-block-footer">
                   <a href="/more/who">En savoir plus !</a>
