@@ -23,13 +23,14 @@ class MainLayout extends Component {
 
         <footer>
           <div>
-            <strong>Vonji</strong> est la première plateforme de <strong>skillfunding</strong> autogérée.
+            <strong>Vonji</strong> est la première plateforme de <strong>skillfunding</strong>.
           </div>
           <div>
-            Pour l'instant c'est un peu vide mais il y aura bientôt du neuf&#8239;!
+            Vous pouvez nous contacter sur contact@vonji.fr.
           </div>
           <div>
-            Ah&#8239;! J'oubliais, tu peux nous contacter sur contact@vonji.fr.
+            <Link to="/more">En savoir plus</Link>&nbsp;-&nbsp;
+            <Link to="/faq">FAQ</Link>
           </div>
         </footer>
       </div>

@@ -51,8 +51,8 @@ class IndexView extends Component {
     return (
       <div id="vj-index-content">
         <div className="vj-page-title">
-          <h1>Et toi, tu sais faire quoi&#8239;?</h1>
-          <p>Fais-nous rêver :)</p>
+          <h1>Et vous, que savez-vous faire&#8239;?</h1>
+          <p>Faites-nous rêver :)</p>
         </div>
 
         {this.props.alerts.map(alert => {
@@ -64,10 +64,6 @@ class IndexView extends Component {
             </div>
           );
         })}
-
-        <div className="vj-menu centered">
-          <Link to="/more">je veux en savoir plus</Link>
-        </div>
 
         <SubscribeForm
           className="big inline"

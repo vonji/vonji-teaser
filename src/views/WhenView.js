@@ -13,15 +13,16 @@ class WhenView extends Component {
           <h1>Et c'est pour quand tout ça ?</h1>
         </div>
         <div className="vj-inner-page">
-          <h1>Vonji sera disponible en <strong>septembre 2017</strong></h1>
-          <hr />
-          <p>Si vous croyez en ce projet, nous vous invitons à faire un don :</p>
-          <button>Donner pour Vonji</button>
-          <h2>Sinon... </h2>
-          <div style={{margin: "auto", textAlign: "center"}}>
-            <img style={{width: '40%'}} src="https://i.imgflip.com/19gc89.jpg" title="made at imgflip.com"/>
-          </div>
-          <p>Contactez-nous sur contact@vonji.fr :)</p>
+          <h2>Quand est ce que Vonji sera disponible?</h2>
+
+          <p>La sortie de la plateforme est prévue pour <strong>Septembre 2017</strong>.</p>
+          <p>Vous croyez en notre projet, vous souhaitez participer à son développement </p>
+          <p>Vous pouvez, soit :</p>
+
+          <ul>
+            <li>Faire un don (Lien vers une plateforme de crowdfunding Kisskissbank ou Ulule)</li>
+            <li>Ou nous contactez à helpme@vonji.fr pour participer au Beta Testing Program</li>
+          </ul>
         </div>
       </div>
     )

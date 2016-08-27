@@ -1,15 +1,12 @@
 @import "~normalize.css/normalize.css";
 
 @import "../assets/styles/colors.scss";
+@import "../assets/styles/parameters.scss";
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600");
-
-$backmain: lighten(yellow, 47);
-
-$logoScale: 0.45;
 
 .logo-wrapper {
   margin: 8px;
-  margin: 8px;
+  margin-left: 15px;
 }
 
 .vj-inner-page {
@@ -99,21 +96,21 @@ button {
   margin: 0;
   text-align: center;
   h1 {
-    font-size: 2.4em;
+    font-size: $font-size-larger * 1.25;
     margin: 0;
     padding: 0px 4px 8px 4px;
   }
   p {
-    font-size: 1.2em;
+    font-size: $font-size-large * 1.25;
     margin: 0;
     padding: 0px 4px 0px 4px;
   }
   @media screen and (max-width: 35.5em) {
     h1 {
-      font-size: 1.8em;
+      font-size: $font-size-large * 1.25;
     }
     p {
-      font-size: 1.1em;
+      font-size: $font-size * 1.25;
     }
   }
 }
@@ -155,7 +152,7 @@ footer {
   flex: 0 0 auto;
   padding-bottom: 1em;
   padding-top: 1em;
-  font-size: 0.74em;
+  font-size: $font-size-small;
   border-top: 2px solid $clr-prim-darker;
   color: $backmain;
   background-color: $clr-prim;
@@ -172,12 +169,12 @@ footer {
 }
 
 #tag-line h1 {
-  font-size: 3.95vw;
+  font-size: 3.5vw;
 }
 
 @media screen and (min-width: 48em) {
   #tag-line h1 {
-    font-size: 1.9em;
+    font-size: (3.5*48/100)em;
   }
 }
 
@@ -187,12 +184,12 @@ footer {
     text-align: center;
   }
   footer {
-    font-size: 0.5em;
+    font-size: $font-size-smallest;
   }
   #tag-line {
     justify-content: center;
     margin-right: 0;
-    margin-bottom: 0.8em;
+    margin-bottom: $font-size-smaller;
     h1 {
       font-size: 4.5vmin;
     }

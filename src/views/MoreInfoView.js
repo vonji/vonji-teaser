@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
+import numeral from 'numeral';
 
 require('gridlex/src/gridlex.scss');
 require('./MoreInfoView.scss');
+
+numeral.languageData().delimiters.thousands = ' ';
 
 const InfoBlock = (props) => {
   return (
@@ -48,15 +51,14 @@ class MoreInfoView extends Component {
     return (
       <div id="vj-more-info">
         <div className="vj-page-title">
-          <h1>Voici la page explicative&#8239;!</h1>
-          <p>Aussi appelée le PQQCPQ*.</p>
+          <h1>Construisons la plus grande base de compétences du monde&nbsp;!</h1>
         </div>
         <div className="vj-inner-page vj-more-info">
           <div className="grid-3_md-1-equalHeight">
             <div className="col">
               <InfoBlock>
                 <div className="vj-block-heading">
-                  <h1>Pourquoi ?</h1>
+                  <h1>Vonji c'est...</h1>
                 </div>
                 <div className="vj-block-body">
                   <p>Une ambition, celle de sauver le monde...</p>
@@ -70,7 +72,7 @@ class MoreInfoView extends Component {
             <div className="col">
               <InfoBlock>
                 <div className="vj-block-heading">
-                  <h1>Quoi ?</h1>
+                  <h1>Vonji c'est...</h1>
                 </div>
                 <div className="vj-block-body">
                   <p><i className="fa fa-check"/>&nbsp;Une plateforme ludique</p>
@@ -85,7 +87,7 @@ class MoreInfoView extends Component {
             <div className="col">
               <InfoBlock>
                 <div className="vj-block-heading">
-                  <h1>Qui ?</h1>
+                  <h1>Vonji c'est...</h1>
                 </div>
                 <div className="vj-block-body">
                   Une équipe un peu secrète mais pas introuvable&#8230;
@@ -98,7 +100,7 @@ class MoreInfoView extends Component {
             <div className="col">
               <InfoBlock>
                 <div className="vj-block-heading">
-                  <h1>Combien ?</h1>
+                  <h1>Vonji c'est...</h1>
                 </div>
                 <div className="vj-block-body">
                   <p className="vj-huge vj-center">0€</p>
@@ -112,7 +114,7 @@ class MoreInfoView extends Component {
             <div className="col">
               <InfoBlock>
                 <div className="vj-block-heading">
-                  <h1>Pour qui ?</h1>
+                  <h1>Vonji c'est...</h1>
                 </div>
                 <div className="vj-block-body">
                   <p>Pour tout le monde, les petits, les grands, les gros, les jeunes, les vieux, les girafes... oui même les girafes.</p>
@@ -125,19 +127,16 @@ class MoreInfoView extends Component {
             <div className="col">
               <InfoBlock>
                 <div className="vj-block-heading">
-                  <h1>Quand ?</h1>
+                  <h1>Vonji c'est...</h1>
                 </div>
                 <div className="vj-block-body">
-                  <p className="vj-center">Dans environ&#8239;:<br /><br /><span className="vj-timing">{this.state.timing ? `${this.state.timing}s`: ''}</span></p>
+                  <p className="vj-center">Dans environ&#8239;:<br /><br /><span className="vj-timing">{this.state.timing ? `${numeral(this.state.timing).format('0,0')}s`: ''}</span></p>
                 </div>
                 <div className="vj-block-footer">
                   <a href="/more/when">En savoir plus</a>
                 </div>
               </InfoBlock>
             </div>
-          </div>
-          <div className="vj-small vj-align-right">
-            *Pourquoi ? Quoi ? Qui ? Combien ? Pour qui ? Quand ?
           </div>
         </div>
       </div>

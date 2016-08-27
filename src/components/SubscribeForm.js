@@ -190,7 +190,7 @@ class SubscribeForm extends React.Component {
           onClick={() => this.toggleWantsNewsletter()}
           isChecked={wantsNewsLetter.value}
         >
-          Je veux m'inscrire à la news letter&#8239;!
+          Je veux m'inscrire à la newsletter&#8239;!
         </CheckBox>
 
         <div className="control-group centered">

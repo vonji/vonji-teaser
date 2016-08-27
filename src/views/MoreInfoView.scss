@@ -1,6 +1,5 @@
 @import "../assets/styles/colors.scss";
-
-$gap: 10px;
+@import "../assets/styles/parameters.scss";
 
 #vj-more-info {
   width: 100%;
@@ -13,18 +12,18 @@ $gap: 10px;
 }
 .vj-timing {
   width: 100%;
-  font-size: 1.6em;
+  font-size: $font-size-large;
   line-height: 1em;
 }
 .vj-big-1 {
-  font-size: 1.5em;
+  font-size: $font-size-larger;
 }
 .vj-big-2 {
-  font-size: 1.6em;
+  font-size: $font-size-largest;
 }
 .vj-huge {
-  font-size: 4em;
-  line-height: 1em;
+  font-size: $font-size-largest*1.2;
+  line-height: 1.2em;
 }
 .vj-center {
   text-align: center;
@@ -33,7 +32,7 @@ $gap: 10px;
   text-align: right;
 }
 .vj-small {
-  font-size: 0.78em;
+  font-size: $font-size-small;
 }
 .vj-more {
   padding-top: 12px;
@@ -52,16 +51,16 @@ $gap: 10px;
     margin-top: 10px;
   }
   .vj-block-body {
-    line-height: 1.2em;
+    line-height: 1.4em;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    font-size: 1.3em;
+    font-size: $font-size-large;
     flex: 1 0 auto;
   }
   .vj-block-heading {
     h1 {
-      font-size: 2em;
+      font-size: $font-size-larger;
       text-align: center;
     }
     flex: 0 0 auto;
