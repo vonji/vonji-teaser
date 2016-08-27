@@ -115,8 +115,7 @@ class MoreInfoView extends Component {
                   <h1>Pour qui ?</h1>
                 </div>
                 <div className="vj-block-body">
-                  <p>Vonji c'est fait par des <a href="https://en.wikipedia.org/wiki/Nerd">Nerds</a> mais c'est ouvert à tous&#8239;!</p>
-                  <p>Donc n'ayez pas peur, venez en profiter&#8239;!</p>
+                  <p>Pour tout le monde, les petits, les grands, les gros, les jeunes, les vieux, les girafes... oui même les girafes.</p>
                 </div>
                 <div className="vj-block-footer">
                   <a href="/more/forwhom">En savoir plus</a>
