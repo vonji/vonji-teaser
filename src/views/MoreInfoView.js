@@ -102,7 +102,7 @@ class MoreInfoView extends Component {
                 </div>
                 <div className="vj-block-body">
                   <p className="vj-huge vj-center">0€</p>
-                  <p>C'est-à-dire &#171;&#8239;pas un rond&#8239;&#187;, pour être précis.</p>
+                  <p>Quedal, peanuts, walou, nada... La participation est libre.</p>
                 </div>
                 <div className="vj-block-footer">
                   <a href="/more/howmuch">En savoir plus</a>
