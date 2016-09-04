@@ -40,7 +40,7 @@ body {
   top: 0;
   left: 0;
   background-image: url('/static/img/wallhaven.png');
-  background-size: contain;
+  background-size: cover;
   z-index: -2;
   height: 100vh;
   width: 100vw;
