@@ -1,3 +1,4 @@
 build/*.js
 config/*.js
 test/e2e/**/*.js
+server/**/*.js
