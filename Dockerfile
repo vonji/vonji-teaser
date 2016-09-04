@@ -1,11 +1,10 @@
 FROM node:6.3
 
-RUN mkdir -p /usr/src/vonji-teaser
-WORKDIR /usr/src/vonji-teaser
+RUN mkdir -p /usr/src/app
 
-COPY package.json /usr/src/vonji-teaser/
-RUN NODE_ENV='production' npm install && npm run build
+WORKDIR /usr/src/app
+COPY . /usr/src/app
 
-COPY . /usr/src/vonji-teaser
+CMD ["node ./server/app.js"]
 
-EXPOSE 8080
+EXPOSE 8081

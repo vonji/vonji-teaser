@@ -5,7 +5,7 @@
   "author": "Loup Peluso <loup.peluso@gmail.com>",
   "private": true,
   "scripts": {
-    "start": "NODE_ENV=production node server/app.js",
+    "start": "node server/app.js",
     "dev": "node build/dev-server.js",
     "build": "node build/build.js",
     "unit": "karma start test/unit/karma.conf.js --single-run",
