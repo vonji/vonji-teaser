@@ -1,0 +1,52 @@
+@import "./colors.scss";
+
+$border-color: darken($clr-scnd, 25);
+$border-radius: 12px;
+$border-thickness: 1px;
+$font-color: $clr-white;
+$background-color: transparentize(black, 0.4);
+
+::-webkit-input-placeholder { /* Chrome */
+  color: $font-color;
+}
+:-ms-input-placeholder { /* IE 10+ */
+  color: $font-color;
+}
+::-moz-placeholder { /* Firefox 19+ */
+  color: $font-color;
+}
+:-moz-placeholder { /* Firefox 4 - 18 */
+  color: $font-color;
+}
+
+.input-group.inline {
+  input, button {
+    white-space: nowrap;
+    display: inline;
+    &:last-child {
+      border-left: none;
+      border-radius: 0px $border-radius $border-radius 0px;
+    }
+    &:first-child {
+      border-left: $border-thickness solid $border-color;
+      border-radius: $border-radius 0px 0px $border-radius;
+    }
+    border-left: none;
+  }
+  button {
+    &:hover {
+      background-color: $clr-scnd;
+    }
+    &:active {
+      background-color: darken($clr-scnd, 25);
+    }
+  }
+}
+
+input, button {
+  outline: none;
+  color: $font-color;
+  background-color: $background-color;
+  padding: 12px;
+  border: 1px solid $border-color;
+}

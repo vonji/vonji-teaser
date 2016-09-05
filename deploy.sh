@@ -12,6 +12,7 @@ scp -P $PORT -r ./server loup@vonji.fr:~/$DIR/
 scp -P $PORT Dockerfile loup@vonji.fr:~/$DIR/
 
 ssh -p $PORT loup@vonji.fr <<ENDSSH
+  echo "Installing express server..."
   cd $DIR && npm install express && cd ..
   docker-compose up -d --build teaser-staging
 ENDSSH

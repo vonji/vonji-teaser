@@ -5,6 +5,14 @@
     <h1>On sait tous faire quelque chose !</h1>
 
     <tag-line></tag-line>
+
+    <h2>Construisons ensemble la plus grande base de compétences du monde !</h2>
+
+    <div class="subscribe input-group inline">
+         <input placeholder="Votre nom"/><!--
+      --><input placeholder="Votre savoir faire"/><!--
+      --><button>Soumettre</button>
+    </div>
   </page>
 </template>
 
@@ -21,14 +29,37 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../assets/colors.scss";
+@import "../assets/inputs.scss";
 
 .logo {
-  width: 12em;
-  margin-bottom: 2em;
+  width: 13em;
 }
+
+#tag-line {
+  font-size: 1.2em;
+}
+
+h1 {
+  margin-top: 60px;
+  font-size: 2.4em;
+}
+
+h2 {
+  margin-top: 60px;
+  margin-bottom: 20px;
+  color: $clr-gray;
+  font-size: 1.2em;
+  max-width: 350px;
+  text-align: center;
+  line-height: 1.5;
+}
+
+.subscribe {
+  font-size: 1.1em;
+}
+
 .page {
-  color: white;
+  color: $clr-white;
   background: linear-gradient(
     top,
     transparentize(darken($clr-scnd, 32), 0.14),
