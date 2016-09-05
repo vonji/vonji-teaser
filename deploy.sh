@@ -2,6 +2,9 @@
 PORT=3485
 DIR=vj-tz-stg
 
+NODE_ENV=production npm install
+NODE_ENV=production npm run build
+
 ssh -p $PORT loup@vonji.fr <<ENDSSH
   mkdir -p ${DIR}
   rm -fr ${DIR}/dist && rm -fr ${DIST}/server
