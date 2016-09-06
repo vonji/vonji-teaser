@@ -22,6 +22,8 @@ export default {
 @import "~normalize.css";
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,600");
 @import url("https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700");
+@import "./assets/colors.scss";
+@import "./assets/inputs.scss";
 
 body {
   font-family: 'Open Sans', sans-serif;

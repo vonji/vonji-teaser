@@ -1,0 +1,8 @@
+@import "./colors.scss";
+
+$border-thickness: 1px;
+$font-color: $clr-white;
+
+$background-color: transparentize(black, 0.4);
+$border-color: darken($clr-scnd, 25);
+$border-radius: 12px;

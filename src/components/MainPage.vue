@@ -8,28 +8,26 @@
 
     <h2>Construisons ensemble la plus grande base de compétences du monde !</h2>
 
-    <div class="subscribe input-group inline">
-         <input placeholder="Votre nom"/><!--
-      --><input placeholder="Votre savoir faire"/><!--
-      --><button>Soumettre</button>
-    </div>
+    <subscribe></subscribe>
   </page>
 </template>
 
 <script>
 import Page from 'components/page';
 import TagLine from 'components/TagLine';
+import Subscribe from 'components/Subscribe';
 
 export default {
   components: {
     Page,
     TagLine,
+    Subscribe,
   },
 };
 </script>
 
 <style lang="scss" scoped>
-@import "../assets/inputs.scss";
+@import "../assets/colors.scss";
 
 .logo {
   width: 13em;
