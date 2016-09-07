@@ -1,20 +1,22 @@
 #!/bin/bash
-PORT=3485
-DIR=vj-tz-stg
+PORT=22
+USER=lpeluso
+HOST=vonji.fr
+DIR=vjtz-stg
 
-NODE_ENV=production npm install
-NODE_ENV=production npm run build
+npm install
+npm run build
 
-ssh -p $PORT loup@vonji.fr <<ENDSSH
+ssh -p $PORT $USER@$HOST <<ENDSSH
   mkdir -p ${DIR}
   rm -fr ${DIR}/dist && rm -fr ${DIST}/server
 ENDSSH
 
-scp -P $PORT -r ./dist loup@vonji.fr:~/$DIR/
-scp -P $PORT -r ./server loup@vonji.fr:~/$DIR/
-scp -P $PORT Dockerfile loup@vonji.fr:~/$DIR/
+scp -P $PORT -r ./dist $USER@$HOST:~/$DIR/
+scp -P $PORT -r ./server $USER@$HOST:~/$DIR/
+scp -P $PORT Dockerfile $USER@$HOST:~/$DIR/
 
-ssh -p $PORT loup@vonji.fr <<ENDSSH
+ssh -p $PORT $USER@$HOST <<ENDSSH
   echo "Installing express server..."
   cd $DIR && npm install express && cd ..
   docker-compose up -d --build teaser-staging
