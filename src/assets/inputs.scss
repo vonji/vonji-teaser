@@ -20,12 +20,19 @@ input, button {
   border: 1px solid $border-color;
   box-sizing: border-box;
   min-height: 50px;
-  padding-left: 15px;
-  padding-right: 15px;
+  padding-left: 8px;
+  padding-right: 8px;
   line-height: 1.5em;
 }
 
+input[type="text"] {
+  padding-left: 15px;
+}
+
 button {
+  &:focus {
+    background-color: $background-color;
+  }
   &:hover {
     background-color: $clr-scnd;
   }
@@ -41,11 +48,11 @@ button {
   input, button {
     &:last-child {
       border-left: none;
-      border-radius: 0px $border-radius $border-radius 0px;
+      border-radius: 0px 0px 0px 0px;
     }
     &:first-child {
       border-left: $border-thickness solid $border-color;
-      border-radius: $border-radius 0px 0px $border-radius;
+      border-radius: 0px 0px 0px 0px;
     }
     border-left: none;
   }
