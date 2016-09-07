@@ -1,10 +1,4 @@
-@import "./colors.scss";
-
-$border-color: darken($clr-scnd, 25);
-$border-radius: 12px;
-$border-thickness: 1px;
-$font-color: $clr-white;
-$background-color: transparentize(black, 0.4);
+@import "./settings.scss";
 
 ::-webkit-input-placeholder { /* Chrome */
   color: $font-color;
@@ -19,10 +13,32 @@ $background-color: transparentize(black, 0.4);
   color: $font-color;
 }
 
-.input-group.inline {
+input, button {
+  outline: none;
+  color: $font-color;
+  background-color: $background-color;
+  border: 1px solid $border-color;
+  box-sizing: border-box;
+  min-height: 50px;
+  padding-left: 15px;
+  padding-right: 15px;
+  line-height: 1.5em;
+}
+
+button {
+  &:hover {
+    background-color: $clr-scnd;
+  }
+  &:active {
+    background-color: darken($clr-scnd, 25);
+  }
+}
+
+.inline {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   input, button {
-    white-space: nowrap;
-    display: inline;
     &:last-child {
       border-left: none;
       border-radius: 0px $border-radius $border-radius 0px;
@@ -33,20 +49,4 @@ $background-color: transparentize(black, 0.4);
     }
     border-left: none;
   }
-  button {
-    &:hover {
-      background-color: $clr-scnd;
-    }
-    &:active {
-      background-color: darken($clr-scnd, 25);
-    }
-  }
-}
-
-input, button {
-  outline: none;
-  color: $font-color;
-  background-color: $background-color;
-  padding: 12px;
-  border: 1px solid $border-color;
 }
