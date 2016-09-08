@@ -1,0 +1,64 @@
+<template lang="html">
+  <div class="input-group">
+    <input :class="inputClasses" type="text" @change="change" v-model="content"></input>
+    <label class="input-floating-label">{{ placeholder }}</label>
+  </div>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      content: '',
+      inputClasses: {
+        'is-dirty': false,
+      },
+    };
+  },
+  methods: {
+    change() {
+      this.inputClasses['is-dirty'] = this.content !== '';
+    },
+  },
+  props: {
+    placeholder: '',
+  },
+};
+</script>
+
+<style lang="scss">
+@import "../assets/colors.scss";
+
+input {
+  min-height: 3.6em;
+  padding-left: 1em;
+  width: 100%;
+}
+.input-group {
+  position: relative;
+
+  input {
+    padding-top: 1em;
+  }
+
+  input:focus ~ .input-floating-label,
+  input:not(:focus).is-dirty ~ .input-floating-label {
+    color: $clr-scnd;
+    position: absolute;
+    opacity: 0.5;
+    top: 0;
+    left: 1em;
+    transform-origin: left top;
+    transform: scale(0.7) translateY(0.7em);
+  }
+  .input-floating-label {
+    transition: all 0.4s;
+    color: darken($clr-white, 20);
+    position: absolute;
+    top: 0;
+    left: 1em;
+    transform-origin: left top;
+    transform: scale(1) translateY(1.1em);
+  }
+}
+</style>
