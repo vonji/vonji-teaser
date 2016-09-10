@@ -2,8 +2,5 @@ node_modules/
 build/
 .DS_Store
 
-public/build
-
 *.log
-
 *.sqlite
