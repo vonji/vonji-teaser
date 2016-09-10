@@ -26,7 +26,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @import "../assets/colors.scss";
 
 input {
@@ -34,6 +34,7 @@ input {
   padding-left: 1em;
   width: 100%;
 }
+
 .input-group {
   position: relative;
 
@@ -51,9 +52,10 @@ input {
     transform-origin: left top;
     transform: scale(0.7) translateY(0.7em);
   }
+
   .input-floating-label {
     transition: all 0.4s;
-    color: darken($clr-white, 20);
+    color: darken($clr-white, 12);
     position: absolute;
     top: 0;
     left: 1em;

@@ -13,18 +13,6 @@
   color: $font-color;
 }
 
-input, button {
-  outline: none;
-  color: $controls-font-color;
-  background-color: $controls-background-color;
-  border: 1px solid $controls-border-color;
-  box-sizing: border-box;
-  min-height: 50px;
-  padding-left: 8px;
-  padding-right: 8px;
-  line-height: 1.5em;
-}
-
 button {
   &:focus {
     background-color: $controls-background-color;

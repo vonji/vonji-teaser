@@ -1,27 +1,20 @@
 <template lang="html">
   <page>
     <img class="logo" src="/static/img/logo-orange.png" alt="">
-
     <h1>On sait tous faire quelque chose !</h1>
-
-    <tag-line></tag-line>
-
+    <sign-in-form></sign-in-form>
     <h2>Construisons ensemble la plus grande base de compétences du monde !</h2>
-
-    <subscribe></subscribe>
   </page>
 </template>
 
 <script>
-import Page from 'components/page';
-import TagLine from 'components/TagLine';
-import Subscribe from 'components/Subscribe';
+import Page from 'components/Page';
+import SignInForm from 'components/SignInForm';
 
 export default {
   components: {
     Page,
-    TagLine,
-    Subscribe,
+    SignInForm,
   },
 };
 </script>
