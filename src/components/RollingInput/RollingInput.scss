@@ -34,6 +34,30 @@ $gap: 16px;
     }
   }
 
+  @keyframes leaving {
+    from { transform: translateY(-50%); opacity: 0.6; }
+    to { transform: translateY(-150%); opacity: 0; }
+  }
+
+  @keyframes entering {
+    from { transform: translateY(100%); opacity: 0.1; }
+    to { transform: translateY(-50%); opacity: 0.6; }
+  }
+
+  .rl-placeholder-label {
+    opacity: 0.6;
+    &.rl-enter {
+      animation-name: entering;
+      animation-duration: 1s;
+      animation-fill-mode: forwards;
+    }
+    &.rl-leave {
+      animation-name: leaving;
+      animation-duration: 1s;
+      animation-fill-mode: forwards;
+    }
+  }
+
   .rl-placeholder-label {
     position: absolute;
     pointer-events: none;

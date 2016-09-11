@@ -17,6 +17,7 @@ const assetsRoot = path.resolve(__dirname, '../assets');
 const wpConfig = {
   entry: {
     app: [
+      'babel-polyfill',
       path.resolve(__dirname, "../src/app.js"),
       ...(DEBUG ? [] : []),
     ],
