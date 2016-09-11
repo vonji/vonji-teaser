@@ -9,6 +9,11 @@ const GLOBALS = {
   __DEV__: !DEBUG,
 };
 
+// In order to fix a bug which prevents images to load when using
+// css sourceMap option you have to add the root of your assets
+// in the options.
+const assetsRoot = path.resolve(__dirname, '../assets');
+
 const wpConfig = {
   entry: {
     app: [
@@ -26,9 +31,9 @@ const wpConfig = {
   module: {
     loaders: [
       {
-        test: /\.*jsx?$/,
+        test: /\.jsx?$/,
         exclude: /node_modules/,
-        loader: 'babel',
+        loader: 'babel-loader',
         query: {
           cacheDirectory: !DEBUG,
           babelrc: false,
@@ -36,18 +41,11 @@ const wpConfig = {
         },
       },
       {
-        test: /\.scss$/,
+        test: /\.(sass|scss)$/,
         loaders: [
-          'style',
-          `css?${DEBUG ? 'sourceMap' : ''}`,
-          `sass?${DEBUG ? 'sourceMap' : ''}`,
-        ],
-      },
-      {
-        test: /\.css$/,
-        loaders: [
-          'style',
-          `css?${DEBUG ? 'sourceMap' : ''}`,
+          'style-loader',
+          `css-loader?${assetsRoot}${JSON.stringify({ sourceMap: DEBUG, minimize: !DEBUG })}`,
+          `sass-loader?${JSON.stringify({ sourceComments: DEBUG })}`,
         ],
       },
       {
