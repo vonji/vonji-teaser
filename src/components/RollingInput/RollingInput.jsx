@@ -12,25 +12,23 @@ class RollingInput extends React.Component {
 
   constructor() {
     super();
-    this.onFocus = this.onFocus.bind(this);
-    this.onBlur = this.onBlur.bind(this);
+    this.onChange = this.onChange.bind(this);
+    this.isDirty = this.isDirty.bind(this);
     this.changePlaceholder = this.changePlaceholder.bind(this);
     this.state = {
+      content: '',
       placeholder: '',
       animState: 'normal',
-      animRunning: true,
     };
   }
 
   componentDidMount() {
-    this.setState({
-      placeholder: this.props.placeholder,
-    });
+    this.setState({ placeholder: this.props.placeholder });
     setInterval(this.changePlaceholder, 5000);
   }
 
   changePlaceholder() {
-    if (this.state.animRunning) {
+    if (!this.isDirty()) {
       Promise.resolve()
       .then(() => {
         return new Promise(r => {
@@ -50,35 +48,28 @@ class RollingInput extends React.Component {
     }
   }
 
-  onFocus() {
-    this.setState({
-      animState: 'normal',
-      animRunning: false,
-    });
+  isDirty() {
+    return this.state.content !== '';
   }
 
-  onBlur() {
+  onChange(ev) {
     this.setState({
-      animRunning: true,
+      content: ev.target.value,
     });
-  }
-
-  onChange() {
-    console.log('on change');
   }
 
   render() {
     const {
-      onChange, onFocus, onBlur,
+      onChange, isDirty,
       changePlaceholder,
-      state: { animState, placeholder },
+      state: { animState, placeholder, content },
       props: { className }
     } = this;
 
     const rootClasses = [
         className,
         'rl-wrapper',
-        false ? 'rl-dirty' : '',
+        isDirty() ? 'rl-dirty' : '',
       ].join(' ');
     const placeholderClasses = [
         "rl-placeholder-label",
@@ -90,12 +81,12 @@ class RollingInput extends React.Component {
       <div className={rootClasses}>
         <input
           onChange={onChange}
-          onFocus={onFocus}
-          onBlur={onBlur}
+          value={content}
           className="rl" type="text"
         />
         <label
           className={placeholderClasses}
+          style={ _.merge({}, isDirty() ? {opacity: 0} : {}) }
         >
           {placeholder}
         </label>

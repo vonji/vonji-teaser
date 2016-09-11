@@ -2,13 +2,6 @@
 
 $gap: 16px;
 
-@mixin transition($a, $i) {
-  transition: top #{$a}s linear,
-    transform #{$a}s linear,
-    opacity #{$i}s linear,
-    color #{$a}s linear;
-}
-
 .rl-wrapper {
 
   position: relative;
@@ -16,6 +9,7 @@ $gap: 16px;
   text-overflow: ellipsis;
 
   input.rl {
+    line-height: 1.5em;
     outline: none;
     border: 0px;
     border-bottom: 1px solid $clr-prim;
@@ -29,23 +23,19 @@ $gap: 16px;
     input.rl {
       text-align: right;
     }
-    .rl-placeholder-label {
-      transform-origin: right;
-    }
   }
 
   @keyframes leaving {
-    from { transform: translateY(-50%); opacity: 0.6; }
-    to { transform: translateY(-150%); opacity: 0; }
+    from { transform: translateY(-50%); }
+    to { transform: translateY(-350%); }
   }
 
   @keyframes entering {
-    from { transform: translateY(100%); opacity: 0.1; }
-    to { transform: translateY(-50%); opacity: 0.6; }
+    from { transform: translateY(300%); }
+    to { transform: translateY(-50%); }
   }
 
   .rl-placeholder-label {
-    opacity: 0.6;
     &.rl-enter {
       animation-name: entering;
       animation-duration: 1s;
@@ -59,6 +49,7 @@ $gap: 16px;
   }
 
   .rl-placeholder-label {
+    opacity: 0.5;
     position: absolute;
     pointer-events: none;
     width: calc(100% - #{$gap * 2});
@@ -67,14 +58,10 @@ $gap: 16px;
     color: white;
     transform: translateY(-50%) scaleY(1);
     transform-origin: left;
-    @include transition(0.12, 0.1);
+    transition: opacity 0.18s ease-out;
   }
 
-  input.rl:focus ~ .rl-placeholder-label,
-  .rl-wrapper.rl-dirty > .rl-placeholder-label {
-    top: 0%;
+  input.rl:focus ~ .rl-placeholder-label {
     opacity: 0 !important;
-    transform: translateY(-15%) scaleY(0.35) scaleX(0.4);
-    @include transition(0.12, 8);
   }
 }
