@@ -1,4 +1,4 @@
-@import '../../shared/colors.scss';
+@import '../../shared/styles/settings.scss';
 
 $gap: 16px;
 
@@ -10,37 +10,47 @@ $gap: 16px;
 }
 
 .rl-wrapper {
+
   position: relative;
   overflow: hidden;
   text-overflow: ellipsis;
-}
 
-.rl-align-right {
-  text-align: right;
   input.rl {
+    outline: none;
+    border: 0px;
+    border-bottom: 1px solid $clr-prim;
+    background-color: transparentize(black, 0.6);
+    padding: 1rem;
+    color: $controls-font-color;
+  }
+
+  &.rl-align-right {
     text-align: right;
+    input.rl {
+      text-align: right;
+    }
+    .rl-placeholder-label {
+      transform-origin: right;
+    }
   }
+
   .rl-placeholder-label {
-    transform-origin: right;
+    position: absolute;
+    pointer-events: none;
+    width: calc(100% - #{$gap * 2});
+    top: 50%;
+    left: $gap;
+    color: white;
+    transform: translateY(-50%) scaleY(1);
+    transform-origin: left;
+    @include transition(0.12, 0.1);
   }
-}
 
-.rl-placeholder-label {
-  position: absolute;
-  pointer-events: none;
-  width: calc(100% - #{$gap * 2});
-  top: 50%;
-  left: $gap;
-  color: white;
-  transform: translateY(-50%) scaleY(1);
-  transform-origin: left;
-  @include transition(0.12, 0.1);
-}
-
-input.rl:focus ~ .rl-placeholder-label,
-.rl-wrapper.rl-dirty > .rl-placeholder-label {
-  top: 0%;
-  opacity: 0 !important;
-  transform: translateY(-15%) scaleY(0.35) scaleX(0.4);
-  @include transition(0.12, 8);
+  input.rl:focus ~ .rl-placeholder-label,
+  .rl-wrapper.rl-dirty > .rl-placeholder-label {
+    top: 0%;
+    opacity: 0 !important;
+    transform: translateY(-15%) scaleY(0.35) scaleX(0.4);
+    @include transition(0.12, 8);
+  }
 }

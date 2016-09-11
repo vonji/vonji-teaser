@@ -1,0 +1,28 @@
+@import '../../shared/styles/settings.scss';
+
+.sign-in {
+  width: 100%;
+  max-width: 900px;
+
+  .form {
+    font-size: 1.5em;
+    width: 100%;
+    display: flex;
+    align-items: baseline;
+  }
+
+  .rl-lastname {
+    flex: 1 0 auto;
+    margin-right: 0.5em;
+  }
+
+  .rl-lastname + span {
+    opacity: 0.5;
+    padding-bottom: 2rem;
+  }
+
+  .rl-skill {
+    flex: 1 0 auto;
+    margin-left: 0.5em;
+  }
+}

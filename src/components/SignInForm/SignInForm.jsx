@@ -1,14 +1,17 @@
 import React from 'react';
+require('./SignInForm.scss');
 
 import RollingInput from '../RollingInput/RollingInput.jsx';
-
-require('./SignInForm.scss');
 
 class SignInForm extends React.Component {
   render() {
     return (
-      <div>
-        <RollingInput></RollingInput>
+      <div className="sign-in">
+        <div className="form">
+          <RollingInput className="rl-lastname rl-align-right" placeholder="Pierre" />
+          <span>sait</span>
+          <RollingInput className="rl-skill" placeholder="faire des cabrioles." />
+        </div>
       </div>
     );
   }
