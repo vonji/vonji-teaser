@@ -1,13 +1,16 @@
 import React from 'react';
+require('./App.scss');
 
-import Page from '../Page';
+import MainPage from '../MainPage/MainPage.jsx';
 
-export default class App extends React.Component {
+class App extends React.Component {
   render() {
     return (
       <div>
-        <Page></Page>
+        <MainPage />
       </div>
     );
   }
 }
+
+export default App;

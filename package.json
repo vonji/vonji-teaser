@@ -8,25 +8,32 @@
     "build": "babel-node tools/run build",
     "start": "babel-node tools/run server"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Vonji ©",
+  "license": "MIT",
   "dependencies": {
+    "babel-cli": "^6.14.0"
+  },
+  "devDependencies": {
+    "babel-core": "^6.14.0",
+    "babel-loader": "^6.2.5",
+    "babel-preset-es2015": "^6.14.0",
     "babel-preset-node5": "^11.1.0",
-    "browser-sync": "^2.15.0",
+    "babel-preset-react": "^6.11.1",
+    "babel-preset-stage-0": "^6.5.0",
     "css-loader": "^0.25.0",
     "del": "^2.2.2",
-    "eslint-plugin-import": "^1.14.0",
-    "eslint-plugin-jsx-a11y": "^2.2.1",
+    "file-loader": "^0.9.0",
     "fs-extra": "^0.30.0",
     "ncp": "^2.0.0",
     "node-sass": "^3.9.3",
+    "normalize.css": "^4.2.0",
     "react": "^15.3.1",
     "react-dom": "^15.3.1",
     "sass-loader": "^4.0.2",
     "style-loader": "^0.13.1",
-    "webpack-dev-middleware": "^1.7.0",
-    "webpack-hot-middleware": "^2.12.2",
-    "webpack-merge": "^0.14.1"
+    "url-loader": "^0.5.7",
+    "webpack": "^1.13.2",
+    "webpack-dev-server": "^1.15.1"
   },
   "babel": {
     "presets": [
@@ -34,17 +41,5 @@
       "stage-0",
       "node5"
     ]
-  },
-  "devDependencies": {
-    "babel-core": "^6.14.0",
-    "babel-loader": "^6.2.5",
-    "babel-preset-es2015": "^6.14.0",
-    "babel-preset-react": "^6.11.1",
-    "babel-preset-stage-0": "^6.5.0",
-    "eslint": "^3.5.0",
-    "eslint-config-airbnb": "^11.0.0",
-    "eslint-plugin-react": "^6.2.0",
-    "webpack": "^1.13.2",
-    "webpack-dev-server": "^1.15.1"
   }
 }

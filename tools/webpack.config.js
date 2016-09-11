@@ -1,20 +1,25 @@
 import path from "path";
 import webpack from 'webpack';
-import merge from 'webpack-merge';
 
-const PROD = process.argv.includes('--release');
+const DEBUG = !process.argv.includes('--release');
 const VERBOSE = process.argv.includes('--verbose');
 
 const GLOBALS = {
-  'process.env.NODE_ENV': PROD ? '"production"' : '"development"',
-  __DEV__: !PROD,
+  'process.env.NODE_ENV': DEBUG ? '"development"' : '"production"',
+  __DEV__: !DEBUG,
 };
 
 const wpConfig = {
-  entry: path.resolve(__dirname, "../src/app.js"),
+  entry: {
+    app: [
+      path.resolve(__dirname, "../src/app.js"),
+      ...(DEBUG ? [] : []),
+    ],
+  },
 
   output: {
     filename: "bundle.js",
+    publicPath: '/build/',
     path: path.resolve(__dirname, "../build/"),
   },
 
@@ -25,27 +30,31 @@ const wpConfig = {
         exclude: /node_modules/,
         loader: 'babel',
         query: {
+          cacheDirectory: !DEBUG,
           babelrc: false,
-          presets: [
-            'react',
-            'es2015',
-            'stage-0',
-          ],
+          presets: [ 'react', 'es2015', 'stage-0' ],
         },
       },
       {
         test: /\.scss$/,
         loaders: [
-          "style",
-          `css?${PROD ? '' : 'sourceMap'}`,
-          `sass?${PROD ? '' : 'sourceMap'}`,
+          'style',
+          `css?${DEBUG ? 'sourceMap' : ''}`,
+          `sass?${DEBUG ? 'sourceMap' : ''}`,
+        ],
+      },
+      {
+        test: /\.css$/,
+        loaders: [
+          'style',
+          `css?${DEBUG ? 'sourceMap' : ''}`,
         ],
       },
       {
         test: /\.(png|jpg|jpeg|gif|svg|woff|woff2)$/,
         loader: 'url-loader',
         query: {
-          name: PROD ? '[hash].[ext]' : '[path][name].[ext]?[hash]',
+          name: DEBUG ? '[path][name].[ext]?[hash]' : '[hash].[ext]',
           limit: 10000,
         },
       },
@@ -53,7 +62,7 @@ const wpConfig = {
         test: /\.(eot|ttf|wav|mp3)$/,
         loader: 'file-loader',
         query: {
-          name: PROD ? '[hash].[ext]' : '[path][name].[ext]?[hash]',
+          name: DEBUG ? '[path][name].[ext]?[hash]' : '[hash].[ext]',
         },
       },
     ],
@@ -61,7 +70,7 @@ const wpConfig = {
 
   target: 'web',
 
-  devtool: PROD ? '' : 'cheap-module-eval-source-map',
+  devtool: DEBUG ? 'cheap-module-eval-source-map' : '',
 
   resolve: {
     root: path.resolve(__dirname, '../src'),
@@ -69,12 +78,14 @@ const wpConfig = {
     extensions: ['', '.webpack.js', '.web.js', '.js', '.jsx', '.json'],
   },
 
-  historyApiFallback: !PROD,
+  historyApiFallback: !DEBUG,
 
   plugins: [
+    new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.DefinePlugin({ ...GLOBALS, 'process.env.BROWSER': true }),
+    new webpack.HotModuleReplacementPlugin(),
 
-    ...PROD ? [
+    ...(DEBUG ? [] : [
       new webpack.optimize.DedupePlugin(),
       new webpack.optimize.UglifyJsPlugin({
         compress: {
@@ -83,15 +94,14 @@ const wpConfig = {
         },
       }),
       new webpack.optimize.AggressiveMergingPlugin(),
-    ] : [],
+    ]),
   ],
 
-  cache: !PROD,
-  debug: !PROD,
+  cache: !DEBUG,
 
   stats: {
     colors: true,
-    reasons: !PROD,
+    reasons: !DEBUG,
     hash: VERBOSE,
     version: VERBOSE,
     timings: true,
