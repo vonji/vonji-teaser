@@ -24,10 +24,15 @@ class RollingInput extends React.Component {
 
   componentDidMount() {
     this.setState({ placeholder: this.props.placeholder });
-    setInterval(this.changePlaceholder, 5000);
   }
 
-  changePlaceholder() {
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.placeholder !== this.props.placeholder) {
+      this.changePlaceholder(nextProps.placeholder);
+    }
+  }
+
+  changePlaceholder(newPlaceholder) {
     if (!this.isDirty()) {
       Promise.resolve()
       .then(() => {
@@ -37,7 +42,12 @@ class RollingInput extends React.Component {
       })
       .then(() => {
         return new Promise(r => {
-          setTimeout(() => { this.setState({ animState: 'enter' }, r); }, 1000);
+          setTimeout(() => { this.setState({ placeholder: newPlaceholder }, r); }, 1000);
+        });
+      })
+      .then(() => {
+        return new Promise(r => {
+          setTimeout(() => { this.setState({ animState: 'enter' }, r); }, 10);
         });
       })
       .then(() => {
