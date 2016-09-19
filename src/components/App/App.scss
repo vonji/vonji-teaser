@@ -29,6 +29,24 @@ button {
   }
 }
 
+input {
+  padding: 0.34em 0 0.34em 0;
+  line-height: 1.8em;
+  outline: none;
+  border: 0px;
+  border-bottom: 1px solid $clr-prim;
+  background-color: transparentize(black, 0.6);
+  color: $controls-font-color;
+}
+
+button {
+  border: 1px solid $clr-prim;
+  outline: none;
+  padding: 0.8em;
+  background-color: transparentize(black, 0.6);
+  color: $controls-font-color;
+}
+
 body {
   font-family: 'Open Sans', sans-serif;
   font-weight: 300;

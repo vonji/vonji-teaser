@@ -3,12 +3,31 @@
 .sign-in {
   width: 100%;
   max-width: 900px;
+  display: flex;
+  flex-flow: column;
 
   .form {
     font-size: 1.55em;
     width: 100%;
     display: flex;
     align-items: center;
+  }
+
+  .rl-verb {
+    transform: translateY(-1px);
+  }
+
+  button {
+    font-size: 1.3em;
+    margin-top: 1.8em;
+    align-self: center;
+    width: 40%;
+  }
+
+  .vj-input.email {
+    margin-top: 1.8em;
+    width: 40%;
+    align-self: center;
   }
 
   .rl-lastname {

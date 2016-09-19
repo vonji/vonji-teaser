@@ -9,13 +9,6 @@ $gap: 16px;
 
   input.rl {
     flex: 1 0 auto;
-    line-height: 1.8em;
-    padding: 0.5em 0 0.5em 0;
-    outline: none;
-    border: 0px;
-    border-bottom: 1px solid $clr-prim;
-    background-color: transparentize(black, 0.6);
-    color: $controls-font-color;
   }
 
   &.rl-align-right {
@@ -61,7 +54,7 @@ $gap: 16px;
     pointer-events: none;
     white-space: nowrap;
     width: 100%;
-    top: 50%;
+    top: calc(50% - 1px);
     left: 0;
     transform: translateY(-50%) scaleY(1);
     transform-origin: left;

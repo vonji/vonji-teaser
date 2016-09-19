@@ -26,6 +26,16 @@ class RollingInput extends React.Component {
     this.setState({ placeholder: this.props.placeholder });
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    const { onDirty, onClean } = this.props;
+    if (onDirty && this.isDirty()) {
+      onDirty();
+    }
+    if (onClean && !this.isDirty()) {
+      onClean();
+    }
+  }
+
   componentWillReceiveProps(nextProps) {
     if (nextProps.placeholder !== this.props.placeholder) {
       this.changePlaceholder(nextProps.placeholder);

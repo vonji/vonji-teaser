@@ -1,0 +1,35 @@
+.vj-input {
+  position: relative;
+  display: flex;
+  margin-top: 10px;
+  margin-bottom: 10px;
+
+  input {
+    flex: 1 0 auto;
+  }
+
+  label {
+    opacity: 0.5;
+    width: 100%;
+    pointer-events: none;
+    position: absolute;
+    top: calc(50% - 1px);
+    transform: translateY(-50%);
+    left: 0;
+  }
+}
+
+.vj-input > input ~ label {
+  transition: transform 0.18s ease-out, opacity 0.18s linear;
+  transform-origin: center left;
+  opacity: 0.5;
+  transform: translateY(-50%) scale(1);
+}
+
+.vj-input > input:focus ~ label,
+.vj-input.vj-input-dirty > input ~ label {
+  transition: transform 0.18s ease-out, opacity 8s linear;
+  transform-origin: center left;
+  opacity: 0;
+  transform: translateY(110%) scale(0.80);
+}
