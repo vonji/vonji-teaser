@@ -3,18 +3,18 @@
 $gap: 16px;
 
 .rl-wrapper {
-
-  position: relative;
   overflow: hidden;
-  text-overflow: ellipsis;
+  position: relative;
+  display: flex;
 
   input.rl {
-    line-height: 1.5em;
+    flex: 1 0 auto;
+    line-height: 1.8em;
+    padding: 0.5em 0 0.5em 0;
     outline: none;
     border: 0px;
     border-bottom: 1px solid $clr-prim;
     background-color: transparentize(black, 0.6);
-    padding: 1rem;
     color: $controls-font-color;
   }
 
@@ -22,6 +22,10 @@ $gap: 16px;
     text-align: right;
     input.rl {
       text-align: right;
+    }
+    .rl-placeholder-label {
+      right: 0;
+      left: auto;
     }
   }
 
@@ -49,13 +53,16 @@ $gap: 16px;
   }
 
   .rl-placeholder-label {
+    line-height: 1.8em;
+    overflow: hidden;
+    text-overflow: ellipsis;
     opacity: 0.5;
     position: absolute;
     pointer-events: none;
-    width: calc(100% - #{$gap * 2});
+    white-space: nowrap;
+    width: 100%;
     top: 50%;
-    left: $gap;
-    color: white;
+    left: 0;
     transform: translateY(-50%) scaleY(1);
     transform-origin: left;
     transition: opacity 0.18s ease-out;

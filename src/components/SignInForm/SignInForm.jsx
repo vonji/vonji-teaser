@@ -18,7 +18,7 @@ class SignInForm extends React.Component {
     super();
     this.state = {
       name: 'Pierre',
-      skill: 'sait faire du chameau sur neige.',
+      skill: 'faire du chameau sur neige.',
     };
   }
 
@@ -33,7 +33,7 @@ class SignInForm extends React.Component {
       <div className="sign-in">
         <div className="form">
           <RollingInput className="rl-lastname rl-align-right" placeholder={this.state.name} />
-          <span>sait</span>
+          <div>&nbsp;sait&nbsp;</div>
           <RollingInput className="rl-skill" placeholder={this.state.skill} />
         </div>
       </div>
