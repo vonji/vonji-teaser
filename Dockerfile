@@ -6,8 +6,7 @@ WORKDIR /usr/src/app
 COPY . /usr/src/app
 
 RUN npm install
-RUN npm run build -- --release
 
-CMD ["npm run server -- --release"]
+CMD ["npm start -- --release"]
 
 EXPOSE 8081
