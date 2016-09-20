@@ -4,7 +4,7 @@ import config from './webpack.config.js';
 
 const PROD = process.argv.includes('--release');
 
-const server = async () => {
+const server_dev = async () => {
   const PORT = 3000;
 
   const historyApiFallback = require('connect-history-api-fallback');
@@ -23,4 +23,4 @@ const server = async () => {
   });
 };
 
-export default server;
+export default server_dev;

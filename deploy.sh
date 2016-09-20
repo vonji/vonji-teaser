@@ -13,7 +13,7 @@ ssh -p $PORT $USER@$HOST <<ENDSSH
 ENDSSH
 
 scp -P $PORT -r ./build $USER@$HOST:~/$DIR/
-scp -P $PORT -r ./tools/server.prod.js $USER@$HOST:~/$DIR/tools/
+scp -P $PORT -r ./tools/server_prod.js $USER@$HOST:~/$DIR/tools/
 scp -P $PORT Dockerfile $USER@$HOST:~/$DIR/
 scp -P $PORT package.json $USER@$HOST:~/$DIR/
 

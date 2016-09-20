@@ -61,7 +61,7 @@ class SignInForm extends React.Component {
           <RollingInput className="rl-skill" placeholder={skill} />
         </div>
         <VjInput className="email" name="email" type="text" placeholder="jean@pierre.com" />
-        <button>Envoyer</button>
+        <button>Je participe !</button>
       </div>
     );
   }

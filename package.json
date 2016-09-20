@@ -6,8 +6,8 @@
   "scripts": {
     "clean": "babel-node tools/run clean",
     "build": "babel-node tools/run build",
-    "dev": "babel-node tools/run server",
-    "start": "node tools/server.prod.js"
+    "dev": "babel-node tools/run server_dev",
+    "start": "node tools/server_prod.js"
   },
   "author": "Vonji ©",
   "license": "MIT",
