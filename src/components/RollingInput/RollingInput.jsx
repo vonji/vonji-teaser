@@ -12,11 +12,8 @@ class RollingInput extends React.Component {
 
   constructor() {
     super();
-    this.onChange = this.onChange.bind(this);
-    this.isDirty = this.isDirty.bind(this);
-    this.changePlaceholder = this.changePlaceholder.bind(this);
+    this.changePlaceholder = ::this.changePlaceholder;
     this.state = {
-      content: '',
       placeholder: '',
       animState: 'normal',
     };
@@ -24,16 +21,6 @@ class RollingInput extends React.Component {
 
   componentDidMount() {
     this.setState({ placeholder: this.props.placeholder });
-  }
-
-  componentDidUpdate(prevProps, prevState) {
-    const { onDirty, onClean } = this.props;
-    if (onDirty && this.isDirty()) {
-      onDirty();
-    }
-    if (onClean && !this.isDirty()) {
-      onClean();
-    }
   }
 
   componentWillReceiveProps(nextProps) {
@@ -69,28 +56,22 @@ class RollingInput extends React.Component {
   }
 
   isDirty() {
-    return this.state.content !== '';
-  }
-
-  onChange(ev) {
-    this.setState({
-      content: ev.target.value,
-    });
+    return this.props.value !== '';
   }
 
   render() {
     const {
-      onChange, isDirty,
       changePlaceholder,
-      state: { animState, placeholder, content },
-      props: { className }
+      state: { animState, placeholder },
+      props: { className, onChange, value }
     } = this;
 
     const rootClasses = [
         className,
         'rl-wrapper',
-        isDirty() ? 'rl-dirty' : '',
+        this.isDirty() ? 'rl-dirty' : '',
       ].join(' ');
+
     const placeholderClasses = [
         "rl-placeholder-label",
         ANIM_STATES[animState].leave ? 'rl-leave' : '',
@@ -100,13 +81,13 @@ class RollingInput extends React.Component {
     return (
       <div className={rootClasses}>
         <input
-          onChange={onChange}
-          value={content}
+          onChange={ev => onChange(ev.target.value, ev)}
+          value={value}
           className="rl" type="text"
         />
         <label
           className={placeholderClasses}
-          style={ _.merge({}, isDirty() ? {opacity: 0} : {}) }
+          style={ _.merge({}, this.isDirty() ? {opacity: 0} : {}) }
         >
           {placeholder}
         </label>
@@ -114,5 +95,9 @@ class RollingInput extends React.Component {
     );
   }
 }
+
+RollingInput.defaultProps = {
+  value: '',
+};
 
 export default RollingInput;

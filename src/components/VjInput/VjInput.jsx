@@ -2,40 +2,22 @@ import React from 'react';
 import _ from 'lodash';
 require('./VjInput.scss');
 
-class VjInput extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      value: '',
-    };
-    this.onChange = ::this.onChange;
-  }
+const VjInput = props => {
+  const {
+    onChange, placeholder, className,
+    type, name, value,
+  } = props;
 
-  onChange(ev) {
-    ev.preventDefault();
-    this.setState({
-      value: ev.target.value,
-    });
-  }
-
-  isDirty() {
-    return this.state.value !== '';
-  }
-
-  render() {
-    const {
-      onChange,
-      props: { placeholder, className, type, name },
-      state: { value },
-    } = this;
-
-    return (
-      <div className={`vj-input ${className} ${this.isDirty() ? 'vj-input-dirty' : ''}`}>
-        <input onChange={onChange} type={type} name={name} value={value} />
-        <label>{placeholder}</label>
-      </div>
-    );
-  }
+  return (
+    <div className={`vj-input ${className} ${value !== '' ? 'vj-input-dirty' : ''}`}>
+      <input onChange={ev => onChange(ev.target.value, ev)} type={type} name={name} value={value} />
+      <label>{placeholder}</label>
+    </div>
+  );
 }
+
+VjInput.defaultProps = {
+  value: '',
+};
 
 export default VjInput;

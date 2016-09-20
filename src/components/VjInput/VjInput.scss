@@ -31,7 +31,25 @@
 .vj-input > input:focus ~ label,
 .vj-input.vj-input-dirty > input ~ label {
   transition: transform 0.18s ease-out, opacity 8s linear;
-  transform-origin: center left;
   opacity: 0;
   transform: translateY(110%) scale(0.80);
+}
+
+.vj-input {
+  &.vj-center {
+    & > input ~ label {
+      transform-origin: center center;
+    }
+    input, label {
+      text-align: center;
+    }
+  }
+  &.vj-right {
+    & > input ~ label {
+      transform-origin: center right;
+    }
+    input, label {
+      text-align: right;
+    }
+  }
 }
