@@ -5,8 +5,8 @@ RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
 COPY . /usr/src/app
 
-RUN npm install
+RUN NODE_ENV=production npm install
 
-CMD ["npm start -- --release"]
+CMD ["npm start"]
 
 EXPOSE 8081

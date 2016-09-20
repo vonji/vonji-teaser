@@ -6,7 +6,8 @@
   "scripts": {
     "clean": "babel-node tools/run clean",
     "build": "babel-node tools/run build",
-    "start": "babel-node tools/run server"
+    "dev": "babel-node tools/run server",
+    "start": "node tools/server.prod.js"
   },
   "author": "Vonji ©",
   "license": "MIT",
@@ -44,5 +45,8 @@
     "url-loader": "^0.5.7",
     "webpack": "^1.13.2",
     "webpack-dev-server": "^1.16.1"
+  },
+  "dependencies": {
+    "express": "^4.14.0"
   }
 }
