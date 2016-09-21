@@ -3,7 +3,7 @@ import _ from 'lodash';
 import { db } from '../../firebase.js';
 require('./SignInForm.scss');
 
-import RollingInput from '../RollingInput/RollingInput.jsx';
+import VjRollingInput from '../VjRollingInput/VjRollingInput.jsx';
 import VjInput from '../VjInput/VjInput.jsx';
 
 class SignInForm extends React.Component {
@@ -92,15 +92,15 @@ class SignInForm extends React.Component {
     return (
       <div className="sign-in">
         <div className="form">
-          <RollingInput
+          <VjRollingInput
             onChange={updateName} value={this.state.name}
-            className="rl-name rl-align-right"
+            className="vj-roll-name vj-roll-align-right"
             placeholder={name}
           />
-          <div className="rl-verb">&nbsp;sait&nbsp;</div>
-          <RollingInput
+          <div className="vj-roll-verb">&nbsp;sait&nbsp;</div>
+          <VjRollingInput
             onChange={updateSkill} value={this.state.skill}
-            className="rl-skill"
+            className="vj-roll-skill"
             placeholder={skill}
           />
         </div>

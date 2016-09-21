@@ -1,6 +1,6 @@
 import React from 'react';
 import _ from 'lodash';
-require('./RollingInput.scss');
+require('./VjRollingInput.scss');
 
 const ANIM_STATES = {
   enter: {leave: false, enter: true},
@@ -8,7 +8,7 @@ const ANIM_STATES = {
   leave: {leave: true, enter: false},
 }
 
-class RollingInput extends React.Component {
+class VjRollingInput extends React.Component {
 
   constructor() {
     super();
@@ -24,7 +24,7 @@ class RollingInput extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.placeholder !== this.props.placeholder) {
+    if (nextProps.placeholder !== this.state.placeholder) {
       this.changePlaceholder(nextProps.placeholder);
     }
   }
@@ -67,23 +67,23 @@ class RollingInput extends React.Component {
     } = this;
 
     const rootClasses = [
-        className,
-        'rl-wrapper',
-        this.isDirty() ? 'rl-dirty' : '',
-      ].join(' ');
+      className,
+      'vj-roll-wrapper',
+      this.isDirty() ? 'vj-roll-dirty' : '',
+    ].join(' ');
 
     const placeholderClasses = [
-        "rl-placeholder-label",
-        ANIM_STATES[animState].leave ? 'rl-leave' : '',
-        ANIM_STATES[animState].enter ? 'rl-enter' : '',
-      ].join(' ');
+      "vj-roll-placeholder-label",
+      ANIM_STATES[animState].leave ? 'vj-roll-leave' : '',
+      ANIM_STATES[animState].enter ? 'vj-roll-enter' : '',
+    ].join(' ');
 
     return (
       <div className={rootClasses}>
         <input
           onChange={ev => onChange(ev.target.value, ev)}
           value={value}
-          className="rl" type="text"
+          className="vj-roll" type="text"
         />
         <label
           className={placeholderClasses}
@@ -96,8 +96,8 @@ class RollingInput extends React.Component {
   }
 }
 
-RollingInput.defaultProps = {
+VjRollingInput.defaultProps = {
   value: '',
 };
 
-export default RollingInput;
+export default VjRollingInput;

@@ -2,50 +2,50 @@
 
 $gap: 16px;
 
-.rl-wrapper {
+.vj-roll-wrapper {
   overflow: hidden;
   position: relative;
   display: flex;
 
-  input.rl {
+  input.vj-roll {
     flex: 1 0 auto;
   }
 
-  &.rl-align-right {
+  &.vj-roll-align-right {
     text-align: right;
-    input.rl {
+    input.vj-roll {
       text-align: right;
     }
-    .rl-placeholder-label {
+    .vj-roll-placeholder-label {
       right: 0;
       left: auto;
     }
   }
 
-  @keyframes leaving {
+  @keyframes vj-roll-leaving {
     from { transform: translateY(-50%); }
     to { transform: translateY(-350%); }
   }
 
-  @keyframes entering {
+  @keyframes vj-roll-entering {
     from { transform: translateY(300%); }
     to { transform: translateY(-50%); }
   }
 
-  .rl-placeholder-label {
-    &.rl-enter {
-      animation-name: entering;
+  .vj-roll-placeholder-label {
+    &.vj-roll-enter {
+      animation-name: vj-roll-entering;
       animation-duration: 1s;
       animation-fill-mode: forwards;
     }
-    &.rl-leave {
-      animation-name: leaving;
+    &.vj-roll-leave {
+      animation-name: vj-roll-leaving;
       animation-duration: 1s;
       animation-fill-mode: forwards;
     }
   }
 
-  .rl-placeholder-label {
+  .vj-roll-placeholder-label {
     line-height: 1.8em;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -61,7 +61,7 @@ $gap: 16px;
     transition: opacity 0.18s ease-out;
   }
 
-  input.rl:focus ~ .rl-placeholder-label {
+  input.vj-roll:focus ~ .vj-roll-placeholder-label {
     opacity: 0 !important;
   }
 }
