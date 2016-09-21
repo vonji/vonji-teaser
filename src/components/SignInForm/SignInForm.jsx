@@ -6,6 +6,43 @@ require('./SignInForm.scss');
 import VjRollingInput from '../VjRollingInput/VjRollingInput.jsx';
 import VjInput from '../VjInput/VjInput.jsx';
 
+
+const VjAlert = (props) => {
+  return (
+    <div onClick={props.onClick} className={`vj-alert vj-alert-${props.type}`}>
+      <div className="vj-alert-heading">{props.title}</div>
+      <div className="vj-alert-body">{props.children}</div>
+    </div>
+  );
+};
+
+const VjAlertSubscribeFailure = (props) => {
+  return (
+    <VjAlert
+      onClick={props.onClick}
+      type="error"
+      title="Oops... quelque chose s'est mal passé."
+    >
+      Vous avez peut-être oublié quelque chose ou bien le serveur est indisposé.<br/>
+      Quoi qu'il en soit réessayez plus tard :)
+    </VjAlert>
+  )
+}
+
+const VjAlertSubscribeSuccess = (props) => {
+  return (
+    <VjAlert
+      onClick={props.onClick}
+      type="success"
+      title="Super !"
+    >
+      Merci de vous être inscrit sur Vonji,
+      vous recevrez bientôt des nouvelles de nous et
+      apparaitrez sur notre liste déroulante !
+    </VjAlert>
+  )
+}
+
 class SignInForm extends React.Component {
 
   constructor(props) {
@@ -14,11 +51,15 @@ class SignInForm extends React.Component {
     this.state = {
       entries: [],
       current: this.ph,
+      name: '', skill: '', email: '',
     };
     this.onSubmitForm = ::this.onSubmitForm;
+    this.dismissAlert = ::this.dismissAlert;
     this.updateName = ::this.updateName;
     this.updateSkill = ::this.updateSkill;
     this.updateEmail = ::this.updateEmail;
+    this.onSubmitSuccess = ::this.onSubmitSuccess;
+    this.onSubmitFailure = ::this.onSubmitFailure;
   }
 
   entriesReducer(entries, newEntry) {
@@ -47,10 +88,30 @@ class SignInForm extends React.Component {
     }, 5000);
   }
 
+  onSubmitSuccess() {
+    this.setState({ alert: 'success' });
+    setTimeout(() => {
+      this.dismissAlert();
+    }, 5000);
+  }
+
+  onSubmitFailure(err) {
+    this.setState({ alert: 'failure' });
+    setTimeout(() => {
+      this.dismissAlert();
+    }, 5000);
+  }
+
+  dismissAlert() {
+    this.setState({ alert: undefined });
+  }
+
   onSubmitForm(ev) {
     ev.preventDefault();
 
-    const { name, skill, email } = this.state;
+    const {
+      state: { name, skill, email },
+    } = this;
 
     const data = {
       name, skill, email,
@@ -58,16 +119,11 @@ class SignInForm extends React.Component {
       validated: false,
     };
 
-    console.log(data);
-
     const key = db.ref('/entries').push().key;
+
     db.ref('/entries/' + key).update(data)
-    .then(() => {
-      console.log('success');
-    })
-    .catch(err => {
-      console.error('error', err);
-    });
+      .then(this.onSubmitSuccess)
+      .catch(this.onSubmitFailure);
   }
 
   updateName(name) { this.setState({ name }); }
@@ -86,11 +142,14 @@ class SignInForm extends React.Component {
       onSubmitForm,
       updateName, updateSkill, updateEmail,
       state: {
+        alert,
         current: { name, skill }
       },
     } = this;
     return (
       <div className="sign-in">
+        { alert && alert === 'success' && <VjAlertSubscribeSuccess onClick={this.dismissAlert}/> }
+        { alert && alert === 'failure' && <VjAlertSubscribeFailure onClick={this.dismissAlert}/> }
         <div className="form">
           <VjRollingInput
             onChange={updateName} value={this.state.name}

@@ -24,6 +24,40 @@
     width: 40%;
   }
 
+  .vj-alert {
+    flex: 1 0 auto;
+    margin-bottom: 0.8em;
+    padding: 0.8em;
+    border-width: 1px 5px 1px 5px;
+    border-style: solid;
+    background-color: transparentize(black, 0.5);
+
+    .vj-alert-heading {
+      margin: 0;
+      padding: 0;
+      font-weight: bold;
+      margin-bottom: 0.6em;
+    }
+
+    &.vj-alert-success {
+      $green-amount: 45;
+      color: lighten(green, $green-amount);
+      border-color: transparentize(lighten(green, $green-amount), 0.55);
+      .vj-alert-heading {
+        color: lighten(green, $green-amount);
+      }
+    }
+
+    &.vj-alert-error {
+      $red-amount: 22;
+      color: lighten(red, $red-amount);
+      border-color: transparentize(lighten(red, $red-amount), 0.4);
+      .vj-alert-heading {
+        color: lighten(red, $red-amount);
+      }
+    }
+  }
+
   .vj-input.vj-email {
     margin-top: 1.8em;
     margin-bottom: 0;
