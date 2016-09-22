@@ -1,19 +1,35 @@
 import React from 'react';
+import { findDOMNode } from 'react-dom';
 import _ from 'lodash';
 import { db } from '../../firebase.js';
+import ReactTransitionGroup from 'react-addons-transition-group';
 require('./SignInForm.scss');
 
 import VjRollingInput from '../VjRollingInput/VjRollingInput.jsx';
 import VjInput from '../VjInput/VjInput.jsx';
 
 
-const VjAlert = (props) => {
-  return (
-    <div onClick={props.onClick} className={`vj-alert vj-alert-${props.type}`}>
-      <div className="vj-alert-heading">{props.title}</div>
-      <div className="vj-alert-body">{props.children}</div>
-    </div>
-  );
+class VjAlert extends React.Component {
+
+  componentWillEnter(cb) {
+    const el = findDOMNode(this);
+    TweenMax.fromTo(el, 0.3, {y: -50, opacity: 0}, {y: 0, opacity: 1, onComplete: cb});
+  }
+
+  componentWillLeave(cb) {
+    const el = findDOMNode(this);
+    TweenMax.fromTo(el, 0.3, {y: 0, opacity: 1}, {y: 50, opacity: 0, onComplete: cb});
+  }
+
+  render() {
+    const { props } = this;
+    return (
+      <div onClick={props.onClick} className={`vj-alert vj-alert-${props.type}`}>
+        <div className="vj-alert-heading">{props.title}</div>
+        <div className="vj-alert-body">{props.children}</div>
+      </div>
+    );
+  }
 };
 
 const VjInputGroup = (props) => {
@@ -23,33 +39,6 @@ const VjInputGroup = (props) => {
       {props.children}
     </div>
   );
-}
-
-const VjAlertSubscribeFailure = (props) => {
-  return (
-    <VjAlert
-      onClick={props.onClick}
-      type="error"
-      title="Oops... quelque chose s'est mal passé."
-    >
-      Vous avez peut-être oublié quelque chose ou bien le serveur est indisposé.<br/>
-      Quoi qu'il en soit réessayez plus tard :)
-    </VjAlert>
-  )
-}
-
-const VjAlertSubscribeSuccess = (props) => {
-  return (
-    <VjAlert
-      onClick={props.onClick}
-      type="success"
-      title="Super !"
-    >
-      Merci de vous être inscrit sur Vonji,
-      vous recevrez bientôt des nouvelles de nous et
-      apparaitrez sur notre liste déroulante !
-    </VjAlert>
-  )
 }
 
 class SignInForm extends React.Component {
@@ -160,8 +149,33 @@ class SignInForm extends React.Component {
     } = this;
     return (
       <div className="sign-in">
-        { alert && alert === 'success' && <VjAlertSubscribeSuccess onClick={this.dismissAlert}/> }
-        { alert && alert === 'failure' && <VjAlertSubscribeFailure onClick={this.dismissAlert}/> }
+        <ReactTransitionGroup>
+          {
+            alert && alert === 'success' &&
+            <VjAlert
+              type="success"
+              title="Super !"
+              onClick={this.dismissAlert}
+            >
+              Merci de vous être inscrit sur Vonji,
+              vous recevrez bientôt des nouvelles de nous et
+              apparaitrez sur notre liste déroulante !
+            </VjAlert>
+          }
+        </ReactTransitionGroup>
+        <ReactTransitionGroup>
+          {
+            alert && alert === 'failure' &&
+            <VjAlert
+              type="error"
+              title="Oops... quelque chose s'est mal passé."
+              onClick={this.dismissAlert}
+            >
+              Vous avez peut-être oublié quelque chose ou bien le serveur est indisposé.
+              Quoi qu'il en soit réessayez plus tard :)
+            </VjAlert>
+          }
+        </ReactTransitionGroup>
         <VjInputGroup label="Je m'appelle">
           <VjRollingInput
             onChange={updateName} value={this.state.name}
