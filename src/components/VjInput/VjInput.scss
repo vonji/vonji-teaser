@@ -3,9 +3,7 @@
 .vj-input {
   position: relative;
   display: flex;
-  margin-top: 10px;
-  margin-bottom: 10px;
-
+  flex: 1 0 auto;
   input {
     flex: 1 0 auto;
   }
@@ -21,18 +19,38 @@
   }
 }
 
-.vj-input > input ~ label {
+@mixin phAnimEnds($modifier) {
+  .vj-input.vj-#{$modifier} > input:focus ~ label,
+  .vj-input.vj-input-dirty.vj-#{$modifier} > input ~ label {
+    @content;
+  }
+}
+@mixin phAnimStarts($modifier) {
+  .vj-input.vj-#{$modifier} > input ~ label {
+    @content;
+  }
+}
+
+@include phAnimStarts('ph-down') {
   transition: transform 0.18s ease-out, opacity 0.18s linear;
   transform-origin: center left;
   opacity: 0.5;
   transform: translateY(-50%) scale(1);
 }
 
-.vj-input > input:focus ~ label,
-.vj-input.vj-input-dirty > input ~ label {
+@include phAnimEnds('ph-down') {
   transition: transform 0.18s ease-out, opacity 8s linear;
   opacity: 0;
   transform: translateY(110%) scale(0.80);
+}
+
+@include phAnimStarts('ph-out') {
+  transition: opacity 0.18s linear;
+  opacity: 0.5;
+}
+
+@include phAnimEnds('ph-out') {
+  opacity: 0;
 }
 
 .vj-input {

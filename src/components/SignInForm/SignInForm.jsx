@@ -16,6 +16,15 @@ const VjAlert = (props) => {
   );
 };
 
+const VjInputGroup = (props) => {
+  return (
+    <div className="vj-input-group">
+      <label>{props.label}&nbsp;</label>
+      {props.children}
+    </div>
+  );
+}
+
 const VjAlertSubscribeFailure = (props) => {
   return (
     <VjAlert
@@ -47,7 +56,7 @@ class SignInForm extends React.Component {
 
   constructor(props) {
     super(props);
-    this.ph = { email: 'none', name: 'On', skill: 'tous faire quelque chose' };
+    this.ph = { email: 'none', name: 'Pierre', skill: 'faire du repassage' };
     this.state = {
       entries: [],
       current: this.ph,
@@ -58,6 +67,7 @@ class SignInForm extends React.Component {
     this.updateName = ::this.updateName;
     this.updateSkill = ::this.updateSkill;
     this.updateEmail = ::this.updateEmail;
+    this.updatePostcode = ::this.updatePostcode;
     this.onSubmitSuccess = ::this.onSubmitSuccess;
     this.onSubmitFailure = ::this.onSubmitFailure;
   }
@@ -67,6 +77,7 @@ class SignInForm extends React.Component {
       return [...entries, {
         email: newEntry.email,
         name: newEntry.name,
+        postcode: "" + newEntry.postcode,
         skill: newEntry.skill,
       }];
     }
@@ -110,11 +121,11 @@ class SignInForm extends React.Component {
     ev.preventDefault();
 
     const {
-      state: { name, skill, email },
+      state: { name, skill, email, postcode },
     } = this;
 
     const data = {
-      name, skill, email,
+      name, skill, email, postcode,
       createdAt: Date.now(),
       validated: false,
     };
@@ -127,10 +138,9 @@ class SignInForm extends React.Component {
   }
 
   updateName(name) { this.setState({ name }); }
-
   updateSkill(skill) { this.setState({ skill }); }
-
   updateEmail(email) { this.setState({ email }); }
+  updatePostcode(postcode) { this.setState({ postcode }); }
 
   validateEmail(email) {
     const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -140,7 +150,8 @@ class SignInForm extends React.Component {
   render() {
     const {
       onSubmitForm,
-      updateName, updateSkill, updateEmail,
+      updateName, updateSkill,
+      updateEmail, updatePostcode,
       state: {
         alert,
         current: { name, skill }
@@ -150,26 +161,42 @@ class SignInForm extends React.Component {
       <div className="sign-in">
         { alert && alert === 'success' && <VjAlertSubscribeSuccess onClick={this.dismissAlert}/> }
         { alert && alert === 'failure' && <VjAlertSubscribeFailure onClick={this.dismissAlert}/> }
-        <div className="form">
+        <VjInputGroup label="Je m'appelle">
           <VjRollingInput
             onChange={updateName} value={this.state.name}
-            className="vj-roll-name vj-roll-align-right"
+            className="vj-roll-name"
             placeholder={name}
           />
-          <div className="vj-roll-verb">&nbsp;sait&nbsp;</div>
+        </VjInputGroup>
+
+        <VjInputGroup label="Et je sais">
           <VjRollingInput
             onChange={updateSkill} value={this.state.skill}
             className="vj-roll-skill"
             placeholder={skill}
           />
-        </div>
-        <VjInput
-          onChange={updateEmail} value={this.state.email}
-          className="vj-email vj-center"
-          name="email"
-          type="text"
-          placeholder="jean@pierre.com"
-        />
+        </VjInputGroup>
+
+        <VjInputGroup label="Mon email c'est">
+          <VjInput
+            onChange={updateEmail} value={this.state.email}
+            className="vj-email vj-ph-out"
+            name="email"
+            type="text"
+            placeholder="jean.martin@gmail.com"
+          />
+        </VjInputGroup>
+
+        <VjInputGroup label="Mon code postal c'est">
+          <VjInput
+            onChange={updatePostcode} value={this.state.postcode}
+            className="vj-postcode vj-ph-out"
+            name="postcode"
+            type="text"
+            placeholder="63700"
+          />
+        </VjInputGroup>
+
         <button onClick={onSubmitForm}>Je participe !</button>
       </div>
     );

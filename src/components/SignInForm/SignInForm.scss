@@ -1,75 +1,62 @@
 @import '../../shared/styles/settings.scss';
 
+.vj-alert {
+  flex: 1 0 auto;
+  margin-bottom: 0.8em;
+  padding: 0.8em;
+  border-width: 1px 5px 1px 5px;
+  border-style: solid;
+  background-color: transparentize(black, 0.5);
+
+  .vj-alert-heading {
+    margin: 0;
+    padding: 0;
+    font-weight: bold;
+    margin-bottom: 0.6em;
+  }
+
+  &.vj-alert-success {
+    $green-amount: 45;
+    color: lighten(green, $green-amount);
+    border-color: transparentize(lighten(green, $green-amount), 0.55);
+    .vj-alert-heading {
+      color: lighten(green, $green-amount);
+    }
+  }
+
+  &.vj-alert-error {
+    $red-amount: 22;
+    color: lighten(red, $red-amount);
+    border-color: transparentize(lighten(red, $red-amount), 0.4);
+    .vj-alert-heading {
+      color: lighten(red, $red-amount);
+    }
+  }
+}
+
+.vj-input-group {
+  display: flex;
+  align-items: center;
+  & > label {
+    text-align: right;
+    transform: translateY(-1px);
+    flex: 1 0 25%;
+    & + * {
+      flex: 3 0 25%;
+    }
+  }
+}
+
 .sign-in {
   width: 100%;
-  max-width: 700px;
+  max-width: 450px;
   display: flex;
   flex-flow: column;
 
-  .form {
-    font-size: 1.55em;
-    width: 100%;
-    display: flex;
-    align-items: center;
-  }
-
-  .vj-roll-verb {
-    transform: translateY(-1px);
-  }
-
   button {
     font-size: 1.3em;
-    margin-top: 1.8em;
+    margin-top: 1.8rem;
     align-self: center;
     width: 40%;
-  }
-
-  .vj-alert {
-    flex: 1 0 auto;
-    margin-bottom: 0.8em;
-    padding: 0.8em;
-    border-width: 1px 5px 1px 5px;
-    border-style: solid;
-    background-color: transparentize(black, 0.5);
-
-    .vj-alert-heading {
-      margin: 0;
-      padding: 0;
-      font-weight: bold;
-      margin-bottom: 0.6em;
-    }
-
-    &.vj-alert-success {
-      $green-amount: 45;
-      color: lighten(green, $green-amount);
-      border-color: transparentize(lighten(green, $green-amount), 0.55);
-      .vj-alert-heading {
-        color: lighten(green, $green-amount);
-      }
-    }
-
-    &.vj-alert-error {
-      $red-amount: 22;
-      color: lighten(red, $red-amount);
-      border-color: transparentize(lighten(red, $red-amount), 0.4);
-      .vj-alert-heading {
-        color: lighten(red, $red-amount);
-      }
-    }
-  }
-
-  .vj-input.vj-email {
-    margin-top: 1.8em;
-    margin-bottom: 0;
-    width: 40%;
-    align-self: center;
-  }
-
-  .vj-roll-name {
-    flex: 1 0 auto;
-  }
-
-  .vj-roll-skill {
-    flex: 1 0 auto;
   }
 }
