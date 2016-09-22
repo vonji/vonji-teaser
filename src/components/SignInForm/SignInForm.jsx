@@ -60,7 +60,8 @@ class SignInForm extends React.Component {
     this.state = {
       entries: [],
       current: this.ph,
-      name: '', skill: '', email: '',
+      name: '', skill: '',
+      email: '', postcode: '',
     };
     this.onSubmitForm = ::this.onSubmitForm;
     this.dismissAlert = ::this.dismissAlert;
